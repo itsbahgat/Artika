@@ -1,0 +1,21 @@
+mat-sidenav-container{
+  height:100%;
+}
+mat-sidenav-container mat-sidenav{
+  width: 200px;
+  background-color: rgba(63,81,181);
+
+}
+mat-toolbar-row {
+  display: flex;
+  flex-direction: row;
+ justify-content: space-between;
+ padding:0 20px;
+}
+.admin-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
