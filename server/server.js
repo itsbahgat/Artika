@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const customerRoute = require('./route/customer.route')
+const PORT = process.env.PORT||3005;
 // Using Node.js `require()`
 
 const mongoose = require('mongoose');
@@ -14,7 +15,7 @@ app.use(express.urlencoded({extended:true}))
 app.use('/', customerRoute);
 
 
-app.listen(3005, function check(error) {
+app.listen(PORT, function check(error) {
     if (error) {
         console.log("Error...");
     }
