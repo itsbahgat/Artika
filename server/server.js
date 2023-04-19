@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const customerRoute = require('./route/customer.route')
+const adminRoute = require('./route/admin.route')
 const ProductRoutes = require("./route/product.route");
 const PORT = process.env.PORT||3005;
 // Using Node.js `require()`
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/', customerRoute);
+app.use('/admin', adminRoute);
 app.use("/api/product",ProductRoutes);
 
 

@@ -3,40 +3,20 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const joi = require('joi');//to validation schema
 
-const schemaValidationRegister = joi.object({
-    userName: joi.string().alphanum().min(2).max(20).required(),
-    email: joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-    password: joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-    age:joi.number().required(),
-    gender: joi.string().valid('male', 'female').required(),
-    birthday: joi.string().required(),
-})
 
-const schemaValidationLogin = joi.object({
-   
-    em: joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-    pass: joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-    
-})
-
-let customerSchema = mongoose.Schema({
-    userName: String,
+let adminSchema = mongoose.Schema({
+    userName:String,
     email: String,
     password: String,
-    gender: String,
-    birthday: String,
+  
 })
 
 let url = 'mongodb://localhost:27017/artecaDB'
 
-var customer = mongoose.model('customers', customerSchema);
+var admin = mongoose.model('admins', adminSchema);
 
 // customer register 
-exports.register = (userName,email,password,gender,birthday) => {
+exports.register = (userName,email,password) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(async () => {
            
@@ -51,7 +31,7 @@ exports.register = (userName,email,password,gender,birthday) => {
         //  }
          //end of validation
             
-            return customer.findOne({email: email})
+            return admin.findOne({email: email})
             
 
         }).then((doc) => {
@@ -63,17 +43,15 @@ exports.register = (userName,email,password,gender,birthday) => {
             else {
                
                 bcrypt.hash(password, 10).then((hashPassword) => {
-                    let custom = new customer({
+                    let ad = new admin({
                         userName:userName,
                         email: email,
                         password: hashPassword,
-                        gender: gender,
-                        birthday:birthday
                         
                     })
-                    custom.save().then((doc) => {
+                    ad.save().then((doc) => {
                         mongoose.disconnect();
-                        resolve(custom)
+                        resolve(ad)
                     }).catch((error) => {
                         mongoose.disconnect();
                         reject(error)
@@ -87,12 +65,12 @@ exports.register = (userName,email,password,gender,birthday) => {
         })
     })
 }
-
 var privateKey = "this is my secret key fdgioruterjekrtf,mdfgkjlsdf"
-// customer login
-exports.login =async (email,password) => {
+
+// admin login
+exports.login = (email,password) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(async () => {
+        mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then( () => {
            //joi validation
     //        let validation = await schemaValidationLogin.validateAsync({ em: email, pass: password })
 
@@ -103,27 +81,27 @@ exports.login =async (email,password) => {
 
     //    }
        //end of validation
-            return customer.findOne({email: email})
+            return admin.findOne({email: email})
    
-        }).then((customer) => {
+        }).then((admin) => {
            
-            if (!customer) {
+            if (!admin) {
                 mongoose.disconnect();
                 reject('Invalid Email or Password...')
             }
             else {
                 
 
-                bcrypt.compare(password, customer.password).then((same) => //to compare entered password and hashed password ecist in DB
+                bcrypt.compare(password, admin.password).then((same) => //to compare entered password and hashed password ecist in DB
                 {
                     if (same) { 
                         // send token
-                        let token = jwt.sign({ id: customer._id, userName: customer.userName }, privateKey, {
+                        let token = jwt.sign({ id: admin._id, userName: admin.userName,email:admin.email }, privateKey, {
                             expiresIn: '1h',
 
                         })
                         mongoose.disconnect();
-                        resolve(token)
+                        resolve({ token: token ,role:'admin'})
                     }
                     else {
                         mongoose.disconnect();
