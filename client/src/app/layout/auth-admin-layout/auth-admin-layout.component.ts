@@ -1,5 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
-import { AuthuserService } from 'src/app/views/services/authuser.service';
+import { AuthadminService } from 'src/app/views/services/authadmin.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth-admin-layout',
@@ -7,16 +9,25 @@ import { AuthuserService } from 'src/app/views/services/authuser.service';
   styleUrls: ['./auth-admin-layout.component.css']
 })
 export class AuthAdminLayoutComponent implements OnInit{
-
-  constructor(private userService: AuthuserService) {
+  dataToken: any;
+  messageError: any;
+  constructor(private adminService: AuthadminService,private route:Router) {
 
    }
 
   ngOnInit(): void {
 
   }
-  loginuser(f:any) {
+  loginAdmin(f:any) {
     let data = f.value
-    this.userService.login(data).subscribe(response=>console.log(response),err=>console.log(err))
+    this.adminService.login(data).subscribe(data => {
+      this.dataToken = data
+      this.adminService.saveToken(this.dataToken.token.token)
+
+      this.route.navigate(['/admin/dashboard']).then(() => {
+        location.replace(location.href);
+      });
+    },(err:HttpErrorResponse)=>this.messageError = err.error.error);
   }
+
 }

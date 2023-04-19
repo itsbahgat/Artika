@@ -1,7 +1,7 @@
 
-<mat-card class="container" [@fadeInOut]>
+<mat-card class="container">
   <div class="left">
-    <img [@fadeInOutImg] class="hand-made" src="https://images.unsplash.com/photo-1567598403809-535c865c11e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
+    <img  class="hand-made" src="https://images.unsplash.com/photo-1567598403809-535c865c11e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
   </div>
 <mat-card class="form-card">
   <mat-card-header>
@@ -9,7 +9,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <!-- <form #f="ngForm" (ngSubmit)="loginuser(f)">
+    <form #f="ngForm" (ngSubmit)="loginAdmin(f)">
       <div class="w3-section">
         <label>Email</label>
         <input class="w3-input w3-border" type="email" name="email" required #email="ngModel" ngModel>
@@ -18,25 +18,11 @@
         <label>Password</label>
         <input class="w3-input w3-border" type="password" name="password" required #password="ngModel" ngModel>
       </div>
-
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Login</button>
-    </form> -->
-
-    <!-- <form #f = "ngForm" (onSubmit)="loginuser(f)">
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" name="email" placeholder="Enter your email" #email="ngModel" ngModel>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" name="password" placeholder="Enter your password" #password="ngModel" ngModel>
-      </mat-form-field>
-
-      <mat-checkbox>Remember me</mat-checkbox>
-
-      <button type="submit">Login</button>
-    </form> -->
+      <div class="alert alert-danger" style="color:red;" *ngIf="messageError">
+        {{messageError}}
+      </div>
+      <button class="btn" type="submit" mat-raised-button color="primary"  class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Login</button>
+    </form>
   </mat-card-content>
 
 
