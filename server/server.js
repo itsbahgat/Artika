@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const customerRoute = require('./route/customer.route')
+const adminRoute = require('./route/admin.route')
 // Using Node.js `require()`
 
 const mongoose = require('mongoose');
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/', customerRoute);
+app.use('/admin', adminRoute);
 
 
 app.listen(3005, function check(error) {
