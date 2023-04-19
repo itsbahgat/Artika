@@ -21,7 +21,16 @@ const productModel = require('../models/product.model');
     //for all
     let getProductsByCategory = async (req, res) => {
         try {
-            const products = await productModel.find({ category: req.params.category });
+            const categories = req.params.categories.split(","); // Split the categories string into an array
+            const products = await productModel.find({ categories: { $in: categories } });
+            res.status(200).json(products);
+        } catch (error) {
+            res.status(404).json({ message: error.message });
+        }
+    };
+    let getProductsByTitle = async (req, res) => {
+        try {
+            const products = await productModel.find({ title: { $regex: req.params.title, $options: 'i' } });
             res.status(200).json(products);
         } catch (error) {
             res.status(404).json({ message: error.message });
@@ -113,6 +122,7 @@ const productModel = require('../models/product.model');
     getAllProducts,
     getProductById,
     getProductsByCategory,
+    getProductsByTitle,
     addNewProduct,
     updateProductById,
     deleteProductById,
