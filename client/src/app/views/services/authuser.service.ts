@@ -11,7 +11,7 @@ export class AuthuserService {
 
   constructor(private http:HttpClient) { }
 
-
+ //user login
   login(data:any) {
     return this.http.post('http://localhost:3005/login',data)
   }
@@ -50,5 +50,12 @@ export class AuthuserService {
     let userName = "name"
     userName = decodeToken.userName
     return userName
+  }
+
+
+  //User Register
+  register(body: any) {
+    console.log(typeof body.birth);
+    return this.http.post('http://localhost:3005/register', body);
   }
 }

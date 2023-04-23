@@ -1,1 +1,49 @@
-<p>register works!</p>
+
+
+<mat-card class="container" >
+  <div class="left">
+    <img  class="hand-made" src="https://images.unsplash.com/photo-1527505937496-ec9bd1d25da5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGhhbmRtYWRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"/>
+  </div>
+<mat-card class="form-card">
+  <mat-card-header>
+    <mat-card-title>Welcome to Our Creative World</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="register(f)">
+      <div class="w3-section">
+        <label>UserName</label>
+        <input class="w3-input w3-border" type="text" name="username" required #username="ngModel" ngModel>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="email" name="email" required #email="ngModel" ngModel>
+      </div>
+      <div class="w3-section">
+        <label>Password</label>
+        <input class="w3-input w3-border" type="password" name="password" required #password="ngModel" ngModel>
+      </div>
+      <div class="w3-section">
+        <label>gender</label>
+          <select id="gender" name="gender" required #gender="ngModel" ngModel>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+      </div>
+      <div class="w3-section">
+        <label>birth date</label>
+        <input class="w3-input w3-border" type="date" name="birth" required #birth="ngModel" ngModel>
+      </div>
+      <div class="alert alert-danger" style="color:red;" *ngIf="messageError">
+        {{messageError}}
+      </div>
+      <button class="btn" type="submit" mat-raised-button color="primary"  class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Register</button>
+    </form>
+  </mat-card-content>
+
+
+
+</mat-card>
+
+</mat-card>
+
