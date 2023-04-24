@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT|| 8080;
 const cartsRoute = require("./route/CartsRoutes");
 const ordersRoute = require("./route/OrdersRoutes");
+const stripeRoute = require("./route/stripeRoute");
 const mongoose = require("mongoose");
 
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 app.use(cartsRoute);
 app.use(ordersRoute);
+app.use(stripeRoute);
 
 app.use((request, response, next)=>{
     if(true){

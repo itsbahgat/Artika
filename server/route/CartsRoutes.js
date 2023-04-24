@@ -3,7 +3,7 @@ const router = express.Router({ strict: true });
 const {body, param, query, check} = require("express-validator");
 const controller = require("../Controllers/CartsController");
 const cartValidationMW = require("../Middlewares/cartValidationMW");
-
+const authMW = require("../Middlewares/AuthMW");
 
 const inputValidation = [
     body('customerId').isMongoId().withMessage('customer id should be mongoID'),
