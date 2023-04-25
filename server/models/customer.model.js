@@ -137,3 +137,5 @@ exports.login =async (email,password) => {
         })
     })
 }
+
+module.exports = mongoose.model("customers",customerSchema);

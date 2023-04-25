@@ -64,3 +64,6 @@ input{
   height: 30px;
   cursor: pointer;
 }
+label{
+  color:#fff;
+}

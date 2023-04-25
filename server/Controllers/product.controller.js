@@ -1,5 +1,5 @@
 const productModel = require('../models/product.model');
-
+ 
     //for all
     let getAllProducts = async (req, res) => {
         try {

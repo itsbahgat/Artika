@@ -19,3 +19,31 @@ mat-toolbar-row {
   object-fit: cover;
   margin-right: 10px;
 }
+.customers{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding:0px 10px;
+  cursor: pointer;
+}
+.sellers{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding:0px 10px;
+  cursor: pointer;
+}
+.dashboard{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding:0px 10px;
+  cursor: pointer;
+}
+/* .customer,svg{
+  width: 25px;
+  padding:10px;
+} */

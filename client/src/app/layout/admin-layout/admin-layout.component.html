@@ -23,15 +23,27 @@
 <mat-sidenav-container >
   <mat-sidenav #sidenav [(opened)]="opened" mode="side" >
     <mat-nav-list >
-      <a mat-list-item routerLink="/">Home</a>
-      <a mat-list-item routerLink="/about">About</a>
-      <a mat-list-item routerLink="/contact">Contact</a>
+
+      <a mat-list-item routerLink="/">DashBoard</a>
+      <div class="dashboard"routerLink="/">
+        <mat-icon>equalizer</mat-icon>
+        <a mat-list-item >DashBoard</a>
+      </div>
+      <div class="customers"routerLink="/admin/dashboard/allcustomers">
+        <mat-icon> people </mat-icon>
+        <a mat-list-item >Customers</a>
+      </div>
+      <div class="sellers"routerLink="/admin/dashboard/allcustomers">
+        <mat-icon> sell </mat-icon>
+        <a mat-list-item >Sellers</a>
+      </div>
+
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
 
-    <p>Welcome to my app!</p>
+    <!-- <p>Welcome to my app!</p> -->
     <router-outlet></router-outlet>
     <!-- Your main content here -->
   </mat-sidenav-content>
