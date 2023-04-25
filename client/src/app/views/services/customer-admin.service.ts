@@ -17,4 +17,6 @@ export class CustomerAdminService {
   deleteCustomerById(id:any) {
     return this.http.delete('http://localhost:3005/all/' + id);
   }
+
+
 }

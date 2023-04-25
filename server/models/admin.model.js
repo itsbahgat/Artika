@@ -16,7 +16,8 @@ let url = 'mongodb://localhost:27017/artecaDB'
 var admin = mongoose.model('admins', adminSchema);
 
 // customer register 
-exports.register = (userName,email,password) => {
+exports.register = (userName, email, password) => {
+    mongoose.disconnect();
     return new Promise((resolve, reject) => {
         mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(async () => {
            
@@ -68,7 +69,8 @@ exports.register = (userName,email,password) => {
 var privateKey = "this is my secret key fdgioruterjekrtf,mdfgkjlsdf"
 
 // admin login
-exports.login = (email,password) => {
+exports.login = (email, password) => {
+    mongoose.disconnect();
     return new Promise((resolve, reject) => {
         mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then( () => {
            //joi validation
