@@ -3,6 +3,8 @@ const app = express()
 const cors = require('cors');
 const customerRoute = require('./route/customer.route')
 const adminRoute = require('./route/admin.route')
+const ProductRoutes = require("./route/product.route");
+const PORT = process.env.PORT||3005;
 // Using Node.js `require()`
 
 const mongoose = require('mongoose');
@@ -14,9 +16,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/', customerRoute);
 app.use('/admin', adminRoute);
+app.use("/api/product",ProductRoutes);
 
 
-app.listen(3005, function check(error) {
+
+app.listen(PORT, function check(error) {
     if (error) {
         console.log("Error...");
     }
