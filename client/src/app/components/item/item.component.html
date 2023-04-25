@@ -1,0 +1,54 @@
+
+<main class="container">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+    <img [src]="product.images[currentImageIndex]" alt="">
+    <div class="btn-wrapper">
+      <div class="left-btn" (click)="prevImage()">
+        <div class="btn">
+          <button>&lt;</button>
+        </div>
+      </div>
+      <div class="right-btn" (click)="nextImage()">
+        <div class="btn">
+        <button>&gt;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>{{ product.categories.join(', ') }}</span>
+      <h1>{{ product.title }}</h1>
+      <p>{{ product.description }}</p>
+    </div>
+
+        <!--comments-->
+  <div class="comments">
+    <h3>Comments:</h3>
+    <ul>
+      <li *ngFor="let review of product.reviews">
+        <p>Posted {{ getTimeAgo(review.date) }}</p>
+        <p>Rating: {{ review.rating }}/5</p>
+        <p>By: {{ review.user }}</p>
+        <p>Comment: {{ review.comment }}</p>
+      </li>
+    </ul>
+  </div>
+ 
+ 
+    <span>Sold by : {{product.seller}} </span>
+  
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>£{{ product.price }}</span>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+  </div>
+</main>
