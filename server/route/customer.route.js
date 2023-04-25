@@ -5,7 +5,7 @@ const routeModel = require('../models/customer.model')
 
 route.post('/register', (req, res, next) => { //next : to pass the next middleware   
     console.log(req.body)
-    routeModel.register(req.body.userName, req.body.email, req.body.password,req.body.gender,req.body.birthday)
+    routeModel.register(req.body.username, req.body.email, req.body.password,req.body.gender,req.body.birth)
         .then((custom) => res.status(200).json({ custom: custom, msg: "registered" }))
         .catch((err) => res.status(400).json({ error: err }))
 })
