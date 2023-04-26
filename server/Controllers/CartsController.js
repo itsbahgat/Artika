@@ -2,7 +2,7 @@ const { ConnectionStates } = require("mongoose");
 const Carts = require("../Models/Cart.model");
 const Orders = require("../Models/Order.model");
 const Products = require("../models/product.model");
-
+const { ObjectId } = require('mongodb');
 
 module.exports.GetAllCarts = (request, response, next)=>{
     Carts.find({}).then(data=>{
@@ -20,9 +20,14 @@ module.exports.GetCartByCustId = (request, response, next)=>{
 
 
 module.exports.AddItem = async (request, response, next) => {
-    // console.log("add item fun");
-    let custID = request.body.customerId;
-    request.body.items.quantity = 1;
+    let custID =  new ObjectId(request.body.customerId);
+    let prodID =  request.body.productId;
+    // let prodID =  new ObjectId(request.body.productId);
+
+    // console.log(request.body.customerId);
+    // console.log(request.body.productId);
+    // console.log(custID);
+    // console.log(prodID);
   
     // Check if carts table has an existing cart with the same customer id or not
     const cart = await Carts.findOne({ customerId: custID });
@@ -34,11 +39,12 @@ module.exports.AddItem = async (request, response, next) => {
     } 
     else {
       // Update cart items with received item
-      let item = request.body.items;
+      let item = {productId: prodID, quantity:1};
+      // item.productId = new ObjectId(item.productId);
   
       // If this product already in cart, just increase its quantity. Otherwise, add it
-      let foundItem = cart.items.find((i) => i.productId == item.productId);
-    //   console.log("found  --------- \n", foundItem);
+      let foundItem = cart.items.find((i) => i.productId ==  prodID);
+      // console.log("found  --------- \n", foundItem);
   
       if (!foundItem) {
         // console.log("item not found");
@@ -65,31 +71,36 @@ module.exports.AddItem = async (request, response, next) => {
     }
 };
 
-module.exports.CreateCart = async (request, response, next) => {
-    console.log("create cart fun");
-    let customerId = request.body.customerId;
-    let items = [request.body.items];
-    items[0].quantity = 1;
-    const cart = new Carts({ customerId, items});
-    return await cart.save() .then(
-        data=>{
-            response.status(200).json({message: "added", data: data});
-        }
-    )
-    .catch(err => {throw err}) ;
-};
 
+module.exports.CreateCart = async (request, response, next) => {
+  console.log("create cart fun");
+  // let customerId = request.body.customerId;
+  let customerId = new ObjectId(request.body.customerId);
+  let productId = new ObjectId(request.body.productId);
+  let items = [{productId}];
+  items[0].quantity = 1;
+  items[0].productId = new ObjectId(items[0].productId)
+
+  const cart = new Carts({ customerId, items });
+  return await cart.save() .then(
+      data=>{
+          response.status(200).json({message: "added", data: data});
+      }
+  )
+  .catch(err => {throw err}) ;
+};
 
 module.exports.RemoveItem = async (request, response, next) => {
     try {
-      const { customerId, productId, deleteItem } = request.body;
-  
-      const cart = await Carts.findOne({ customerId });
+      let { customerId, productId, deleteItem } = request.body;
+      // customerId =new ObjectId(customerId);
+      const cart = await Carts.findOne({  customerId });
   
       if (!cart) {
         return response.status(404).json({ message: "There is no cart for this customer" });
       }
-      
+      // console.log(cart);
+      // productId = new ObjectId(productId);
       const foundItemIndex = cart.items.findIndex(item => item.productId == productId);
   
       if (foundItemIndex === -1) {
@@ -114,7 +125,8 @@ module.exports.RemoveItem = async (request, response, next) => {
 
 
 module.exports.DeleteCart = async(request, response, next)=>{
-    const { customerId, checkout} = request.body;
+    let { customerId, checkout} = request.body;
+    customerId = new ObjectId(customerId);
     const cart = await Carts.findOne({ customerId });
   
     if (!cart) {
@@ -125,17 +137,25 @@ module.exports.DeleteCart = async(request, response, next)=>{
         // make it as order before deleting 
 
         //save cart to orders
+        const cartWithoutLoading = await Carts.findOne({ customerId });
         const cart = await Carts.findOne({ customerId }).populate('items.productId');
+        console.log(cart.items);
+        console.log(cartWithoutLoading.items);
         let totPrice = cart.items.reduce((total, item) => {
+          if (item.productId && item.productId.price) {
             return total + item.quantity * item.productId.price;
-          }, 0);
-        const order = new Orders({ customerId, items: cart.items, status: "pending", total: totPrice});
-        await order.save() .then(
-        data=>{
+          } else {
+            return total;
+          }
+        }, 0);
+        const order = new Orders({ customerId, items: cartWithoutLoading.items, status: "pending", total: totPrice});
+        await order.save()
+          .then(data => {
             response.status(200).json({message: "add cart to orders with state PENDING", data: data});
-        }
-        )
-        .catch(err => {throw err}) ;
+          })
+          .catch(err => {
+            throw err;
+          });
         
     }
     //* this empty the products list

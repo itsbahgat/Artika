@@ -13,3 +13,25 @@ module.exports = (request, response, next)=>{
     }
     next();
 }
+
+
+// module.exports.inputValidation = [
+//     // body('customerId').isAlpha().withMessage('customer id should be mongoID'),
+//     // body('productId').isAlpha().withMessage('items should be an object'),
+//     // body('items.productId').isMongoId().withMessage('productId should be a valid MongoDB ObjectId')
+// ];
+
+// module.exports.updateValidation = [
+//     body('customerId').isMongoId().withMessage('customer id should be mongoID'),
+//     body('productId').isMongoId().withMessage('product id should be mongoID'),
+//     body('deleteItem').isBoolean().withMessage('deleteItem should be an bool')
+// ];
+
+// module.exports.deleteValidation = [
+//     body('customerId').isMongoId().withMessage('customer id should be mongoID'),
+//     body('checkout').isBoolean().withMessage('checkout should be an bool')
+// ];
+
+// module.exports.searchValidation = [
+//     param('id').isMongoId().withMessage('customer id should be mongoID')
+// ];

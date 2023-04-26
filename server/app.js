@@ -23,6 +23,19 @@ mongoose.connect("mongodb://127.0.0.1:27017/artecaDB").then(()=>{
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+
+// Set CORS headers
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Authorization, Content-Type, Accept"
+    );
+    next();
+  });
+
+
 app.use(cartsRoute);
 app.use(ordersRoute);
 app.use(stripeRoute);

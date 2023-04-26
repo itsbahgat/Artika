@@ -6,9 +6,9 @@ const cartValidationMW = require("../Middlewares/cartValidationMW");
 const authMW = require("../Middlewares/AuthMW");
 
 const inputValidation = [
-    body('customerId').isMongoId().withMessage('customer id should be mongoID'),
-    body('items').isObject().withMessage('items should be an object'),
-    body('items.productId').isMongoId().withMessage('productId should be a valid MongoDB ObjectId')
+    // body('customerId').isAlpha().withMessage('customer id should be mongoID'),
+    // body('productId').isAlpha().withMessage('items should be an object'),
+    // body('items.productId').isMongoId().withMessage('productId should be a valid MongoDB ObjectId')
 ];
 
 const updateValidation = [
