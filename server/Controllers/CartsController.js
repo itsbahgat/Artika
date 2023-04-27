@@ -12,7 +12,7 @@ module.exports.GetAllCarts = (request, response, next)=>{
 };
 
 module.exports.GetCartByCustId = (request, response, next)=>{
-    Carts.find({customerId: request.params.id}).then(data=>{
+    Carts.find({customerId: request.params.id}).populate('items.productId').then(data=>{
         response.status(200).json(data);
     }).catch(error=> {
         next(error);});
