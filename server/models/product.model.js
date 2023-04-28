@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/artecaDB");
 
-//2)Create Schema
 const productSchema = new mongoose.Schema({
     title: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
       type: String,
@@ -51,10 +49,11 @@ const productSchema = new mongoose.Schema({
         default: Date.now
       }
     }]
+  },
+  {
+    timestamps:true
   });
   
-
-//3)Connect Schema With Collection
-module.exports = mongoose.model("products",productSchema);
+module.exports = mongoose.model("Product",productSchema);
 
 
