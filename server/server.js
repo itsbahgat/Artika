@@ -34,3 +34,11 @@ app.use((request,response)=>{
     response.status(404).json({message: "Not Found" })
 })
 
+app.use((error,request,response,next)=>{
+    let status = request.status || 500;
+    response.status(status).json({message: "Internal Error"});
+
+    //delete in production
+    console.error(error.stack);
+})
+
