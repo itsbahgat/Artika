@@ -6,10 +6,10 @@ const { updateOrderValidationRules, searchOrderValidationRules, validate } = req
 
 router.route("/order")
       .get(controller.GetAllOrders) 
-      .put(updateOrderValidationRules, validate, controller.UpdateOrder);
+      .put(updateOrderValidationRules(), validate, controller.UpdateOrder);
 
     
 router.route("/order/:id")
-      .get(searchOrderValidationRules, validate, controller.GetOrderByCustId);
+      .get(searchOrderValidationRules(), validate, controller.GetOrderByCustId);
 
 module.exports = router;

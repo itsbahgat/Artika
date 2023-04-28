@@ -13,15 +13,16 @@ router.route("/cart")
      controller.AddItem) //^ works
 
     // recieve custId, prodId and whether to decrease quantity or remove totally 
-    .put(updateCartValidationRules, validate,  controller.RemoveItem) 
+    .put(updateCartValidationRules(), validate,  controller.RemoveItem) 
         
     // recieve custId and whether to checkout(make the cart to be an order) or clear totally 
     //empty the cart
     //checkout
-    .delete(deleteCartValidationRules, validate, controller.DeleteCart)
+    .delete(//deleteCartValidationRules(), validate,
+     controller.DeleteCart)
     
 
 router.route("/cart/:id")
-      .get(searchCartValidationRules, validate, controller.GetCartByCustId) 
+      .get(searchCartValidationRules(), validate,controller.GetCartByCustId) 
 
 module.exports = router;
