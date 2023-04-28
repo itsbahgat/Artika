@@ -1,23 +1,24 @@
 const productModel = require('../models/product.model');
 
     //for all
-    let getAllProducts = async (req, res) => {
-        try {
-        const allProducts = await productModel.find();
+    const getAllProducts = async (req, res, next) => {
+        const allProducts = await productModel.find().catch((error) => {
+            next(error);
+        });
         res.status(200).json(allProducts);
-        } catch (error) {
-        res.status(500).json({ message: error.message });
-        }
-    };
-    //for all
-    let getProductById = async (req, res) => {
+        };
+          
+    const getProductById = async (req, res) => {
         try {
             const product = await productModel.findById(req.params.id);
+            if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+            }
             res.status(200).json(product);
         } catch (error) {
-            res.status(404).json({ message: error.message });
+            res.status(500).json({ message: "Internal Server Error" });
         }
-    };
+        };
     //for all
     let getProductsByCategory = async (req, res) => {
         try {
