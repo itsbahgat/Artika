@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router({ strict: true });
-const controller = require("../Controllers/carts.controller");
+const controller = require("../controllers/carts.controller");
 const {updateCartValidationRules,deleteCartValidationRules,searchCartValidationRules,validate} = require("../middlewares/validation.mw");
 
 

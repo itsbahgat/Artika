@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router({ strict: true });
-const controller = require("../Controllers/stripe.controller");
+const controller = require("../controllers/stripe.controller");
 const {stripeValidationRules, validate} = require("../middlewares/validation.mw");
 
 

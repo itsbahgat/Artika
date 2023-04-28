@@ -1,5 +1,5 @@
 const route = require("express").Router();
-const authController = require("../Controllers/auth.controller");
+const authController = require("../controllers/auth.controller");
 const { userValidationRules, validate } = require("../middlewares/validation.mw");
 
 route.route("/register")
