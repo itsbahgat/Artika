@@ -104,8 +104,9 @@ const searchCartValidationRules = () => {
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   const extractedErrors = [];
-console.log("haamda")
+
   if (errors.isEmpty()) return next();
+
   errors.array().map((err) => extractedErrors.push({ [err.path]: err.msg }));
 
   return res.status(422).json({

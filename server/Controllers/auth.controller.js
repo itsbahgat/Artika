@@ -30,8 +30,6 @@ const login = async (req, res) => {
  }
 };
 
-
-
 const createToken = (id) => {
     return jwt.sign({ id }, privateKey, { expiresIn: expiryTimeInSeconds });
   };

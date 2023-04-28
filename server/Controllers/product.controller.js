@@ -62,7 +62,7 @@ const getProductById = async (req, res) => {
             const productId = req.params.id;
             const updatedData = req.body;
             const updatedProduct = await productModel.findByIdAndUpdate(productId,{ $set: updatedData }, { new: true } );
-
+            
             res.status(200).json({ message: "Updated Successfully"});
           
         } catch (error) {
