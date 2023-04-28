@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 interface ProductData {
+  id: string;
   title: string;
   description: string;
   price: number;
@@ -23,6 +25,7 @@ interface ProductData {
 })
 export class ItemComponent {
   @Input() product: ProductData = {
+    id: '7445590c3a7c5b869d15853f',
     title: 'Product Title',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie magna id mauris eleifend, nec malesuada ex aliquet. Sed ac luctus nunc. Sed consectetur, leo a consequat luctus, enim est fringilla felis, vel faucibus odio sapien ut felis.',
     price: 10,
@@ -32,8 +35,32 @@ export class ItemComponent {
     date: new Date(),
     reviews: []
   };
+  @Input() customerId: string = '644558433a7c5b869d158544';
+
+  addToCart(): void {
+    const cartUrl = 'http://localhost:8080/cart'; // Replace this with your actual API endpoint
+    const requestBody = {
+      customerId: this.customerId,
+      productId: this.product.id
+    };
+  
+    this.http.post(cartUrl, requestBody).subscribe(
+      (response) => {
+        console.log('Successfully added item to cart!', response);
+        // TODO: Display success message to user
+      },
+      (error) => {
+        console.error('Error adding item to cart', error);
+        // TODO: Display error message to user
+      }
+    );
+  }
+  
+  
 
   currentImageIndex = 0;
+
+  constructor(private http: HttpClient) {}
 
   prevImage() {
     this.currentImageIndex = (this.currentImageIndex - 1 + this.product.images.length) % this.product.images.length;
@@ -61,6 +88,4 @@ export class ItemComponent {
       return 'just now';
     }
   }
-  
-  
 }

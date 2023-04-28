@@ -16,10 +16,15 @@
         <div class="home-middle">
           <div class="home-left">
             <span class="navbar-link">SHOP</span>
-            <span class="navbar-link">LOOKBOOK</span>
+            <a routerLink="/cart" class="navbar-link">CART</a>
+            <a routerLink="/loginuser" class="navbar-link" *ngIf="!verifUser">Login</a>
+            <a routerLink="/register" class="navbar-link" *ngIf="!verifUser">Register</a>
+            <a routerLink="/register" class="navbar-link" *ngIf="verifUser">{{userName}}</a>
+            <a (click)="logout()"  class="navbar-link" *ngIf="verifUser">LogOut</a>
+
             <span class="navbar-link">SPECIAL</span>
           </div>
-          <span class="navbar-logo-title">ARTIKA</span>
+          <a routerLink="/" class="navbar-logo-title">ARTIKA</a>
           <div class="home-right">
             <span class="navbar-link">ABOUT</span>
             <span class="navbar-link">BLOG</span>

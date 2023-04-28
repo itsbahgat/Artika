@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
 import { ComponentsModule } from '../../components/components.module'
-import { Home } from './home.component'
+import { basket } from './basket.component'
 
 
 
@@ -11,14 +11,14 @@ import { Home } from './home.component'
 const routes = [
   {
     path: '',
-    component: Home,
+    component: basket,
   },
 ]
 
 @NgModule({
-  declarations: [Home],
+  declarations: [basket],
   imports: [CommonModule, ComponentsModule, RouterModule.forChild(routes)],
-  exports: [Home],
+  exports: [basket],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomeModule {}
+export class BasketModule {}

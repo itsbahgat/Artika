@@ -4,10 +4,8 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { ComponentsModule } from './components/components.module'
 import { AppComponent } from './app.component'
-
-import { FormsModule } from '@angular/forms';
-import { TagInputModule } from 'ngx-chips';
-
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes = [
   {
@@ -15,11 +13,27 @@ const routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
-]
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./pages/basket/basket.module').then((m) => m.BasketModule),
+  },
+  {
+    path: 'loginuser',
+    loadChildren: () =>
+      import('./pages/loginuser/loginuser.module').then((m) => m.LoginUserModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./pages/register/register.module').then((m) => m.RegisterModule),
+  },
+];
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule,FormsModule, TagInputModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule ,HttpClientModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
