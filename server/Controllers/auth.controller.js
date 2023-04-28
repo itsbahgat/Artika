@@ -17,59 +17,18 @@ const register = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
 
-// customer login
-let login = async (email, password) => {
-  console.log("login");
-  mongoose.disconnect();
-  return new Promise((resolve, reject) => {
-      
-      mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(async () => {
-         //joi validation
-  //        let validation = await schemaValidationLogin.validateAsync({ em: email, pass: password })
-
-  //        if (validation.error) {
-             
-  //            mongoose.disconnect()
-  //            reject(validation.error.details[0].message+" , and you have entered "+validation.error.details[0].context.value)
-
-  //    }
-     //end of validation
-          
-          return customerModel.findOne({email: email})
- 
-      }).then((customerModel) => {
-         
-          if (!customerModel) {
-              mongoose.disconnect();
-              reject('Invalid Email or Password...')
-          }
-          else {
-              
-
-              bcrypt.compare(password, customerModel.password).then((same) => //to compare entered password and hashed password ecist in DB
-              {
-                  if (same) { 
-                      // send token
-                      let token = jwt.sign({ id: customerModel._id, userName: customerModel.userName }, privateKey, {
-                          expiresIn: '1h',
-
-                      })
-                      mongoose.disconnect();
-                      resolve(token)
-                  }
-                  else {
-                      mongoose.disconnect();
-                      reject('Invalid Email or Password...')
-                  }
-              }).catch((err) => {
-                  mongoose.disconnect();
-                  reject(err)
-              }) 
-          }
-      })
-  })
-}
+  try {
+    const {emailOrUsername, password} = req.body;
+    let user = await Users.login(emailOrUsername,password);
+    res.status(200).json({ id: user.id });
+    //return user;
+  } 
+  catch (error) {
+    res.status(401).json({ message: error.message });
+ }
+};
 
 
 
