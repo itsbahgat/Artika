@@ -1,6 +1,6 @@
 const { ConnectionStates } = require("mongoose");
-const Carts = require("../Models/Cart.model");
-const Orders = require("../Models/Order.model");
+const Carts = require("../models/cart.model");
+const Orders = require("../models/order.model");
 const Products = require("../models/product.model");
 const { ObjectId } = require('mongodb');
 
@@ -128,7 +128,6 @@ module.exports.DeleteCart = async(request, response, next)=>{
     let { customerId, checkout} = request.body;
     customerId = new ObjectId(customerId);
     const cart = await Carts.findOne({ customerId });
-  
     if (!cart) {
         return response.status(404).json({ message: "There is no cart for this customer" });
     }
@@ -156,7 +155,7 @@ module.exports.DeleteCart = async(request, response, next)=>{
           .catch(err => {
             throw err;
           });
-        
+
     }
     //* this empty the products list
 
