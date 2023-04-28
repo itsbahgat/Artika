@@ -46,6 +46,12 @@ const baseUserSchema = new mongoose.Schema({
   timestamps:true
 });
 
+//encrypt password
+baseUserSchema.pre('save', async function (next){
+  let salt = await bcrypt.genSalt(); 
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
 
 
 module.exports = mongoose.model('Customer', baseUserSchema);
