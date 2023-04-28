@@ -1,5 +1,4 @@
-const { ConnectionStates } = require("mongoose");
-const Orders = require("../Models/Order.model");
+const Orders = require("../models/order.model");
 
 
 module.exports.GetAllOrders = (request, response, next)=>{
