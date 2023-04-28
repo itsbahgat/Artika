@@ -1,9 +1,9 @@
 const express = require ("express");
 const app = express();
 const PORT = process.env.PORT|| 8080;
-const cartsRoute = require("./route/CartsRoutes");
-const ordersRoute = require("./route/OrdersRoutes");
-const stripeRoute = require("./route/stripeRoute");
+const cartsRoute = require("./route/carts.route");
+const ordersRoute = require("./route/orders.route");
+const stripeRoute = require("./route/stripe.route");
 const mongoose = require("mongoose");
 
 

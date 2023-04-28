@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const authRoutes = require('./route/auth.route');
-const adminRoutes = require('./route/admin.route');
+//const adminRoutes = require('./route/admin.route');
 const productRoutes = require("./route/product.route");
 const customerRoutes = require("./route/customer.route");
 
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use('/', authRoutes);
-app.use('/admin', adminRoutes);
+//app.use('/admin', adminRoutes);
 app.use('/customers/', customerRoutes);
 app.use("/api/product",productRoutes);
 

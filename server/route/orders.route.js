@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router({ strict: true });
 const {body, param, query, check} = require("express-validator");
-const controller = require("../Controllers/OrdersController");
+const controller = require("../Controllers/orders.controller");
 const cartValidationMW = require("../Middlewares/cartValidationMW");
 
 const stateRegex = /^(pending|shipped|delivered|cancelled)$/;
