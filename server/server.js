@@ -8,6 +8,8 @@ const authRoutes = require('./route/auth.route');
 //const adminRoutes = require('./route/admin.route');
 const productRoutes = require("./route/product.route");
 const customerRoutes = require("./route/customer.route");
+const stripeRoute = require("./route/stripe.route");
+
 
 const PORT = process.env.PORT || 3005;
 const DB_URI = process.env.DB_URI || process.env.DB_LOCAL_URL;
@@ -24,10 +26,12 @@ app.use(express.json());
 //app.use(cookieParser);
 app.use(express.urlencoded({extended:true}));
 
-app.use('/', authRoutes);
 //app.use('/admin', adminRoutes);
+app.use('/', authRoutes);
 app.use('/customers/', customerRoutes);
 app.use("/api/product",productRoutes);
+app.use(stripeRoute);
+
 
 
 app.use((request,response)=>{
