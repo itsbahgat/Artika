@@ -53,5 +53,15 @@ baseUserSchema.pre('save', async function (next){
   next();
 });
 
+baseUserSchema.statics.login = async function (emailOrUsername, password) {
+  const user = await this.findOne({ $or: [{ email: emailOrUsername }, { username: emailOrUsername }]});
+  if (!user) throw new Error("Incorrect login or password");
+  
+  const isPasswordValid  = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid) throw new Error("Incorrect login or password");
+  
+  return user;
+};
+
 
 module.exports = mongoose.model('Customer', baseUserSchema);
