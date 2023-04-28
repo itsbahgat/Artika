@@ -7,7 +7,7 @@ const expiryTimeInSeconds = process.env.JWT_EXPIRATION_TIME;
 
 const register = async (req, res) => {
   try {       
-    const newCustomer = await Customer.create({
+    const newCustomer = await Users.create({
       ...req.body 
     });
 
