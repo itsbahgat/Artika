@@ -35,7 +35,7 @@ export class AddProductComponent implements OnInit {
       price : data.price,
       categories : this.selectedCategories,
       images : data.images,
-      seller:"610f85c06e6ca92af8a1c08a"
+      seller: "610f85c06e6ca92af8a1c08a"
     }//need to validate
 
     this.productService.addProduct(product).subscribe((data)=>{
