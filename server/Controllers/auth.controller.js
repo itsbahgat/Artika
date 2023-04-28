@@ -4,58 +4,19 @@ const Users = require('../models/customer.model');
 const privateKey = process.env.JWT_SECRET;
 const expiryTimeInSeconds = process.env.JWT_EXPIRATION_TIME;
 
-let register = (userName, email, password, gender, birthday) => {
-  mongoose.disconnect();
-  return new Promise((resolve, reject) => {
-      mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(async () => {
-         
-           //joi validation
-      //      let validation = await schemaValidationRegister.validateAsync({userName:userName,email:email,password:password,gender:gender,birthday:birthday})
 
-      //      if (validation.error) {
+const register = async (req, res) => {
+  try {       
+    const newCustomer = await Customer.create({
+      ...req.body 
+    });
 
-      //          mongoose.disconnect()
-      //          reject(validation.error.details[0].message)
+    res.status(201).json({ message: 'Created Successfully', data: newCustomer });    
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
-      //  }
-       //end of validation
-          
-          return customerModel.findOne({email: email})
-          
-
-      }).then((doc) => {
-         
-          if (doc) {
-              mongoose.disconnect();
-              reject('This Email is exist')
-          }
-          else {
-             
-              bcrypt.hash(password, 10).then((hashPassword) => {
-                  let custom = new customerModel({
-                      userName:userName,
-                      email: email,
-                      password: hashPassword,
-                      gender: gender,
-                      birthday:birthday
-                      
-                  })
-                  custom.save().then((doc) => {
-                      mongoose.disconnect();
-                      resolve(custom)
-                  }).catch((error) => {
-                      mongoose.disconnect();
-                      reject(error)
-                  })
-
-              }).catch((error) => {
-                  mongoose.disconnect();
-                  reject(error)
-              })
-          }
-      })
-  })
-}
 
 // customer login
 let login = async (email, password) => {
