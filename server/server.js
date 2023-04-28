@@ -1,50 +1,53 @@
 const express = require('express')
-const app = express()
 const cors = require('cors');
-const customerRoute = require('./route/customer.route')
-const adminRoute = require('./route/admin.route')
-// Using Node.js `require()`
-
+var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-// Allow requests from any origin
+const authRoutes = require('./route/auth.route');
+//const adminRoutes = require('./route/admin.route');
+const productRoutes = require("./route/product.route");
+const customerRoutes = require("./route/customer.route");
+const stripeRoutes = require("./route/stripe.route");
+const ordersRoutes = require("./route/orders.route");
+const cartsRoutes = require("./route/carts.route");
+
+
+
+const PORT = process.env.PORT || 3005;
+const DB_URI = process.env.DB_URI || process.env.DB_LOCAL_URL;
+
+
+const app = express();
+
+mongoose.connect(DB_URI)
+        .then((result) => app.listen(PORT))
+        .catch((err) => console.log(err));
+
 app.use(cors());
+app.use(express.json());
+//app.use(cookieParser);
+app.use(express.urlencoded({extended:true}));
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-app.use('/', customerRoute);
-app.use('/admin', adminRoute);
+//app.use('/admin', adminRoutes);
+app.use('/', authRoutes);
+app.use('/customers/', customerRoutes);
+app.use("/api/product",productRoutes);
+app.use(stripeRoutes);
+app.use(ordersRoutes);
+app.use(cartsRoutes);
 
 
-app.listen(3005, function check(error) {
-    if (error) {
-        console.log("Error...");
-    }
-    else {
-        console.log("started...");
-    }
+
+app.use((request,response)=>{
+    response.status(404).json({message: "Not Found" })
 })
 
-// app.listen(3005);
+app.use((error,request,response,next)=>{
+    let status = request.status || 500;
+    response.status(status).json({message: "Internal Error"});
 
-// mongoose.connect("mongodb://localhost:27017/artecaDB", { useNewUrlParser: true, useUnifiedTopology: true },
-//     function checkBD(error) {
-//         if (error) {
-//             console.log("Error connecting to DB...");
-//         }
-//         else {
-//             console.log("Successfully connecting to DB...");
-//         }
-//     }
-// )
-// mongoose.connect('mongodb://localhost/artecaDB', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
-// .then(() => {
-//   console.log('Connected to MongoDB');
-// })
-// .catch((error) => {
-//   console.error('Error connecting to MongoDB:', error);
-// });
+    //delete in production
+    console.error(error.stack);
+})
 
