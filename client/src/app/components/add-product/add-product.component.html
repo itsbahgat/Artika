@@ -19,16 +19,15 @@
                   <input type="number" class="input-field" required name="price" ngModel/>
                   <label class="input-label">Product price</label>
               </div>
-        <tag-input #tagInput [ngModelOptions]="{standalone: true}" [ngModel]="selectedCategories" secondaryPlaceholder="product category" placeholder="add category" [onlyFromAutocomplete]="true"  (onAdd)="onItemAdded($event)">
-              <tag-input-dropdown
-                  [appendToBody]="true"
-                  [showDropdownIfEmpty]="true"
-                  [keepOpen]="false"
-                  [autocompleteItems]="categories">
+        <tag-input #tagInput [ngModelOptions]="{standalone: true}" [ngModel]="selectedCategories" secondaryPlaceholder="product category" placeholder="add category" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)">
+            <tag-input-dropdown
+            [autocompleteItems]="categories"
+            [appendToBody]="true"
+            >
             </tag-input-dropdown>
         </tag-input>
         <div class="input">
-                  <input type="text" class="input-field" required name="imageURL" ngModel/>
+                  <input type="text" class="input-field" required name="images" ngModel/>
                   <label class="input-label">Product image URLs</label>
               </div>
         <div class="action">

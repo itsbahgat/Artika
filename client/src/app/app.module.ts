@@ -7,6 +7,8 @@ import { AppComponent } from './app.component'
 
 import { FormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
+import { HttpClientModule } from '@angular/common/http'
+
 
 
 const routes = [
@@ -19,7 +21,13 @@ const routes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule,FormsModule, TagInputModule],
+  imports: [BrowserModule,
+    RouterModule.forRoot(routes),
+    ComponentsModule,
+    FormsModule,
+    TagInputModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

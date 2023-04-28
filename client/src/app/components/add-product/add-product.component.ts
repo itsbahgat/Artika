@@ -1,6 +1,9 @@
-import { Component, ViewEncapsulation, OnInit} from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild, HostListener} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { filter, first } from 'rxjs/operators';
+import { TagInputComponent, TagInputDropdown } from 'ngx-chips';
+import { product } from 'src/app/data-type';
+import { ProductService } from 'src/app/services/product/product.service';
+
 
 
 
@@ -20,22 +23,24 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public categories=['men','women','shoes']
+  constructor(private productService:ProductService){}
 
+  public categories=['men','women','shoes'];
   selectedCategories: string[] = [];
 
-
-
-  submit(data:any){
+  submit(data:product){
     var product = {
       title : data.title,
       description : data.description,
       price : data.price,
       categories : this.selectedCategories,
-      images : data.imageURL,
-      seller:"ranooma"
-    }
-    console.log(product);
+      images : data.images,
+      seller:"610f85c06e6ca92af8a1c08a"
+    }//need to validate
+
+    this.productService.addProduct(product).subscribe((data)=>{
+      console.log(data);
+    });
   }
 
   onItemAdded(addedCat:any){
