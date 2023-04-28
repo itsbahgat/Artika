@@ -1,7 +1,7 @@
 const { ConnectionStates } = require("mongoose");
 const Carts = require("../models/cart.model");
 const Orders = require("../models/order.model");
-const Products = require("../models/product.model");
+//const Products = require("../models/product.model");
 const { ObjectId } = require('mongodb');
 
 module.exports.GetAllCarts = (request, response, next)=>{
@@ -12,7 +12,10 @@ module.exports.GetAllCarts = (request, response, next)=>{
 };
 
 module.exports.GetCartByCustId = (request, response, next)=>{
-    Carts.find({customerId: request.params.id}).populate('items.productId').then(data=>{
+  Carts.find({customerId: request.params.id}).populate({
+    path: 'items.productId',
+    model: 'Product'
+  }).then(data=>{
         response.status(200).json(data);
     }).catch(error=> {
         next(error);});
@@ -137,7 +140,10 @@ module.exports.DeleteCart = async(request, response, next)=>{
 
         //save cart to orders
         const cartWithoutLoading = await Carts.findOne({ customerId });
-        const cart = await Carts.findOne({ customerId }).populate('items.productId');
+        const cart = await Carts.findOne({ customerId }).populate({
+          path: 'items.productId',
+          model: 'Product'});
+          
         console.log(cart.items);
         console.log(cartWithoutLoading.items);
         let totPrice = cart.items.reduce((total, item) => {
