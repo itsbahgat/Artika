@@ -64,10 +64,47 @@ const stripeValidationRules = () => {
  ];
 }
 
+const updateOrderValidationRules = () =>{
+  const stateRegex = /^(pending|shipped|delivered|cancelled)$/;
+  return [
+      // body('customerId').isMongoId().withMessage('customer id should be mongoID'),
+      body('orderId').isMongoId().withMessage('order id should be mongoID'),
+      body('status').isAlpha().matches(stateRegex).withMessage('please check the status')
+  ];
+  
+}
+
+const searchOrderValidationRules = () =>{
+ return [
+    param('id').isMongoId().withMessage('customer id should be mongoID')
+  ];
+}
+
+
+const updateCartValidationRules = () => {
+  return [
+  body('customerId').isMongoId().withMessage('customer id should be mongoID'),
+  body('productId').isMongoId().withMessage('product id should be mongoID'),
+  body('deleteItem').isBoolean().withMessage('deleteItem should be an bool')
+]};
+
+const deleteCartValidationRules = () => {
+  return [
+    body('customerId').isMongoId().withMessage('customer id should be mongoID'),
+    body('checkout').isBoolean().withMessage('checkout should be an bool')
+  ]
+}
+
+const searchCartValidationRules = () => {
+  return [
+    param('id').isMongoId().withMessage('customer id should be mongoID')
+  ]
+}
+
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   const extractedErrors = [];
-
+console.log("haamda")
   if (errors.isEmpty()) return next();
   errors.array().map((err) => extractedErrors.push({ [err.path]: err.msg }));
 
@@ -77,9 +114,16 @@ const validate = (req, res, next) => {
 };
 
 
+
 module.exports = {
   userValidationRules,
   stripeValidationRules,
-  
+
+  updateOrderValidationRules,
+  searchOrderValidationRules,
+
+  updateCartValidationRules,
+  deleteCartValidationRules,
+  searchCartValidationRules,
   validate,
 };
