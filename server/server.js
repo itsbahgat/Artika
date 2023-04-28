@@ -8,7 +8,10 @@ const authRoutes = require('./route/auth.route');
 //const adminRoutes = require('./route/admin.route');
 const productRoutes = require("./route/product.route");
 const customerRoutes = require("./route/customer.route");
-const stripeRoute = require("./route/stripe.route");
+const stripeRoutes = require("./route/stripe.route");
+const ordersRoutes = require("./route/orders.route");
+const cartsRoutes = require("./route/carts.route");
+
 
 
 const PORT = process.env.PORT || 3005;
@@ -30,7 +33,9 @@ app.use(express.urlencoded({extended:true}));
 app.use('/', authRoutes);
 app.use('/customers/', customerRoutes);
 app.use("/api/product",productRoutes);
-app.use(stripeRoute);
+app.use(stripeRoutes);
+app.use(ordersRoutes);
+app.use(cartsRoutes);
 
 
 
