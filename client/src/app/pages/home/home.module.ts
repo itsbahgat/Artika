@@ -9,7 +9,6 @@ import { Home } from './home.component'
 import { FormsModule }   from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 
-
 const routes = [
   {
     path: '',
@@ -19,7 +18,9 @@ const routes = [
 
 @NgModule({
   declarations: [Home],
-  imports: [CommonModule, ComponentsModule, RouterModule.forChild(routes), FormsModule,TagInputModule],
+  imports: [CommonModule, ComponentsModule, RouterModule.forChild(routes), FormsModule,TagInputModule,
+    
+    ],
   exports: [Home],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
