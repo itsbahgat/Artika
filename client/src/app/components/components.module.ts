@@ -35,7 +35,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatDividerModule,
   ],
-  exports: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent,NavbarComponent ,FooterComponent , Cart,AddProductComponent,SellerDashboardComponent,
+  exports: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent,NavbarComponent ,FooterComponent , Cart,AddProductComponent,
     ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

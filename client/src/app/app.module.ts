@@ -17,6 +17,12 @@ const routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
+  // {
+  //   path: 'seller-dashboard',
+  //   loadChildren: () =>
+  //     import('../').then((m) => m.HomeModule),
+  // },
+  
 ]
 
 @NgModule({
