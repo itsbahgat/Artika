@@ -29,7 +29,7 @@ import { MatDividerModule } from '@angular/material/divider';
     RouterModule,
     FormsModule,
     TagInputModule,
-    MatToolbarModule,
+    //MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
