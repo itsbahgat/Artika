@@ -14,13 +14,28 @@ import { AddProductComponent } from './add-product/add-product.component'
 
 import { FormsModule }   from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
-  declarations: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent ,NavbarComponent ,FooterComponent , Cart, AddProductComponent],
-  imports: [CommonModule, RouterModule, FormsModule,TagInputModule],
-  exports: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent,NavbarComponent ,FooterComponent , Cart,AddProductComponent],
+  declarations: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent ,NavbarComponent ,FooterComponent , Cart, AddProductComponent, SellerDashboardComponent],
+  imports: [CommonModule,
+    RouterModule,
+    FormsModule,
+    TagInputModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+  ],
+  exports: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent,NavbarComponent ,FooterComponent , Cart,AddProductComponent,SellerDashboardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}
