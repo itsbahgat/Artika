@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors');
-var cookieParser = require('cookie-parser');
+var cookie_parser = require('cookie-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -26,8 +26,9 @@ mongoose.connect(DB_URI)
 
 app.use(cors());
 app.use(express.json());
-//app.use(cookieParser);
+app.use(cookie_parser());
 app.use(express.urlencoded({extended:true}));
+
 
 //app.use('/admin', adminRoutes);
 app.use('/', authRoutes);
