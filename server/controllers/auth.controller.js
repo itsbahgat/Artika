@@ -31,6 +31,11 @@ const login = async (req, res) => {
  }
 };
 
+const logout = async (req, res) => {
+    res.cookie('jwt','',{expiryTime: 1});
+    res.redirect('/');
+};
+
 const createToken = (id) => {
     //const userRole = 
     return jwt.sign({ id }, privateKey, { expiresIn: expiryTimeInSeconds });
@@ -42,4 +47,3 @@ module.exports = {
     login,
     logout
 }
-
