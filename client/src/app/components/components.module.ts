@@ -14,7 +14,6 @@ import { AddProductComponent } from './add-product/add-product.component'
 
 import { FormsModule }   from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
-import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -24,7 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
-  declarations: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent ,NavbarComponent ,FooterComponent , Cart, AddProductComponent,SellerDashboardComponent],
+  declarations: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent ,NavbarComponent ,FooterComponent , Cart, AddProductComponent],
   imports: [CommonModule,
     RouterModule,
     FormsModule,

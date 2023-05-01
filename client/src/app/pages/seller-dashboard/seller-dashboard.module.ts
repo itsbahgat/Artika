@@ -1,10 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
 import { ComponentsModule } from '../../components/components.module'
 import { SellerDashboardComponent } from './seller-dashboard.component'
-
 
 import { FormsModule }   from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
@@ -14,7 +12,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-
 
 
 @NgModule({

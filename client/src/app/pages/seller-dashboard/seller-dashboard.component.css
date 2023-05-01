@@ -3,8 +3,9 @@ mat-toolbar {
     color: white;
 }
 mat-sidenav {
-    margin: 16px;
+    /* margin: 16px; */
     width: 200px;
+    height: 100%;
     border-right: none;
     background: #dfe7ddff;
     color: black;
@@ -21,7 +22,8 @@ mat-sidenav {
     overflow: auto;
 }
 mat-sidenav-container {
-    height: calc(100vh - 65px);
+    /* height: calc(100vh - 65px); */
+    height: 100%;
 }
 .menu-button {
     width: 100%;
