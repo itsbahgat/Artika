@@ -9,18 +9,12 @@ import { ItemComponent } from './item/item.component'
 import { SectionHeading } from './section-heading/section-heading.component'
 import { CategoryCard } from './category-card/category-card.component'
 import { BlogPostCard } from './blog-post-card/blog-post-card.component'
-import { Cart } from './cart/cart.component';
-import { AddProductComponent } from './add-product/add-product.component'
-
-import { FormsModule }   from '@angular/forms';
-import { TagInputModule } from 'ngx-chips';
-
-
+import { Cart } from './cart/cart.component'
 
 @NgModule({
-  declarations: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent ,NavbarComponent ,FooterComponent , Cart, AddProductComponent],
-  imports: [CommonModule, RouterModule, FormsModule,TagInputModule],
-  exports: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent,NavbarComponent ,FooterComponent , Cart,AddProductComponent],
+  declarations: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent ,NavbarComponent ,FooterComponent , Cart],
+  imports: [CommonModule, RouterModule],
+  exports: [ItemCard, SectionHeading, CategoryCard, BlogPostCard,ItemComponent,NavbarComponent ,FooterComponent , Cart],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}

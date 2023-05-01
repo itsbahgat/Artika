@@ -1,19 +1,30 @@
 <div class="cart">
   <div class="products">
-    <div class="product" *ngFor="let product of products">
-      <div class="left-column">
-        <div class="product-image">
-          <img src="{{ product.images[0] }}" alt="{{ product.title }}">
+    <div *ngFor="let product of products" class="product-container">
+      <a [href]="'product/' + product._id" class="product-link">
+        <div class="product">
+          <div class="left-column">
+            <div class="product-image">
+              <img src="{{ product.images[0] }}" alt="{{ product.title }}">
+            </div>
+          </div>
+          <div class="right-column">
+            <div class="product-details">
+              <h2>{{ product.title }}</h2>
+              <p>{{ product.description }}</p>
+              <p class="price">£{{ product.price}}</p>
+              <p>{{ product.quantity }}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="right-column">
-        <div class="product-details">
-          <h2>{{ product.title }}</h2>
-          <p>{{ product.description }}</p>
-          <p class="price">£{{ product.price}}</p>
-        </div>
+      </a>
+      <div class="product-buttons">
+        <button (click)="removeButton(product._id)">Remove</button>
+        <button (click)="reduceButton(product._id)">Reduce</button>
+        <button (click)="increaseButton(product._id)">increase</button>
       </div>
     </div>
+
   </div>
   <div class="cart-footer">
     <div class="total">

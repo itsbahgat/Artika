@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router'
+import { AuthService } from 'src/app/pages/services/authuser.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  // Component logic goes here
+  verifUser: any //to verify user logged in or not
+  userName: any ="name"
+
+  constructor(private userAuth: AuthService, private route: Router) {
+    this.verifUser = this.userAuth.userLoggedIn();
+    if (this.verifUser) {
+      this.userName = this.userAuth.getProperty('username');
+    }
+  }
+
+  logout() {
+    this.userAuth.logout();
+    // navigate to home page or login page
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate(['/loginuser']).then(() => {
+        location.replace(location.href);
+      });
+    });
+  }
+  
 }

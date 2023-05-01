@@ -24,7 +24,7 @@ const login = async (req, res) => {
     const user = await Users.login(emailOrUsername,password); 
     const token = createToken(user.id);
     res.cookie('jwt',token, {httpOnly: true, expiryTime: expiryTimeInSeconds});
-    res.status(200).json({ id: user.id });
+    res.status(200).json( user );
   } 
   catch (error) {
     res.status(401).json({ message: error.message });

@@ -1,39 +1,45 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CartService } from '../../pages/services/cart.service';
+import { CustomerService } from '../../pages/services/customer.service';
 
-interface ProductData {
-  title: string;
-  description: string;
-  price: number;
-  categories: string[];
-  images: string[];
-  seller: string;
-  date: Date;
-  reviews: {
-    user: string;
-    rating: number;
-    comment?: string;
-    date: Date;
-  }[];
-}
+
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent {
-  @Input() product: ProductData = {
-    title: 'Product Title',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie magna id mauris eleifend, nec malesuada ex aliquet. Sed ac luctus nunc. Sed consectetur, leo a consequat luctus, enim est fringilla felis, vel faucibus odio sapien ut felis.',
-    price: 10,
-    categories: [],
-    images: [],
-    seller: 'Seller',
-    date: new Date(),
-    reviews: []
-  };
+export class ItemComponent implements OnInit {
+  @Input() product:any= {};
+
+  @Input() customerId: string;
+  @Input() productID : string;
+
+  constructor(private cartService: CartService, private http: HttpClient, private customerService: CustomerService) {
+  }
+
+  ngOnInit() {
+  }
+
+  addToCart(): void {
+    console.log("productID:" , this.productID)
+    console.log("customerID:" , this.customerId)
+    
+    this.cartService.addProductToCart(this.customerId, this.productID).subscribe(
+      (response) => {
+        console.log('Successfully added item to cart!', response);
+        // TODO: Display success message to user
+      },
+      (error) => {
+        console.error('Error adding item to cart', error);
+        // TODO: Display error message to user
+      }
+    );
+  }
 
   currentImageIndex = 0;
+
 
   prevImage() {
     this.currentImageIndex = (this.currentImageIndex - 1 + this.product.images.length) % this.product.images.length;
@@ -61,6 +67,6 @@ export class ItemComponent {
       return 'just now';
     }
   }
-  
-  
+
+
 }

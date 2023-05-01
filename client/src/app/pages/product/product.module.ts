@@ -3,22 +3,19 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
 import { ComponentsModule } from '../../components/components.module'
-import { Home } from './home.component'
-
-
-
+import { product } from './product.component'
 
 const routes = [
   {
     path: '',
-    component: Home,
+    component: product,
   },
 ]
 
 @NgModule({
-  declarations: [Home],
+  declarations: [product],
   imports: [CommonModule, ComponentsModule, RouterModule.forChild(routes)],
-  exports: [Home],
+  exports: [product],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomeModule {}
+export class ProductModule {}

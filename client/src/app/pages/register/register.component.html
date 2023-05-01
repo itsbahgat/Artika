@@ -1,0 +1,50 @@
+<div style="margin-top: 100px;">
+  <div class="register-container">
+    <h2>Register</h2>
+    <form (ngSubmit)="onRegister(user)">
+      <div class="form-group">
+        <label>First Name:</label>
+        <input type="text" name="firstName" [(ngModel)]="user.firstName" required>
+      </div>
+      <div class="form-group">
+        <label>Last Name:</label>
+        <input type="text" name="lastName" [(ngModel)]="user.lastName" required>
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="email" [(ngModel)]="user.email" required>
+      </div>
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" name="username" [(ngModel)]="user.username" required>
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="password" [(ngModel)]="user.password" required>
+      </div>
+      <div class="form-group">
+        <label>Confirm Password:</label>
+        <input type="password" name="confirmPassword" [(ngModel)]="user.confirmPassword" required>
+      </div>
+      <div class="form-group">
+        <label>Role:</label>
+        <select name="role" [(ngModel)]="user.role">
+          <option value="seller">seller</option>
+          <option value="customer">customer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Address:</label>
+        <textarea name="address" [(ngModel)]="user.address"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Phone:</label>
+        <input type="text" name="phone" [(ngModel)]="user.phone">
+      </div>
+      <div class="form-group">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+    <div class="error-message" *ngIf="messageError">{{ messageError }}</div>
+  </div>
+  </div>

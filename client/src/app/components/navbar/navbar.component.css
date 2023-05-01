@@ -1,5 +1,18 @@
 :host { 
     display: contents; 
+    text-transform: uppercase;
+  }
+.auth{
+  border:1px solid #000;
+  border-radius: 10px;
+  margin:0px 5px;
+  transition: 0.3s;
+}
+.auth:hover{
+  border-color: var(--dl-color-pallet-yellow);
+}
+  a{
+    padding : 0px 5px;
   }
   .home-container {
     width: 100%;

@@ -1,0 +1,28 @@
+.error-page {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .error-page img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .error-page h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .error-page .lead {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .error-page p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  

@@ -1,5 +1,5 @@
 .cart {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
   font-family: 'Poppins', sans-serif;
@@ -27,12 +27,12 @@
   }
   
   .left-column {
-  flex-basis: 30%;
+  flex-basis: 25%;
   }
   
   .left-column .product-image {
   position: relative;
-  height: 400px;
+  height: 100%;
   overflow: hidden;
   }
   
@@ -55,6 +55,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
   }
   
   .product-details {
@@ -133,3 +134,52 @@
   flex-direction: column;
   }
   }
+  
+  .product-button {
+    width: 120px; /* set the desired width */
+    height: 40px; /* set the desired height */
+    /* add any other styles as needed */
+  }  
+
+  .product-buttons button {
+    color: #000c;
+    color: var(--dl-color-gray-black80);
+    cursor: pointer;
+    display: flex;
+    padding: .5rem 1rem;
+    position: relative;
+    box-sizing: border-box;
+    font-style: normal;
+    transition: .3s;
+    align-items: flex-start;
+    flex-shrink: 1;
+    font-weight: 500;
+    line-height: 14px;
+    border-color: #f3f0e6;
+    border-style: solid;
+    border-width: 1px;
+    padding: 12px 24px;
+    border-radius: 0;
+    text-decoration: none
+    
+  }
+  
+  .product-buttons button {
+    /* other styles */
+    display: inline-flex;
+    width: 33.333%; /* set the width to 100% */
+    height: 10%; /* set the height to 100% */
+    
+  }
+  
+  
+  .product-buttons button:hover {
+    color: #fff;
+    color: var(--dl-color-gray-white);
+    border-color: #efc14c;
+    border-color: var(--dl-color-pallet-yellow);
+    background-color: #efc14c;
+    background-color: var(--dl-color-pallet-yellow) 
+   }
+  
+

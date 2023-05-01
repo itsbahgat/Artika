@@ -3,8 +3,10 @@
  
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-    <img [src]="product.images[currentImageIndex]" alt="">
-    <div class="btn-wrapper">
+    <div class="image-container">
+      <img [src]="product.images[currentImageIndex]" alt="">
+    </div>
+        <div class="btn-wrapper">
       <div class="left-btn" (click)="prevImage()">
         <div class="btn">
           <button>&lt;</button>
@@ -47,7 +49,7 @@
     <!-- Product Pricing -->
     <div class="product-price">
       <span>£{{ product.price }}</span>
-      <a href="#" class="btn">Add to cart</a>
+      <a class="btn" (click)="addToCart()">Add to cart</a>
     </div>
 
   </div>
