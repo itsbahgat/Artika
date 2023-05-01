@@ -17,10 +17,11 @@ export class Cart {
   getTotalPrice(){
     let sum = 0;
     for (let i = 0; i < this.products.length; i++) {
-      sum += this.products[i].price;
+      sum += this.products[i].price * this.products[i].quantity;
     }
     return sum;
   }
+  
 
   removeButton(productId){
     const customerId = this.authService.getProperty("_id"); 

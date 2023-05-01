@@ -12,7 +12,7 @@ const stripeRoutes = require("./route/stripe.route");
 const ordersRoutes = require("./route/orders.route");
 const cartsRoutes = require("./route/carts.route");
 
-
+console.log("SERVER IS RUNNING");
 
 const PORT = process.env.PORT || 3005;
 const DB_URI = process.env.DB_URI || process.env.DB_LOCAL_URL;

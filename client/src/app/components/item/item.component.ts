@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../../pages/services/cart.service';
 import { CustomerService } from '../../pages/services/customer.service';
+import { Router } from '@angular/router';
+
+
 
 
 
@@ -16,7 +19,7 @@ export class ItemComponent implements OnInit {
   @Input() customerId: string;
   @Input() productID : string;
 
-  constructor(private cartService: CartService, private http: HttpClient, private customerService: CustomerService) {
+  constructor(private cartService: CartService, private http: HttpClient, private customerService: CustomerService ,private router: Router) {
   }
 
   ngOnInit() {
@@ -29,6 +32,9 @@ export class ItemComponent implements OnInit {
     this.cartService.addProductToCart(this.customerId, this.productID).subscribe(
       (response) => {
         console.log('Successfully added item to cart!', response);
+        if (this.confirmAction()) {
+          this.router.navigateByUrl('/cart');
+        }
         // TODO: Display success message to user
       },
       (error) => {
@@ -37,6 +43,11 @@ export class ItemComponent implements OnInit {
       }
     );
   }
+
+  confirmAction(): boolean {
+    return window.confirm('Item Succesfully added , Do you wanna go to cart?');
+  }
+  
 
   currentImageIndex = 0;
 
