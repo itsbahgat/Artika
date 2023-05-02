@@ -19,6 +19,7 @@ export class ItemComponent implements AfterViewInit {
 
   ngAfterViewInit() {
       this.getSellerById();
+      this.getReviewUserById();
   }
   
   getSellerById() {
@@ -35,6 +36,24 @@ export class ItemComponent implements AfterViewInit {
         }
       );
   }
+
+  getReviewUserById() {
+    this.product.reviews.forEach(review => {
+      this.customerService.getCustomerById(review.user)
+        .subscribe(
+          (data) => {
+            const nameReturned = data;
+            console.log("hey",nameReturned.username);
+            review.username = nameReturned.username;
+          },
+          (error) => {
+            console.log('Error fetching customer data', error);
+          }
+        );
+    });
+  }
+  
+  
 
   addToCart(): void {
     console.log("productID:" , this.productID)

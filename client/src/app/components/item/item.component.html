@@ -37,7 +37,7 @@
       <li *ngFor="let review of product.reviews">
         <p>Posted {{ getTimeAgo(review.date) }}</p>
         <p>Rating: {{ review.rating }}/5</p>
-        <p>By: {{ review.user }}</p>
+        <p>By: {{ review.username }}</p>
         <p>Comment: {{ review.comment }}</p>
       </li>
     </ul>
