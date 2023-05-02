@@ -12,12 +12,12 @@ const routes = [
   {
     path: '',
     component: Home,
-  },
+  }
 ]
 
 @NgModule({
   declarations: [Home],
-  imports: [CommonModule, ComponentsModule, RouterModule.forChild(routes)],
+  imports: [CommonModule,ComponentsModule, RouterModule.forChild(routes)],
   exports: [Home],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

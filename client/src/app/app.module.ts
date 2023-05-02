@@ -5,9 +5,13 @@ import { BrowserModule } from '@angular/platform-browser'
 import { ComponentsModule } from './components/components.module'
 import { ErrorComponent } from './pages/error/error.component';
 import { AppComponent } from './app.component'
+
+import { FormsModule } from '@angular/forms';
+import { TagInputModule } from 'ngx-chips';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-/*hello*/
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+
 const routes = [
   {
     path: '',
@@ -47,7 +51,9 @@ const routes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule ,HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule ,HttpClientModule, BrowserAnimationsModule,
+    FormsModule,
+    TagInputModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
