@@ -19,8 +19,9 @@ export class Cart {
     for (let i = 0; i < this.products.length; i++) {
       sum += this.products[i].price * this.products[i].quantity;
     }
-    return sum;
+    return sum.toFixed(2);
   }
+  
   
 
   removeButton(productId){

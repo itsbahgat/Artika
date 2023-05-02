@@ -11,34 +11,7 @@ import { AuthService } from '../services/authuser.service';
 })
 export class product implements OnInit {
   
-  product: any = {
-    "_id": "1234abcd",
-    "title": "Example Product",
-    "description": "This is an example product description.",
-    "price": 19.99,
-    "categories": [
-        "Example Category 1",
-        "Example Category 2"
-    ],
-    "images": [
-        "https://example.com/image1.jpg",
-        "https://example.com/image2.jpg"
-    ],
-    "seller": "5678efgh",
-    "date": "2023-05-01T12:00:00.000Z",
-    "reviews": [
-        {
-            "user": "ijklmnop",
-            "rating": 5,
-            "comment": "This is a great product!",
-            "_id": "qrstuvwx",
-            "date": "2023-05-01T12:05:00.000Z"
-        }
-    ],
-    "createdAt": "2023-05-01T12:00:00.000Z",
-    "updatedAt": "2023-05-01T12:05:00.000Z",
-    "__v": 1
-  };
+  product: any ={};
   customerId: string = '0';
   productId: string = '0';
 

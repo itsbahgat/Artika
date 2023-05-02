@@ -1,28 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit , AfterViewInit,AfterContentInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../../pages/services/cart.service';
 import { CustomerService } from '../../pages/services/customer.service';
 import { Router } from '@angular/router';
-
-
-
-
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements AfterViewInit {
   @Input() product:any= {};
-
   @Input() customerId: string;
   @Input() productID : string;
 
   constructor(private cartService: CartService, private http: HttpClient, private customerService: CustomerService ,private router: Router) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+      this.getSellerById();
+  }
+  
+  getSellerById() {
+    let id = this.product.seller;
+    this.customerService.getCustomerById(id)
+      .subscribe(
+        (data) => {
+          const nameReturned = data;
+          console.log(nameReturned);
+          this.product.sellerName = nameReturned.username;
+        },
+        (error) => {
+          console.log('Error fetching customer data', error);
+        }
+      );
   }
 
   addToCart(): void {
