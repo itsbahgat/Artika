@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { AuthService } from '../services/authuser.service';
 
-
 @Component({
   selector: 'app-product',
   templateUrl: 'product.component.html',
@@ -15,8 +14,8 @@ export class product implements OnInit {
   customerId: string = '0';
   productId: string = '0';
 
-  
-  constructor( private productService: ProductService,
+  constructor(
+    private productService: ProductService,
     private route: ActivatedRoute,
     private authService: AuthService
   ) { }
@@ -27,11 +26,15 @@ export class product implements OnInit {
     this.customerId = this.authService.getProperty('_id');
   }
 
-  loadProduct(id: string) {
+  updateCommentList(): void {
+    this.loadProduct(this.productId);
+  }
+  
+  loadProduct(id: string): void {
     this.productService.getProductById(id).subscribe(
       (product) => {
         this.product = product;
-        this.productId = this.product._id
+        this.productId = this.product._id;
         console.log("product load:",this.product);
         console.log("customerID:",this.customerId);
       },
@@ -39,7 +42,5 @@ export class product implements OnInit {
         console.log(error);
       }
     );
-  }
-  
-
+  }  
 }
