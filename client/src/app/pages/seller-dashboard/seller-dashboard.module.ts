@@ -15,7 +15,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
-  declarations: [SellerDashboardComponent],
+  declarations: [],
   imports: [CommonModule,
     ComponentsModule,
     FormsModule,
@@ -26,7 +26,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatDividerModule,
     ],
-  exports: [SellerDashboardComponent],
+  exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SellerDashboardModule {}

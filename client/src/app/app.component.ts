@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'teleport-project-template-angular';
+
+  constructor(private route: ActivatedRoute) {}
+
+  isSellerDashboard(): boolean {
+    return this.route.snapshot.firstChild?.routeConfig?.path === 'seller-dashboard';
+  }
 }

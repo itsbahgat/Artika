@@ -1,5 +1,17 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  Responsive side navigation
+</mat-toolbar>
+
 <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <mat-sidenav #sidenav="matSidenav">
       <img
         class="avatar mat-elevation-z8"
         src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
@@ -32,9 +44,9 @@
       </button>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
+      <div>
         <router-outlet></router-outlet>
-        </div>
+      </div>
       </mat-sidenav-content>
-    </mat-sidenav-container>
+</mat-sidenav-container>
   

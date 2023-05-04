@@ -7,8 +7,8 @@ mat-sidenav {
     width: 200px;
     height: 100%;
     border-right: none;
-    background: #dfe7ddff;
-    color: black;
+    background: #24527a;
+    color: #e0ebeb;
     border-radius: 1px;
     padding: 16px;
     text-align: center;
@@ -33,7 +33,7 @@ mat-sidenav-container {
     font-size: 1rem;
 }
 .menu-button:hover {
-    color: #efc14cff ;
+    color: #c7b198 ;
 }
 .menu-button mat-icon {
     margin-right: 8px;
