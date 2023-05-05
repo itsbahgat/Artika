@@ -7,6 +7,10 @@ import { ErrorComponent } from './pages/error/error.component';
 import { AppComponent } from './app.component'
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
+import { CommonModule } from '@angular/common';
+
 /*hello*/
 const routes = [
   {
@@ -39,6 +43,11 @@ const routes = [
     loadChildren: () =>
       import('./pages/product/product.module').then((m) => m.ProductModule),
   },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./pages/pay/pay.module').then((m) => m.PayModule),
+  },
   { path: 'error', component: ErrorComponent },
   { path: '**', redirectTo: '/error' } // For handling any other routes
   
@@ -47,7 +56,7 @@ const routes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule ,HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), ComponentsModule ,HttpClientModule, BrowserAnimationsModule, FormsModule, CommonModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
