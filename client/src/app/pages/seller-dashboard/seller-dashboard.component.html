@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8">
+<!-- <mat-toolbar class="mat-elevation-z8">
   <button
     mat-icon-button
     *ngIf="sidenav.mode === 'over'"
@@ -7,8 +7,7 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  Responsive side navigation
-</mat-toolbar>
+</mat-toolbar> -->
 
 <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav">
@@ -44,9 +43,25 @@
       </button>
     </mat-sidenav>
     <mat-sidenav-content>
+      <div class="arrow-container">
+        <a class='animated-arrow' routerLink="/">
+          <span class='the-arrow -left'>
+            <span class='shaft'></span>
+          </span>
+          <span class='main'>
+            <span class='text'>
+              Home
+            </span>
+            <span class='the-arrow -right'>
+              <span class='shaft'></span>
+            </span>
+          </span>
+        </a>
+      </div>
+      
       <div>
         <router-outlet></router-outlet>
       </div>
-      </mat-sidenav-content>
+    </mat-sidenav-content>
 </mat-sidenav-container>
   
