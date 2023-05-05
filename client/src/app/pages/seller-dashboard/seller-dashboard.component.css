@@ -65,7 +65,7 @@ mat-divider {
     margin: 20px;
     position: absolute;
     top: 0;
-    right: 35px;
+    right: 60px;
   }
 
 .the-arrow {
@@ -191,6 +191,8 @@ mat-divider {
 .animated-arrow > .main > .text {
     margin: 0 16px 0 0;
     line-height: 1;
+    color: #7e705f;
+
 }
 .animated-arrow > .main > .the-arrow {
     position: relative;
