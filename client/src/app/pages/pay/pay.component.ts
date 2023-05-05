@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/authuser.service';
 import { CartService } from '../services/cart.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pay',
@@ -8,17 +9,17 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['pay.component.css'],
 })
 export class pay {
-  customerID: string = '644a3d3b258e50fdb4843ca2';
-  total:number=4000;
-  constructor(private authService: AuthService) {}
+  customerID: string ;
+  total:number;
+  constructor(private authService: AuthService , private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // Fetch cart data for customer
-    const customerID = this.customerID; // Replace with the actual customer ID
-    // const customerID = this.authService.getProperty("_id"); // Replace with the actual customer ID
-    console.log("customer id" , customerID);
-    const total =this.total; //should be recieved from front 
-    console.log("total" , total);
+     this.route.queryParams.subscribe(params => {
+      this.total = params['total'];
+    });
+    this.customerID  = this.authService.getProperty("_id"); 
+    console.log("customer id---" , this.customerID);
+    console.log("total---" , this.total);
   }
   
 }

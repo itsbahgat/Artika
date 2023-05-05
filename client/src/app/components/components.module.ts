@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { ItemCard } from './item-card/item-card.component'
 import { NavbarComponent } from './navbar/navbar.component'
