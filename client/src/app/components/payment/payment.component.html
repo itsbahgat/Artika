@@ -1,0 +1,31 @@
+<div>
+    <h2>Make a Payment</h2>
+    <form class="payment-form-container" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="currency">Currency:</label>
+        <select name="currency" [(ngModel)]="paymentData.currency" required>
+          <option value="" disabled>Select a currency</option>
+          <option *ngFor="let currency of possibleCurrencies" [value]="currency">{{currency}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="card-number">Card Number:</label>
+        <input type="text" name="card-number" [(ngModel)]="paymentData.source.number" required>
+      </div>
+      <div>
+        <label for="expiration-date">Expiration Date:</label>
+        <input type="text" name="expiration-date" [(ngModel)]="paymentData.source.exp_month" placeholder="Month" required>
+        <input type="text" name="expiration-year" [(ngModel)]="paymentData.source.exp_year" placeholder="Year" required>
+      </div>
+      <div>
+        <label for="cvc">CVC:</label>
+        <input type="text" name="cvc" [(ngModel)]="paymentData.source.cvc" required>
+      </div>
+      <!-- <div>
+        <label for="description">Description:</label>
+        <input type="text" name="description" [(ngModel)]="paymentData.description" required>
+      </div> -->
+      <button type="submit">Submit Payment</button>
+    </form>
+  </div>
+  

@@ -29,6 +29,8 @@
       <h1>{{ product.title }}</h1>
       <p>{{ product.description }}</p>
     </div>
+    <span >Sold by : {{product.sellerName}} </span>
+
 
         <!--comments-->
   <div class="comments">
@@ -37,15 +39,12 @@
       <li *ngFor="let review of product.reviews">
         <p>Posted {{ getTimeAgo(review.date) }}</p>
         <p>Rating: {{ review.rating }}/5</p>
-        <p>By: {{ review.user }}</p>
+        <p>By: {{ review.username }}</p>
         <p>Comment: {{ review.comment }}</p>
       </li>
     </ul>
   </div>
- 
- 
-    <span>Sold by : {{product.seller}} </span>
-  
+
     <!-- Product Pricing -->
     <div class="product-price">
       <span>£{{ product.price }}</span>

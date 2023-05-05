@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { Routes, RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const routes : Routes = [
   {
@@ -61,6 +62,11 @@ const routes : Routes = [
       { path: 'add-product', component: AddProductComponent },
     ]
   },
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./pages/pay/pay.module').then((m) => m.PayModule),
+  },
   { path: 'error', component: ErrorComponent },
   { path: '**', redirectTo: '/error' }, // For handling any other routes
 ];
@@ -68,7 +74,7 @@ const routes : Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent ,
+    AppComponent,
     AddProductComponent,
     SellerDashboardComponent
   ],
@@ -77,8 +83,6 @@ const routes : Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    FormsModule,
-    TagInputModule,
     TagInputModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -87,7 +91,8 @@ const routes : Routes = [
     MatDividerModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
