@@ -1,13 +1,11 @@
 .payment-form-container {
-    background-color: #f7f7f7;
+    background-color: #f3f0e6;
     padding: 20px;
-    font-family: Arial, sans-serif;
     max-width: 400px;
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   }
   
   .payment-form-container h2 {
@@ -19,7 +17,6 @@
   .payment-form-container label {
     display: block;
     font-size: 18px;
-    font-weight: bold;
     margin-bottom: 5px;
   }
   
@@ -31,6 +28,7 @@
     border-radius: 5px;
     width: 100%;
     margin-bottom: 10px;
+    background-color: transparent;
   }
   
   .payment-form-container input[name="card-number"] {
@@ -43,7 +41,7 @@
   
   .payment-form-container input[name="expiration-date"],
   .payment-form-container input[name="expiration-year"] {
-    background-image: url('calendar-icon.png');
+    background-image: url('calendarIcon.png');
     background-position: 10px center;
     background-repeat: no-repeat;
     padding-left: 50px;
@@ -51,18 +49,26 @@
   }
   
   .payment-form-container button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
     cursor: pointer;
+    display: flex;
+    padding: 10px 20px;
+    position: relative;
+    box-sizing: border-box;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    flex-shrink: 1;
+    border-color: rgba(0, 0, 0, 1);
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(239, 193, 76, 1);
     width: 100%;
-    margin-top: 10px;
+    border-radius: 10px;
   }
   
+  
   .payment-form-container button[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: var(--dl-color-gray-white);
   }
   

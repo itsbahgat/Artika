@@ -2,6 +2,7 @@ import { Component, Input , ViewChild } from '@angular/core'
 import { basket } from '../../pages/basket/basket.component';
 import { AuthService } from '../../pages/services/authuser.service';
 import { CartService } from '../../pages/services/cart.service';
+import { Router } from '@angular/router';
 
 
 
@@ -14,15 +15,31 @@ export class Cart {
   @Input() products: any[] = [];
   @ViewChild('basketRef') basketRef!: basket;
 
-  getTotalPrice(){
+  getTotalPrice() {
     let sum = 0;
     for (let i = 0; i < this.products.length; i++) {
       sum += this.products[i].price * this.products[i].quantity;
     }
-    return sum.toFixed(2);
+    return Math.ceil(sum);
+  }
+  
+
+  checkBtn() {
+    const totalPrice = this.getTotalPrice();
+    const roundedTotalPrice = Math.ceil(totalPrice); // round to the nearest upper integer value
+    this.router.navigate(['/payment'], {
+      queryParams: {
+        total: roundedTotalPrice,
+      }
+    });
   }
   
   
+  constructor(
+    private authService: AuthService,
+    private cartService: CartService,
+    private router: Router // Inject the Router module
+  ) {}  
 
   removeButton(productId){
     const customerId = this.authService.getProperty("_id"); 
@@ -65,9 +82,5 @@ export class Cart {
       });
     });
   }
-  
 
-
-  constructor(private authService: AuthService, private cartService: CartService) {}
-  
 }

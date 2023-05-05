@@ -37,6 +37,8 @@ export class PaymentComponent{
 
   
   onSubmit(): void {
+    console.log(this.customerID);
+    console.log(this.total)
     this.http.post('http://localhost:3005/stripe', this.paymentData)
       .subscribe((response) => {
         console.log(response);
