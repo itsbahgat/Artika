@@ -4,12 +4,12 @@ import { ProductService } from "../services/product.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-searchedProducts",
-  templateUrl: "searchedProducts.component.html",
-  styleUrls: ["searchedProducts.component.css"],
+  selector: "app-filterProducts",
+  templateUrl: "filterProducts.component.html",
+  styleUrls: ["filterProducts.component.css"],
 })
 export class products implements OnInit {
-  searchText: string;
+  category: string;
 
   products: any[] = [];
 
@@ -31,15 +31,15 @@ export class products implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.searchText = params.searchText;
-      // console.log("searchText =================", this.searchText);
+      this.category = params.category;
+      // console.log("category =================", this.category);
       // Perform additional logic based on the search text
       this.loadProducts();
     });
   }
 
   loadProducts() {
-    if (this.searchText.length == 0) {
+    if (this.category.length == 0 || this.category == "All") {
       this.productService.getAllProducts().subscribe(
         (products) => {
           this.products = products;
@@ -49,7 +49,7 @@ export class products implements OnInit {
         }
       );
     } else {
-      this.productService.getProductsByTitle(this.searchText).subscribe(
+      this.productService.getProductsByCategory(this.category).subscribe(
         (products) => {
           this.products = products;
         },

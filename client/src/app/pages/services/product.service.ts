@@ -23,6 +23,10 @@ export class ProductService {
     return this.http.get<any>(`${this.BASE_URL}/title/${title}`);
   }
 
+  getProductsByCategory(categories: string): Observable<any> {
+    return this.http.get<any>(`${this.BASE_URL}/category/${categories}`);
+  }
+
   createProduct(product: any): Observable<any> {
     return this.http.post<any>(`${this.BASE_URL}/`, product);
   }

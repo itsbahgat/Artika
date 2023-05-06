@@ -76,6 +76,13 @@ const routes: Routes = [
         (m) => m.ProductsModule
       ),
   },
+  {
+    path: "filterProducts",
+    loadChildren: () =>
+      import("./pages/filterProducts/filterProducts.module").then(
+        (m) => m.ProductsModule
+      ),
+  },
   { path: "error", component: ErrorComponent },
   { path: "**", redirectTo: "/error" }, // For handling any other routes
 ];
