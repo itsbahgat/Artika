@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { ComponentsModule } from './components/components.module'
 import { ErrorComponent } from './pages/error/error.component';
+import { AboutComponent } from './pages/about/about.component';
+
 import { AppComponent } from './app.component'
 
 import { FormsModule } from '@angular/forms';
@@ -67,6 +69,7 @@ const routes : Routes = [
     loadChildren: () =>
       import('./pages/pay/pay.module').then((m) => m.PayModule),
   },
+  { path: 'about', component: AboutComponent },
   { path: 'error', component: ErrorComponent },
   { path: '**', redirectTo: '/error' }, // For handling any other routes
 ];
