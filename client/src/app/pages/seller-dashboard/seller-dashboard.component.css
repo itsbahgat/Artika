@@ -1,14 +1,12 @@
 mat-toolbar {
-    background: #24527a;
-    color: white;
+    background: #dfe7ddff;
 }
 mat-sidenav {
     /* margin: 16px; */
     width: 200px;
     height: 100%;
     border-right: none;
-    background: #24527a;
-    color: #e0ebeb;
+    background: #dfe7ddff;
     border-radius: 1px;
     padding: 16px;
     text-align: center;
@@ -33,7 +31,7 @@ mat-sidenav-container {
     font-size: 1rem;
 }
 .menu-button:hover {
-    color: #c7b198 ;
+    color: var(--dl-color-pallet-yellow) ;
 }
 .menu-button mat-icon {
     margin-right: 8px;

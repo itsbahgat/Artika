@@ -1,6 +1,7 @@
 <div>
     <h2>Make a Payment</h2>
     <form class="payment-form-container" (ngSubmit)="onSubmit()">
+      <!--
       <div>
         <label for="currency">Currency:</label>
         <select name="currency" [(ngModel)]="paymentData.currency" required>
@@ -8,6 +9,7 @@
           <option *ngFor="let currency of possibleCurrencies" [value]="currency">{{currency}}</option>
         </select>
       </div>
+      -->
       <div>
         <label for="card-number">Card Number:</label>
         <input type="text" name="card-number" [(ngModel)]="paymentData.source.number" required>
