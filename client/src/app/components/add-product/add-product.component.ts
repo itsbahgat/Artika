@@ -25,8 +25,6 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productService:ProductService){}
 
-
-
   public categories=['Men','Women',
   'Jewelry', 'Accessories',
   'Clothing','Shoes',
@@ -35,8 +33,8 @@ export class AddProductComponent implements OnInit {
   'Art', 'Collectibles',
   'Craft Supplies', 'Tools'
   ];
-
   selectedCategories: string[] = [];
+  loggedSeller : any = JSON.parse(localStorage.getItem('user'));
 
   submit(data:product){
     var product = {
@@ -45,12 +43,14 @@ export class AddProductComponent implements OnInit {
       price : data.price,
       categories : this.selectedCategories,
       images : data.images,
-      seller: JSON.parse(localStorage.getItem('user'))._id
+      seller: this.loggedSeller._id
     }//need to validate
 
     this.productService.addProduct(product).subscribe((data)=>{
       console.log(data);
     });
+
+    console.log(this.loggedSeller);
   }
 
   onItemAdded(addedCat:any){
