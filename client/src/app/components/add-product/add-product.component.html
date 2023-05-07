@@ -29,7 +29,7 @@
             <!-- <input type="text" class="input-field" required name="images" ngModel/> -->
             <!-- <label class="input-label">Product image URLs</label> -->
             <label class="file">
-                <input type="file" required multiple name="images" ngModel aria-label="File browser example" accept="image/*" (onchange)="limitFileSelection(this)">
+                <input #fileInput type="file" required multiple name="images" ngModel aria-label="File browser example" accept="image/*" (onchange)="limitFileSelection(this)">
                 <span class="file-custom"></span>
                 <p id="fileLimitMessage" style="color: red; display: none;">Only the first four images will be accepted.</p>
             </label>

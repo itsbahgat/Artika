@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, ViewChild, HostListener} from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild, HostListener, ElementRef} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TagInputComponent, TagInputDropdown } from 'ngx-chips';
 import { product } from 'src/app/data-type';
@@ -23,6 +23,8 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
+  
   constructor(private productService:ProductService){}
 
   public categories=['Men','Women',
@@ -38,8 +40,10 @@ export class AddProductComponent implements OnInit {
 
   submit(data:product){
     //console.log(data);
-    var files: FileList = data.images.files; // Access the 'files' property
-    console.log(files);
+    const fileInput = this.fileInput.nativeElement;
+    const files: FileList = fileInput.files;
+
+    //console.log(files);
     var product = {
       title : data.title,
       description : data.description,
