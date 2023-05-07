@@ -8,5 +8,5 @@ module.exports.getAllCategories = async (req, res, next) => {
     });
   res.status(200).json(allCategories);
   // console.log("cats====");
-  console.log(allCategories);
+  // console.log(allCategories);
 };

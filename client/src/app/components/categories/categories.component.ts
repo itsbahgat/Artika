@@ -17,11 +17,8 @@ export class CategoryComponent {
     private route: Router,
     private categoryService: CategoryService,
     private productService: ProductService
-  ) {
-    console.log("cons cats");
-  }
+  ) {}
   ngOnInit(): void {
-    console.log("init cats");
     this.categoryService.getAllCategories().subscribe(
       (categories) => {
         this.categories = categories;
@@ -33,20 +30,8 @@ export class CategoryComponent {
   }
 
   onCategoryClick(category: string) {
-    // Handle the click event for the category
-    console.log("Clicked category:", category);
-
-    this.route.navigate(["/filterProducts"], {
+    this.route.navigate(["/mergedProducts"], {
       queryParams: { category: category },
     });
-    // // Add your desired logic here
-    // this.productService.getProductsByCategory(category).subscribe(
-    //   (products) => {
-    //     this.products = products;
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
   }
 }

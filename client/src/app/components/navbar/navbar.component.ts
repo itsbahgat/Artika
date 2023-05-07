@@ -21,9 +21,7 @@ export class NavbarComponent {
 
   onSearch(): void {
     // Navigate to the new page with the search text as a parameter
-    // console.log("in search");
-    // console.log(this.searchText);
-    this.route.navigate(["/searchedProducts"], {
+    this.route.navigate(["/mergedProducts"], {
       queryParams: { searchText: this.searchText },
     });
   }

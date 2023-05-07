@@ -4,21 +4,22 @@ import { ProductService } from "../services/product.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-searchedProducts",
-  templateUrl: "searchedProducts.component.html",
-  styleUrls: ["searchedProducts.component.css"],
+  selector: "app-mergedProducts",
+  templateUrl: "mergedProducts.component.html",
+  styleUrls: ["mergedProducts.component.css"],
 })
 export class products implements OnInit {
-  searchText: string;
-
   products: any[] = [];
+  category: string = "";
+  searchText: string = "";
 
   raw4kgh: string = " ";
+
   constructor(
     private title: Title,
     private meta: Meta,
-    private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private route: ActivatedRoute
   ) {
     this.title.setTitle("ARTIKA");
     this.meta.addTags([
@@ -31,16 +32,16 @@ export class products implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.searchText = params.searchText;
-      // console.log("searchText =================", this.searchText);
-      // Perform additional logic based on the search text
+      this.searchText = params.searchText ? params.searchText : "";
+      this.category = params.category ? params.category : "";
       this.loadProducts();
     });
   }
 
   loadProducts() {
-    if (this.searchText.length == 0) {
-      this.productService.getAllProducts().subscribe(
+    if (this.category.length > 1) {
+      // load filtered products by category
+      this.productService.getProductsByCategory(this.category).subscribe(
         (products) => {
           this.products = products;
         },
@@ -48,7 +49,9 @@ export class products implements OnInit {
           console.log(error);
         }
       );
-    } else {
+    }
+    // load products from search
+    else if (this.searchText.length > 0) {
       this.productService.getProductsByTitle(this.searchText).subscribe(
         (products) => {
           this.products = products;
@@ -58,9 +61,16 @@ export class products implements OnInit {
         }
       );
     }
-    // console.log(
-    //   "==========================================products============================"
-    // );
-    // console.log(this.products);
+    // load all products
+    else {
+      this.productService.getAllProducts().subscribe(
+        (products) => {
+          this.products = products;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }
