@@ -45,12 +45,13 @@ export class AddProductComponent implements OnInit {
       images : data.images,
       seller: this.loggedSeller._id
     }//need to validate
+    
+    console.log(product);
 
     this.productService.addProduct(product).subscribe((data)=>{
       console.log(data);
     });
 
-    console.log(this.loggedSeller);
   }
 
   onItemAdded(addedCat:any){

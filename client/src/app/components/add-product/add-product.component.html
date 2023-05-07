@@ -1,24 +1,23 @@
-<!-- <div class="form-container"> -->
-    <div class="card">
-      <div class="card-image">
-              <h2 class="card-heading">
-                  New product
-                  <small>Let's add product details</small>
-              </h2>
-          </div>
-      <form #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)" class="card-form">
+<div class="card">
+    <div class="card-image">
+        <h2 class="card-heading">
+            New product
+            <small>Let's add product details</small>
+        </h2>
+    </div>
+    <form #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)" class="card-form">
         <div class="input">
-                  <input type="text" class="input-field" required name="title" ngModel/>
-                  <label class="input-label">Product title</label>
-              </div>
+            <input type="text" class="input-field" required name="title" ngModel/>
+            <label class="input-label">Product title</label>
+        </div>
         <div class="input">
-                  <textarea type="text" class="input-field" required name="description" ngModel></textarea>
-                  <label class="input-label">Product description</label>
-              </div>
+            <textarea type="text" class="input-field" required name="description" ngModel style="resize: none;"></textarea>
+            <label class="input-label">Product description</label>
+        </div>
         <div class="input">
-                  <input type="number" class="input-field" required name="price" ngModel/>
-                  <label class="input-label">Product price</label>
-              </div>
+            <input type="number" class="input-field" required name="price" ngModel/>
+            <label class="input-label">Product price</label>
+        </div>
         <tag-input #tagInput [ngModelOptions]="{standalone: true}" [ngModel]="selectedCategories" secondaryPlaceholder="product category" placeholder="add category" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)">
             <tag-input-dropdown
             [autocompleteItems]="categories"
@@ -27,12 +26,15 @@
             </tag-input-dropdown>
         </tag-input>
         <div class="input">
-                  <input type="text" class="input-field" required name="images" ngModel/>
-                  <label class="input-label">Product image URLs</label>
-              </div>
+            <!-- <input type="text" class="input-field" required name="images" ngModel/> -->
+            <!-- <label class="input-label">Product image URLs</label> -->
+            <label class="file">
+                <input type="file" required multiple name="images" ngModel aria-label="File browser example">
+                <span class="file-custom"></span>
+            </label>
+        </div>
         <div class="action">
-                  <button class="action-button">Add product</button>
-              </div>
-      </form>
-    </div>
-  <!-- </div> -->
+            <button class="action-button">Add product</button>
+        </div>
+    </form>
+</div>
