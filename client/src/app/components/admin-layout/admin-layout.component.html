@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <div class="left">
+      <button mat-button (click)="opened = !opened">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>LOGO</span>
+    </div>
+    <!-- admin name and image -->
+    <div class="right" fxLayout="row" fxLayoutAlign="end center">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <img
+          class="admin-img"
+          src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80"
+        />
+        <span class="admin-name" name="adminName" *ngIf="!verifAdmin"
+          >Admin Name</span
+        >
+        <button
+          class="admin-name"
+          routerLink="/admin/adminlogin"
+          mat-button
+          name="adminName"
+          *ngIf="verifAdmin"
+        >
+          {{ userName }}
+        </button>
+        <button
+          class="admin-name"
+          (click)="logout()"
+          mat-button
+          *ngIf="verifAdmin"
+        >
+          logout
+        </button>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [(opened)]="opened" mode="side">
+    <mat-nav-list>
+      <div class="dashboard" routerLink="/admin/dashboard">
+        <mat-icon>equalizer</mat-icon>
+        <a mat-list-item>DashBoard</a>
+      </div>
+      <div class="customers" routerLink="/admin/dashboard/allcustomers">
+        <mat-icon> people </mat-icon>
+        <a mat-list-item>Customers</a>
+      </div>
+      <div class="customers" routerLink="/admin/dashboard/allsellers">
+        <mat-icon> sell </mat-icon>
+        <a mat-list-item>Sellers</a>
+      </div>
+      <div class="customers" routerLink="/admin/dashboard/allpendingsellers">
+        <mat-icon> lock </mat-icon>
+        <a mat-list-item>Pending Sellers</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <p>Welcome to my app!</p> -->
+    <router-outlet></router-outlet>
+    <!-- Your main content here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

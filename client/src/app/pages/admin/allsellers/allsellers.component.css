@@ -1,0 +1,139 @@
+/*
+table {
+  border-collapse: collapse;
+  padding:20px;
+  width: 100%;
+}
+th, td {
+  text-align: left;
+  padding: 8px 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #cccccc;
+  color: #2e2e2e;
+  box-shadow: 0px 2px 1px 0px rgba(0,0,0,0.3);
+} */
+
+/* Google Font Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* NEWWWWWWWWWWWWWW */
+
+.home-section {
+  width: 100%;
+  padding: 20px;
+}
+.controls {
+  width: 100%;
+  height: 100px;
+  background-color: red;
+}
+
+table {
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: left;
+  overflow: scroll;
+  margin: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 100%;
+  padding: 20px;
+  background-color: rgb(216, 255, 216);
+}
+caption {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: rgb(228, 228, 228);
+  background-image: url(https://images.unsplash.com/photo-1558114965-eeb97aa84c3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=933&q=80);
+  background-size: cover;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  /* border-bottom: #506cb3; */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+caption div {
+  display: block;
+  text-align: right;
+}
+table thead {
+  /* box-shadow: 0 1px 10px #e1e5ee,
+              0px -1px 10px #e1e5ee; */
+  box-shadow: 0 1px 10px #e1e5ee;
+  background-color: rgb(216, 216, 216);
+}
+table th {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+table td {
+  padding: 1rem 2rem;
+}
+table a {
+  text-decoration: none;
+  color: #2962ff;
+}
+table .status {
+  border-radius: 50px;
+  background-color: red;
+  /* padding: 0.2rem 1rem; */
+  padding: 6px 12px;
+  text-align: center;
+  line-height: 1;
+}
+
+table .status-late {
+  background-color: #fff0c2;
+  color: #a68b00;
+}
+/* table .status-late::before {
+  content:" ";
+  border-radius: 50px;
+  background-color:red;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+} */
+
+table .status-present {
+  background-color: #c8e6c9;
+  color: #388e3c;
+}
+table .status-absent {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+/* table .amount {
+  text-align: right;
+} */
+/* table tr:nth-child(even) {
+  background-color: #f4f6fb;
+} */
+.del-btn {
+  color: #c62828;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.del-btn:hover {
+  box-shadow: 0px 0px 8px 2px red;
+}

@@ -24,6 +24,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
+import { AdminLayoutComponent } from "./components/admin-layout/admin-layout.component";
+import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
+import { AllcustomersComponent } from "./pages/admin/allcustomers/allcustomers.component";
+import { AllsellersComponent } from "./pages/admin/allsellers/allsellers.component";
+import { AllpendingsellersComponent } from "./pages/admin/allpendingsellers/allpendingsellers.component";
 
 const routes: Routes = [
   {
@@ -71,6 +76,32 @@ const routes: Routes = [
     path: "payment",
     loadChildren: () =>
       import("./pages/pay/pay.module").then((m) => m.PayModule),
+  },
+  {
+    path: "payment",
+    loadChildren: () =>
+      import("./pages/pay/pay.module").then((m) => m.PayModule),
+  },
+  {
+    path: "admin",
+    component: AdminLayoutComponent,
+    children: [
+      // { path: "", component: AdminLayoutComponent },
+      { path: "dashboard", component: DashboardComponent },
+      { path: "dashboard/allcustomers", component: AllcustomersComponent },
+      { path: "dashboard/allsellers", component: AllsellersComponent },
+      {
+        path: "dashboard/allpendingsellers",
+        component: AllpendingsellersComponent,
+      },
+      // {
+      //   path: "dashboard",
+      //   loadChildren: () =>
+      //     import("./pages/admin/dashboard/dashboard.module").then(
+      //       (m) => m.DashboardModule
+      //     ),
+      // },
+    ],
   },
   {
     path: "searchedProducts",
