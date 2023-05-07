@@ -32,8 +32,26 @@ let deleteCustomerById = async (req, res) => {
     }
 };
 
+let editCustomer = async (req, res) => {
+    try {
+      const customerId = req.params.id;
+      const updatedCustomer = req.body; 
+      const customer = await customerModel.findByIdAndUpdate(customerId, updatedCustomer, { new: true });
+  
+      if (customer) {
+        res.status(200).json({ message: 'Customer Updated Successfully', customer });
+      } else {
+        res.status(404).json({ message: 'Customer not found' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };  
+
+  
 module.exports = {
     getAllCustomers,
     getCustomerById,
     deleteCustomerById,
+    editCustomer
   };

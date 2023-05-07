@@ -9,8 +9,8 @@
           <a routerLink="/seller-dashboard" class="navbar-link">STORE</a>
           <a routerLink="/products" class="navbar-link">PRODUCTS</a>
           <span class="navbar-link">SPECIAL</span>
-          <a routerLink="/about" class="navbar-link">About US</a>
-          <span class="navbar-link">CONTACT</span>  
+          <a routerLink="/about" class="navbar-link">About</a>
+          <span  routerLink="/contact" class="navbar-link">CONTACT</span>  
         </div>
         
         <!-- <div class="home-right"> -->
@@ -62,7 +62,7 @@
         <a routerLink="/register" class="navbar-link" *ngIf="!verifUser"
           >REGISTER</a
         >
-        <a routerLink="/" class="navbar-link" *ngIf="verifUser">{{
+        <a routerLink="/profile" class="navbar-link" *ngIf="verifUser">{{
           userName
         }}</a>
         <a class="navbar-link" *ngIf="verifUser" (click)="logout()"

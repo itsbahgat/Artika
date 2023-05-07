@@ -8,4 +8,8 @@ route.route("/:id")
     .get(controller.getCustomerById)
     .delete(controller.deleteCustomerById);
 
+    
+// Route for editing a customer by ID
+route.put("/:id", controller.editCustomer);
+
 module.exports = route;
