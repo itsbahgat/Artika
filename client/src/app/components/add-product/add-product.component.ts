@@ -37,14 +37,17 @@ export class AddProductComponent implements OnInit {
   loggedSeller : any = JSON.parse(localStorage.getItem('user'));
 
   submit(data:product){
+    //console.log(data);
+    var files: FileList = data.images.files; // Access the 'files' property
+    console.log(files);
     var product = {
       title : data.title,
       description : data.description,
       price : data.price,
       categories : this.selectedCategories,
-      images : data.images,
+      images: files, // Assign the FileList to the 'images' property
       seller: this.loggedSeller._id
-    }//need to validate
+    }
     
     console.log(product);
 
@@ -57,6 +60,26 @@ export class AddProductComponent implements OnInit {
   onItemAdded(addedCat:any){
     this.selectedCategories.push(addedCat.value);
   }
+
+  limitFileSelection(input:any) {
+    console.log("change");
+    const maxFiles = 4;
+    
+    if (input.files.length > maxFiles) {
+      // Get the selected files up to the maximum limit
+      const selectedFiles = Array.from(input.files).slice(0, maxFiles);
+  
+      // Clear the selected files beyond the limit
+      input.files = selectedFiles;
+  
+      // Show the message
+      document.getElementById('fileLimitMessage').style.display = 'block';
+    } else {
+      // Hide the message if the number of files is within the limit
+      document.getElementById('fileLimitMessage').style.display = 'none';
+    }
+  }
+  
 
 
 }
