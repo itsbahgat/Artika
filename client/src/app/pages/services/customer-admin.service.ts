@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class CustomerAdminService {
   baseUrl = "http://localhost:3005/";
   constructor(private http: HttpClient) {}
+  //for customers ......
   gettAllCutomers() {
     return this.http.get(this.baseUrl + "customers/all");
   }
@@ -25,5 +26,23 @@ export class CustomerAdminService {
   }
   getAllOrderes() {
     return this.http.get(this.baseUrl + "order");
+  }
+  //////////////////
+
+  // for seller .........
+  getAllSellers() {
+    return this.http.get(this.baseUrl + "sellers/all");
+  }
+
+  getAllPendingSellers() {
+    return this.http.get(this.baseUrl + "sellers/allpending");
+  }
+
+  deleteSellerById(id: any) {
+    return this.http.delete(this.baseUrl + "sellers/" + id);
+  }
+
+  sellerApprove(id: any) {
+    return this.http.put(this.baseUrl + "sellers/sellerapprove/" + id, {});
   }
 }

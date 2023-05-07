@@ -24,6 +24,8 @@ import { CommonModule } from "@angular/common";
 import { AdminLayoutComponent } from "./components/admin-layout/admin-layout.component";
 import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
 import { AllcustomersComponent } from "./pages/admin/allcustomers/allcustomers.component";
+import { AllsellersComponent } from "./pages/admin/allsellers/allsellers.component";
+import { AllpendingsellersComponent } from "./pages/admin/allpendingsellers/allpendingsellers.component";
 
 const routes: Routes = [
   {
@@ -79,6 +81,11 @@ const routes: Routes = [
       // { path: "", component: AdminLayoutComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "dashboard/allcustomers", component: AllcustomersComponent },
+      { path: "dashboard/allsellers", component: AllsellersComponent },
+      {
+        path: "dashboard/allpendingsellers",
+        component: AllpendingsellersComponent,
+      },
       // {
       //   path: "dashboard",
       //   loadChildren: () =>

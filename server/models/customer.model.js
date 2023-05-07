@@ -1,67 +1,74 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const baseUserSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true
+const baseUserSchema = new mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      required: true,
+      enum: ["customer", "seller", "admin"],
+      default: "customer",
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    approved: {
+      type: Boolean,
+      default: false, // set the default value to false
+    },
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-    lowercase:true
-  },
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  role: {
-    type: String,
-    required: true,
-    enum: ['customer', 'seller', 'admin'],
-    default:'customer'
-  },
-  address: {
-    type: String,
-    required: true
-  },
-  phone: {
-    type: String,
-    required: true
+  {
+    timestamps: true,
   }
-},
-{
-  timestamps:true
-});
+);
 
 //encrypt password
-baseUserSchema.pre('save', async function (next){
-  let salt = await bcrypt.genSalt(); 
+baseUserSchema.pre("save", async function (next) {
+  let salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
 baseUserSchema.statics.login = async function (emailOrUsername, password) {
-  const user = await this.findOne({ $or: [{ email: emailOrUsername }, { username: emailOrUsername }]});
+  const user = await this.findOne({
+    $or: [{ email: emailOrUsername }, { username: emailOrUsername }],
+  });
   if (!user) throw new Error("Incorrect login or password");
-  
-  const isPasswordValid  = await bcrypt.compare(password, user.password);
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) throw new Error("Incorrect login or password");
-  
+
   return user;
 };
 
-
-module.exports = mongoose.model('Customer', baseUserSchema);
+module.exports = mongoose.model("Customer", baseUserSchema);

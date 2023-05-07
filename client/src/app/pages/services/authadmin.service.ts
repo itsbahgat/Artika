@@ -14,14 +14,14 @@ export class AuthadminService {
   }
 
   saveToken(token: any) {
-    localStorage.setItem("token", token);
+    localStorage.setItem("jwt", token);
   }
 
   adminLoggedIn() {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("jwt")) {
       return false;
     }
-    let token: any = localStorage.getItem("token");
+    let token: any = localStorage.getItem("jwt");
     let decodeToken = this.helper.decodeToken(token);
 
     //  if(decodeToken.role){
@@ -36,7 +36,7 @@ export class AuthadminService {
   }
 
   getUserName() {
-    let token: any = localStorage.getItem("token");
+    let token: any = localStorage.getItem("jwt");
     let decodeToken = this.helper.decodeToken(token);
     let userName = "name";
     userName = decodeToken.userName;
