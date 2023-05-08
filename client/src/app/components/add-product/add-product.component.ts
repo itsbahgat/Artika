@@ -53,9 +53,24 @@ export class AddProductComponent implements OnInit {
       seller: this.loggedSeller._id
     }
     
-    console.log(product);
+  const formData = new FormData();
+  formData.append('title', data.title);
+  formData.append('description', data.description);
+  formData.append('price', data.price.toString());
+  formData.append('seller', this.loggedSeller._id);
 
-    this.productService.addProduct(product).subscribe((data)=>{
+  for (let i = 0; i < this.selectedCategories.length; i++) {
+    formData.append('categories', this.selectedCategories[i]);
+  }
+
+  for (let i = 0; i < files.length; i++) {
+    formData.append('images', files[i]);
+  }
+
+  console.log(formData);
+  console.log(this.loggedSeller.firstName);
+
+    this.productService.addProduct(formData).subscribe((data)=>{
       console.log(data);
     });
 

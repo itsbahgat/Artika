@@ -8,7 +8,7 @@ import { product } from 'src/app/data-type';
 export class ProductService {
 
   constructor(private http : HttpClient) { }
-  addProduct(product:product){
+  addProduct(product:any){
     return this.http.post("http://localhost:3005/api/product/",product);
   }
 }
