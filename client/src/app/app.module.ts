@@ -48,11 +48,11 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/register/register.module").then((m) => m.RegisterModule),
   },
-  {
+ /* {
     path: "products",
     loadChildren: () =>
       import("./pages/products/products.module").then((m) => m.ProductsModule),
-  },
+  },*/
   {
     path: "product/:id",
     loadChildren: () =>
