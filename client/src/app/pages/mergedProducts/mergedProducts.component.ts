@@ -13,7 +13,7 @@ export class products implements OnInit {
   category: string = "";
   searchText: string = "";
 
-  raw4kgh: string = " ";
+  //raw4kgh: string = " ";
 
   constructor(
     private title: Title,
@@ -44,6 +44,7 @@ export class products implements OnInit {
       this.productService.getProductsByCategory(this.category).subscribe(
         (products) => {
           this.products = products;
+          this.calculateAverageRating();
         },
         (error) => {
           console.log(error);
@@ -55,6 +56,7 @@ export class products implements OnInit {
       this.productService.getProductsByTitle(this.searchText).subscribe(
         (products) => {
           this.products = products;
+          this.calculateAverageRating();
         },
         (error) => {
           console.log(error);
@@ -66,6 +68,7 @@ export class products implements OnInit {
       this.productService.getAllProducts().subscribe(
         (products) => {
           this.products = products;
+          this.calculateAverageRating();
         },
         (error) => {
           console.log(error);
@@ -73,4 +76,16 @@ export class products implements OnInit {
       );
     }
   }
+  
+  calculateAverageRating() {
+    for (const product of this.products) {
+      let totalRating = 0;
+      for (const review of product.reviews) {
+        totalRating += review.rating;
+      }
+      const averageRating = totalRating / product.reviews.length;
+      product.averageRating = Math.ceil(averageRating) // Add averageRating property to each product
+    }
+  }
+  
 }
