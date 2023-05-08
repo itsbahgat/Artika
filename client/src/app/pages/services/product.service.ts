@@ -23,8 +23,12 @@ export class ProductService {
     return this.http.get<any>(`${this.BASE_URL}/title/${title}`);
   }
 
-  createProduct(product: any): Observable<any> {
-    return this.http.post<any>(`${this.BASE_URL}/`, product);
+  // createProduct(product: any): Observable<any> {
+  //   return this.http.post<any>(`${this.BASE_URL}/`, product);
+  // }
+
+  addProduct(product:any){
+    return this.http.post("http://localhost:3005/api/product/",product);
   }
 
   updateProduct(product: any): Observable<any> {

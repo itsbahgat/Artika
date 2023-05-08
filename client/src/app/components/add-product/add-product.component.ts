@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation, OnInit, ViewChild, ElementRef} from "@angular/core";
 import { product } from "src/app/data-type";
-import { ProductService } from "src/app/services/product/product.service";
+import { ProductService } from "src/app/pages/services/product.service";
+
 import { NgForm } from '@angular/forms';
 
 export interface AutoCompleteModel {
