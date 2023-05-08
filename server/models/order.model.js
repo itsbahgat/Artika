@@ -11,7 +11,11 @@ const orderSchema = new mongoose.Schema({
       quantity: Number,
     },
   ],
-  status: String,
+  status: {
+    type: String,
+    enum: ["pending", "shipped", "delivered", "cancelled"],
+  },
+
   total: Number,
 });
 
