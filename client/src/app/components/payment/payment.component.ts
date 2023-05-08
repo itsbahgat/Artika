@@ -10,12 +10,12 @@ import { pay } from '../../pages/pay/pay.component';
 export class PaymentComponent{
 
   @Input() customerID: string = '';
-  @Input() total: number = 0;
+  @Input() total: any ;
   @ViewChild('payRef') payRef!: pay;
   
   paymentData = {
-    // amount:Math.ceil(7000),
-    amount:Math.ceil(+this.total),
+    amount : 0 ,
+    //amount:Math.ceil(+this.total),
     currency: 'EGP',
     source: {
       object: 'card',
@@ -37,9 +37,10 @@ export class PaymentComponent{
 
   
   onSubmit(): void {
+    this.paymentData.amount = Math.ceil(+this.total);
     this.http.post('http://localhost:3005/stripe', this.paymentData)
       .subscribe((response) => {
-        console.log(response);
+        console.log("payment :",this.paymentData);
         let checkoutData = {
           customerId: this.customerID, 
           checkout:true
