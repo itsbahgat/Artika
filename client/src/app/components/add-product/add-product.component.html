@@ -5,7 +5,7 @@
             <small>Let's add product details</small>
         </h2>
     </div>
-    <form enctype='multipart/form-data' #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)" class="card-form">
+    <form enctype='multipart/form-data' #addProduct="ngForm" (ngSubmit)="submit(addProduct)" class="card-form">
         <div class="input">
             <input type="text" class="input-field" required name="title" ngModel/>
             <label class="input-label">Product title</label>
@@ -27,7 +27,7 @@
         </tag-input>
         <div class="input">
             <label class="file">
-                <input #fileInput type="file" required multiple name="images" ngModel aria-label="File browser example" accept="image/*" (onchange)="limitFileSelection(this)">
+                <input #fileInput type="file" required multiple name="images" ngModel aria-label="File browser example" accept="image/*">
                 <span class="file-custom"></span>
             </label>
         </div>

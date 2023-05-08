@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation, OnInit, ViewChild, ElementRef} from "@angular/core";
 import { product } from "src/app/data-type";
 import { ProductService } from "src/app/services/product/product.service";
+import { NgForm } from '@angular/forms';
 
 export interface AutoCompleteModel {
   value: any;
@@ -38,35 +39,43 @@ export class AddProductComponent implements OnInit {
   selectedCategories: string[] = [];
   loggedSeller: any = JSON.parse(localStorage.getItem("user"));
 
-  submit(data: product) {
-    const fileInput = this.fileInput.nativeElement;
-    const files: FileList = fileInput.files;
-
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("price", data.price.toString());
-    formData.append("seller", this.loggedSeller._id);
-
-    for (let i = 0; i < this.selectedCategories.length; i++) {
-      formData.append("categories", this.selectedCategories[i]);
+  submit(addProduct: NgForm) {
+    if (addProduct.valid) {
+      // Form is valid, submit data
+      const data: product = addProduct.value;
+  
+      const fileInput = this.fileInput.nativeElement;
+      const files: FileList = fileInput.files;
+  
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("price", data.price.toString());
+      formData.append("seller", this.loggedSeller._id);
+  
+      for (let i = 0; i < this.selectedCategories.length; i++) {
+        formData.append("categories", this.selectedCategories[i]);
+      }
+  
+      const fileLimit = 4;
+      const totalFiles = Math.min(files.length, fileLimit);
+  
+      if (files.length > fileLimit) {
+        const message = `You have selected ${files.length} files. Only the first ${fileLimit} files will be considered.`;
+        alert(message);
+      }
+  
+      for (let i = 0; i < totalFiles; i++) {
+        formData.append("images", files[i]);
+      }
+  
+      this.productService.addProduct(formData).subscribe((data) => {
+        //console.log(data);
+      });
+    } else {
+      // Form is invalid
+      alert('Please enter valid data');
     }
-
-    const fileLimit = 4;
-    const totalFiles = Math.min(files.length, fileLimit);
-
-    if (files.length > fileLimit) {
-      const message = `You have selected ${files.length} files. Only the first ${fileLimit} files will be considered.`;
-      alert(message);
-    }
-
-    for (let i = 0; i < totalFiles; i++) {
-      formData.append("images", files[i]);
-    }
-
-    this.productService.addProduct(formData).subscribe((data) => {
-      //console.log(data);
-    });
   }
 
   onItemAdded(addedCat: any) {
