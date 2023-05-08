@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { TagInputComponent, TagInputDropdown } from 'ngx-chips';
 import { product } from 'src/app/data-type';
 import { ProductService } from 'src/app/services/product/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -25,7 +26,7 @@ export class AddProductComponent implements OnInit {
 
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   
-  constructor(private productService:ProductService){}
+  constructor(private productService:ProductService,){}
 
   public categories=['Men','Women',
   'Jewelry', 'Accessories',
@@ -63,12 +64,19 @@ export class AddProductComponent implements OnInit {
     formData.append('categories', this.selectedCategories[i]);
   }
 
-  for (let i = 0; i < files.length; i++) {
+  const fileLimit = 4;
+  const totalFiles = Math.min(files.length, fileLimit);
+
+  if (files.length > fileLimit) {
+    const message = `You have selected ${files.length} files. Only the first ${fileLimit} files will be considered.`;
+    alert(message);
+  }
+
+  for (let i = 0; i < totalFiles; i++) {
     formData.append('images', files[i]);
   }
 
   console.log(formData);
-  console.log(this.loggedSeller.firstName);
 
     this.productService.addProduct(formData).subscribe((data)=>{
       console.log(data);
