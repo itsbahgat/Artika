@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const baseUserSchema = new mongoose.Schema({
+  avatar: String,
   firstName: {
     type: String,
     required: true,
