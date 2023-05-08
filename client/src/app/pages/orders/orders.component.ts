@@ -25,12 +25,11 @@ export class Orders implements OnInit {
   }
 
   getAllOrderDetails() {
-    // Use the OrdersService to fetch all order details
     const customerId = this.authService.getProperty('_id');
     this.ordersService.getOrderDetails(customerId).subscribe(
       (response) => {
         // Handle the response data here
-        this.orders = response; // Assign the response to the orders array
+        this.orders = response.reverse(); // Reverse the array to show latest orders first
         this.loading = false; // Set loading flag to false when data is loaded
         console.log(response);
       },
@@ -41,6 +40,7 @@ export class Orders implements OnInit {
       }
     );
   }
+  
 
   calculateTotalQuantity(order: any): number {
     let totalQuantity = 0;
