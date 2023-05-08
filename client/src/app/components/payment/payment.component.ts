@@ -18,10 +18,10 @@ export class PaymentComponent{
     //amount:Math.ceil(+this.total),
     currency: 'EGP',
     source: {
-      object: 'card',
+      object: 'Visa',
       number: '',
-      exp_month: '',
-      exp_year: '',
+      exp_month: 12,
+      exp_year: 2024,
       cvc: ''
     },
     description: ''
@@ -38,6 +38,10 @@ export class PaymentComponent{
   
   onSubmit(): void {
     this.paymentData.amount = Math.ceil(+this.total);
+    console.log("CusomterID",this.customerID);
+    console.log("paymentData",this.paymentData);
+    console.log("TOTAL PAID",this.total);
+    
     this.http.post('http://localhost:3005/stripe', this.paymentData)
       .subscribe((response) => {
         console.log("payment :",this.paymentData);
