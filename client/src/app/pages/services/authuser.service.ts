@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   getProperty(property: string): string | null {
-    const userString = localStorage.getItem("token");
+    const userString = localStorage.getItem("user");
     if (userString) {
       const user = JSON.parse(userString);
       return user[property] || null;
