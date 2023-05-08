@@ -1,4 +1,6 @@
 const productModel = require("../models/product.model");
+const cloudinary  =  require("../config/cloudinary");
+
 
 const getAllProducts = async (req, res, next) => {
   const allProducts = await productModel.find().catch((error) => {
@@ -50,16 +52,23 @@ let addNewProduct = async (req, res) => {
       description: req.body.description,
       price: req.body.price,
       categories: req.body.categories,
-      images: req.body.images,
       seller: req.body.seller,
-      //don't let seller to add reviews
+      // Don't let seller add reviews
     });
+
+    // Handle file upload logic for four images
+    const uploadPromises = req.files.map((file) => cloudinary.v2.uploader.upload(file.path));
+    const uploads = await Promise.all(uploadPromises);
+    const imageUrls = uploads.map((upload) => upload.secure_url);
+    product.images = imageUrls;
+
     const newProduct = await product.save();
     res.status(201).json({ message: "Created Successfully", data: newProduct });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
+
 //for seller
 const updateProductById = async (req, res) => {
   try {

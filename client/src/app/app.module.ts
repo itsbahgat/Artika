@@ -2,9 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 //import { RouterModule } from '@angular/router'
 import { BrowserModule } from "@angular/platform-browser";
 
-import { ComponentsModule } from "./components/components.module";
-import { ErrorComponent } from "./pages/error/error.component";
-import { AppComponent } from "./app.component";
+import { ComponentsModule } from './components/components.module'
+import { ErrorComponent } from './pages/error/error.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ProfileComponent } from "./components/profile/profile.component";
+import { AppComponent } from './app.component'
 
 import { FormsModule } from "@angular/forms";
 import { TagInputModule } from "ngx-chips";
@@ -76,8 +79,11 @@ const routes: Routes = [
         (m) => m.ProductsModule
       ),
   },
-  { path: "error", component: ErrorComponent },
-  { path: "**", redirectTo: "/error" }, // For handling any other routes
+  { path: 'about', component: AboutComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'error', component: ErrorComponent },
+  { path: '**', redirectTo: '/error' }, // For handling any other routes
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ export class SellerDashboardComponent implements OnInit {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  loggedSeller : any = JSON.parse(localStorage.getItem('user'));
 
   constructor(private observer: BreakpointObserver, private router: Router) {}
 
