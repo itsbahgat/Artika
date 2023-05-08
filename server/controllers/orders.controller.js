@@ -56,6 +56,10 @@ module.exports.UpdateOrder = async (request, response, next) => {
   }
 
   const oldState = updatedOrder.status;
+  //"pending", "accepted", "rejected", "shipped", "delivered" or "cancelled."
+  if (oldState != "pending" && status == "cancelled")
+    return response.status(400).json({ message: "You can't change it now!!" });
+
   updatedOrder.status = status;
 
   if (oldState != status) {
