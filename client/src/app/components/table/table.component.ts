@@ -72,5 +72,19 @@ export class TableComponent  {
   getObjectValues(obj: any): any[] {
     return Object.values(obj);
   }
-}
+
+  get paginatedTableData() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.tableData.slice(startIndex, endIndex);
+  }
+
+  previousPage() {
+    this.currentPage--;
+  }
   
+  nextPage() {
+    this.currentPage++;
+  }
+  
+}

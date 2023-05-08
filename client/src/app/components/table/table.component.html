@@ -8,7 +8,7 @@
         </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of tableData; let i = index;">
+            <tr *ngFor="let item of paginatedTableData; let i = index;">
               <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
               <ng-container *ngFor="let key of getObjectKeys(tableData[0])">
                 <td>
@@ -18,5 +18,10 @@
             </tr>
           </tbody>
         </table>
-    </div>
       
+        <div class="pagination">
+          <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+          <span>{{ currentPage }}</span>
+          <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+        </div>
+    </div>
