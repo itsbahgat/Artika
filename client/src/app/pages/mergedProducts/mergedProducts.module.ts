@@ -3,7 +3,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 
 import { ComponentsModule } from "../../components/components.module";
-import { products } from "./searchedProducts.component";
+import { products } from "./mergedProducts.component";
 
 const routes = [
   {

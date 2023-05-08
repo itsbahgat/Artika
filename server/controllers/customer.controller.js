@@ -32,26 +32,28 @@ let deleteCustomerById = async (req, res) => {
     }
 };
 
-let editCustomer = async (req, res) => {
-    try {
-      const customerId = req.params.id;
-      const updatedCustomer = req.body; 
-      const customer = await customerModel.findByIdAndUpdate(customerId, updatedCustomer, { new: true });
-  
-      if (customer) {
-        res.status(200).json({ message: 'Customer Updated Successfully', customer });
-      } else {
-        res.status(404).json({ message: 'Customer not found' });
-      }
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };  
+let editCustomerById = async (req, res) => {
+    try{
+        const customerId = req.params.id;
+        const updatedData = req.body;
+        const updatedCustomer = await customerModel.findByIdAndUpdate(
+          customerId,
+          { $set: updatedData },
+          { new: true }
+        );
 
-  
+         res.status(200).json({ message: "Updated Successfully" });
+      } catch (error) {
+        let isNotFound = error.name === "CastError";
+        if (isNotFound) res.status(404).json({ message: "Customer is not found" });
+        else res.status(400).json({ message: error.message });
+      }
+};
+
 module.exports = {
     getAllCustomers,
     getCustomerById,
+    editCustomerById,
     deleteCustomerById,
     editCustomer
   };

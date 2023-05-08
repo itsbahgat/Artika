@@ -73,9 +73,9 @@ const routes: Routes = [
       import("./pages/pay/pay.module").then((m) => m.PayModule),
   },
   {
-    path: "searchedProducts",
+    path: "mergedProducts",
     loadChildren: () =>
-      import("./pages/searchedProducts/searchedProducts.module").then(
+      import("./pages/mergedProducts/mergedProducts.module").then(
         (m) => m.ProductsModule
       ),
   },

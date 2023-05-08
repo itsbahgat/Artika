@@ -6,6 +6,7 @@ route.get("/all", controller.getAllCustomers);
 
 route.route("/:id")
     .get(controller.getCustomerById)
+    .put(controller.editCustomerById)
     .delete(controller.deleteCustomerById);
 
     
