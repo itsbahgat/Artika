@@ -1,12 +1,4 @@
-import {
-  Component,
-  ViewEncapsulation,
-  OnInit,
-  ViewChild,
-  ElementRef,
-} from "@angular/core";
-// import { FormControl } from '@angular/forms';
-// import { TagInputComponent, TagInputDropdown } from 'ngx-chips';
+import {Component, ViewEncapsulation, OnInit, ViewChild, ElementRef} from "@angular/core";
 import { product } from "src/app/data-type";
 import { ProductService } from "src/app/services/product/product.service";
 
@@ -81,7 +73,4 @@ export class AddProductComponent implements OnInit {
     this.selectedCategories.push(addedCat.value);
   }
 
-  limitFileSelection(input: any) {
-    
-  }
 }
