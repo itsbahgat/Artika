@@ -79,6 +79,13 @@ const routes: Routes = [
         (m) => m.ProductsModule
       ),
   },
+  {
+    path: "orders",
+    loadChildren: () =>
+      import("./pages/orders/orders.module").then(
+        (m) => m.OrdersModule
+      ),
+  },
   { path: 'about', component: AboutComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent },

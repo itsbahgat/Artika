@@ -14,4 +14,19 @@ export class OrdersService {
     const url = `${this.baseUrl}/order/${customerId}`;
     return this.http.get<any>(url);
   }
+
+  updateOrderStatus(orderId: string, status: string): Observable<any> {
+    const url = `${this.baseUrl}/order`;
+    const body = {
+      orderId: orderId,
+      status: status
+    };
+    return this.http.put<any>(url, body);
+  }
+
+  cancelOrder(orderId: string): Observable<any> {
+    const status = 'cancelled';
+    return this.updateOrderStatus(orderId, status);
+  }
+  
 }

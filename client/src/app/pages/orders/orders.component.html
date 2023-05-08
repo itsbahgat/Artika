@@ -1,0 +1,58 @@
+<div class="orders-container">
+  <ng-container *ngIf="loading; else ordersList">
+    <!-- Skeleton loading -->
+    <div class="order-card skeleton">
+      <div class="order-details">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
+    </div>
+
+    <div class="order-card skeleton">
+      <div class="order-details">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
+    </div>
+
+    <div class="order-card skeleton">
+      <div class="order-details">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-template #ordersList>
+    <div *ngIf="orders.length > 0; else noOrdersMessage">
+      <div *ngFor="let order of paginatedOrders" class="order-card">
+        <div class="order-details">
+          <h2>{{ order.status }}</h2>
+          <h3>£{{ removeFraction(order.total) }}</h3>
+          <p>Order ID: {{ order._id }}</p>
+          <p>Total Items: {{ order.items.length }}</p>
+          <p>Total Quantity: {{ calculateTotalQuantity(order) }}</p>
+          <button class="deleteBtn" (click)="cancelOrder(order._id)">
+            <i class="fas fa-trash"></i>
+          </button>          
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination-buttons">
+      <button class="paginated-button" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <button class="paginated-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+
+    <ng-template #noOrdersMessage>
+      <p class="no-orders-message">No orders found.</p>
+    </ng-template>
+  </ng-template>
+</div>

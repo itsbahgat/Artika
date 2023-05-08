@@ -13,8 +13,7 @@ export class basket {
   constructor(private authService: AuthService, private cartService: CartService) {}
 
   ngOnInit() {
-    // Fetch cart data for customer
-    const customerId = this.authService.getProperty("_id"); // Replace with the actual customer ID
+    const customerId = this.authService.getProperty("_id");
     console.log("cart customer id" , customerId);
     this.cartService.getCart(customerId).subscribe((cart: any) => {
       console.log("cart", cart);
