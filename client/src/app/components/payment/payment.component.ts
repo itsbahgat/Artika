@@ -15,16 +15,15 @@ export class PaymentComponent{
   
   paymentData = {
     amount : 0 ,
-    //amount:Math.ceil(+this.total),
-    currency: 'EGP',
+    currency: 'USD',
     source: {
       object: 'Visa',
       number: '',
-      exp_month: 12,
-      exp_year: 2024,
+      exp_month: 0,
+      exp_year: 0,
       cvc: ''
     },
-    description: ''
+    description: 'description'
   };
   
   //possibleCurrencies = ["AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "ISK", "JMD", "JPY", "KES", "KGS", "KHR", "KMF", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD", "SSP", "STD", "STN", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VES", "VND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "YER", "ZAR", "ZMW"];
@@ -38,10 +37,9 @@ export class PaymentComponent{
   
   onSubmit(): void {
     this.paymentData.amount = Math.ceil(+this.total);
-    console.log("CusomterID",this.customerID);
-    console.log("paymentData",this.paymentData);
-    console.log("TOTAL PAID",this.total);
-    
+    this.paymentData.source.exp_month = Number(this.paymentData.source.exp_month);
+    this.paymentData.source.exp_year = Number(this.paymentData.source.exp_year);
+
     this.http.post('http://localhost:3005/stripe', this.paymentData)
       .subscribe((response) => {
         console.log("payment :",this.paymentData);
