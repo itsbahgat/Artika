@@ -11,7 +11,7 @@ export class Orders implements OnInit {
   orders: any[] = []; // Array to store the fetched orders
   loading: boolean = true; // Loading flag
   currentPage: number = 1;
-  ordersPerPage: number = 1;
+  ordersPerPage: number = 3;
 
 
   constructor(
