@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../pages/services/authuser.service'; // Replace 'path-to-auth-service' with the actual path to your AuthService
+import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
+import { AuthService } from '../../pages/services/authuser.service';
+import { CustomerService } from '../../pages/services/customer.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +18,10 @@ export class ProfileComponent implements OnInit {
   address: string;
   phone: string;
 
-  constructor(private authService: AuthService) { }
+  isEditMode: boolean = false; // Indicates whether the user is in edit mode
+
+
+  constructor(private authService: AuthService, private customerService : CustomerService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // Get user properties using AuthService
@@ -29,8 +34,57 @@ export class ProfileComponent implements OnInit {
     this.phone = this.authService.getProperty('phone') || 'N/A';
   }
 
-  updateProfile(): void {
-    // Perform profile update logic here
-    // For example, send an HTTP request to update the user's profile
+  toggleEditMode() {
+    this.isEditMode = !this.isEditMode;
+    this.cdr.detectChanges();
   }
+
+
+  updateProfile() {
+    if (this.isEditMode) {
+      this.toggleEditMode();
+  
+      const emailInput = document.querySelector('#emailInput') as HTMLInputElement;
+      const phoneInput = document.querySelector('#phoneInput') as HTMLInputElement;
+      const addressInput = document.querySelector('#addressInput') as HTMLInputElement;
+  
+      const updatedEmail = emailInput.value || this.email;
+      const updatedPhone = phoneInput.value || this.phone;
+      const updatedAddress = addressInput.value || this.address;
+  
+      // Check if the values have changed before calling the update
+      if (updatedEmail !== this.email || updatedPhone !== this.phone || updatedAddress !== this.address) {
+        this.updateCustomerData(updatedEmail, updatedPhone, updatedAddress);
+      }
+    } else {
+      this.toggleEditMode();
+    }
+  }
+  
+
+updateCustomerData(updatedEmail: string, updatedPhone: string, updatedAddress: string) {
+  // Create an object with the updated customer data
+  const updatedCustomerData = {
+    email: updatedEmail,
+    phone: updatedPhone,
+    address: updatedAddress
+  };
+
+  // Call the updateCustomer service method and pass the customer ID and updated data
+  this.customerService.updateCustomer(this.authService.getProperty("_id"), updatedCustomerData)
+    .subscribe(
+      response => {
+        // Handle the successful response from the service if needed
+        console.log('Customer updated successfully:', response);
+      },
+      error => {
+        // Handle any errors that occurred during the update process
+        console.error('Error updating customer:', error);
+      }
+    );
+}
+
+  
+  
+  
 }

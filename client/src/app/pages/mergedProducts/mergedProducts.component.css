@@ -4,8 +4,9 @@
 } */
 .cart-container {
   padding: 70px;
+  padding-top: 10px;
   margin: 20px;
-  /* margin-top: 150px; */
+  margin-top: 3px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }

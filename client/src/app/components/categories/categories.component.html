@@ -1,6 +1,5 @@
-<h1>cats</h1>
 <ul class="category-list">
-  <li *ngFor="let category of categories" (click)="onCategoryClick(category)">
-    <a>{{ category }}</a>
+  <li *ngFor="let category of categories">
+    <a [class.active]="category === selectedCategory" (click)="onCategoryClick(category)">{{ category }}</a>
   </li>
 </ul>

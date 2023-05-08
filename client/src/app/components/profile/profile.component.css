@@ -72,6 +72,10 @@ body {
   margin-bottom: 10px;
 }
 
+.profile-button {
+  height: 30pt
+}
+
 /* Profile label styles */
 .profile-label {
   font-size: 16px;
@@ -84,21 +88,60 @@ body {
 .profile-value {
   font-size: 16px;
   color: #333333;
-  
 }
-
+/* Update button styles */
 /* Update button styles */
 .update-button {
-  background-color: #4caf50;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
+  display: inline-flex;
+  padding: 16px 24px;
+  position: relative;
+  box-sizing: border-box;
+  transition: 0.3s;
+  align-items: flex-start;
+  flex-shrink: 1;
+  color: var(--dl-color-gray-white);
+  border-color: var(--dl-color-pallet-yellow);
+  background-color: var(--dl-color-pallet-yellow);
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden; /* Ensure ripple effect stays within button boundaries */
 }
 
 .update-button:hover {
-  background-color: #45a049;
+  color: rgba(0, 0, 0, 1);
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 1px;
+  background-color: rgba(239, 193, 76, 1);
+}
+
+.update-button:active {
+  transform: scale(0.98);
+}
+
+.profile-input {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: #333333;
+  display: inline-block;
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #666666;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.profile-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.profile-input::placeholder {
+  color: #999999;
+}
+
+.profile-input[hidden] {
+  display: none;
 }
