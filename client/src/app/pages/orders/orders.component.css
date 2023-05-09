@@ -75,11 +75,12 @@ ul {
 
 .no-orders-message {
   font-size: 24px;
-  font-weight: bold;
   color: #555;
   text-align: center;
   padding: 10px;
   margin: 0;
+  line-height: 1.4;
+  user-select: none;
 }
 
 
