@@ -27,8 +27,8 @@ export class ProductService {
     return this.http.get<any>(`${this.BASE_URL}/category/${categories}`);
   }
 
-  createProduct(product: any): Observable<any> {
-    return this.http.post<any>(`${this.BASE_URL}/`, product);
+  addProduct(product:any){
+    return this.http.post<any>(this.BASE_URL,product);
   }
 
   updateProduct(product: any): Observable<any> {

@@ -63,7 +63,7 @@ const routes: Routes = [
     component: SellerDashboardComponent,
     children: [
       // { path: '', redirectTo: 'profile' },
-      //{ path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: "add-product", component: AddProductComponent },
     ],
   },

@@ -3,6 +3,6 @@ export interface product {
     description : string,
     price : number,
     categories :string[] ,
-    images : string,
+    images : any ,
     seller: string
 }
