@@ -24,6 +24,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,7 @@ const routes: Routes = [
       // { path: '', redirectTo: 'profile' },
       { path: 'profile', component: ProfileComponent },
       { path: "add-product", component: AddProductComponent },
+      { path: 'table', component: TableComponent },
     ],
   },
   {
@@ -87,7 +89,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, AddProductComponent, SellerDashboardComponent],
+  declarations: [AppComponent, AddProductComponent, SellerDashboardComponent, TableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
