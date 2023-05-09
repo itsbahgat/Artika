@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Users = require('../models/customer.model');
+const Seller = require('../models/seller.model');
 
 const privateKey = process.env.JWT_SECRET;
 const expiryTimeInSeconds = process.env.JWT_EXPIRATION_TIME;
@@ -7,9 +8,14 @@ const expiryTimeInSeconds = process.env.JWT_EXPIRATION_TIME;
 
 const register = async (req, res) => {
   try {       
-    const newCustomer = await Users.create({
-      ...req.body 
-    });
+    const {role} = req.body;
+    let newCustomer;
+    if (role === "seller") {
+      newCustomer = await Seller.create({ ...req.body });
+    } else {
+      newCustomer = await Users.create({ ...req.body });
+    }
+
     const token = createToken(newCustomer.id);
     res.cookie('jwt',token, {httpOnly: true, expiryTime: expiryTimeInSeconds});
     res.status(201).json({ message: 'Created Successfully', data: newCustomer });    
