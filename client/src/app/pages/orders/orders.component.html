@@ -44,12 +44,15 @@
           </button>          
         </div>
       </div>
+
+      <div class="pagination-buttons">
+        <button class="paginated-button" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <button class="paginated-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+      
     </div>
 
-    <div class="pagination-buttons">
-      <button class="paginated-button" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-      <button class="paginated-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-    </div>
+
 
     <ng-template #noOrdersMessage>
       <p class="no-orders-message">No orders found.</p>
