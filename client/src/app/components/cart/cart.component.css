@@ -217,10 +217,15 @@
 .empty-cart-message {
   text-align: center;
   margin-top: 50px; /* Adjust the margin as needed */
+  margin-bottom: 10px;
 }
 
 .empty-cart-message p {
-  font-size: 25px;
-  color: #555555;
-  /* Add any other styles you want */
+  font-size: 24px;
+  color: #555;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  line-height: 1.4;
+  user-select: none;
 }
