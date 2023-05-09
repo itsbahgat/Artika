@@ -37,10 +37,7 @@
   justify-content: space-between;
   padding-left: 10px; /* Adjust the left padding value */
   padding-right: 10px; /* Adjust the right padding value */
-
 }
-
-
 
 .order-items {
   margin-top: 10px;
@@ -49,14 +46,14 @@
 h2 {
   color: #333;
   font-size: 24px;
-  font-weight:lighter;
+  font-weight: lighter;
   margin-bottom: 0px;
   text-transform: capitalize;
   transition: 0.3s;
 }
 
-h2:hover{
-  color: #efc14c
+h2:hover {
+  color: #efc14c;
 }
 
 h3 {
@@ -65,7 +62,6 @@ h3 {
   font-weight: lighter;
   text-transform: capitalize;
 }
-
 
 p {
   margin: 0;
@@ -78,9 +74,14 @@ ul {
 }
 
 .no-orders-message {
-  font-style: italic;
-  color: #999;
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
 }
+
 
 .skeleton {
   background-color: #f7f7f7;
@@ -106,10 +107,32 @@ ul {
   width: 100%;
   margin-bottom: 8px;
   border-radius: 4px;
+  position: relative;
 }
 
-.skeleton-line:last-child {
-  margin-bottom: 0;
+.skeleton-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 button {

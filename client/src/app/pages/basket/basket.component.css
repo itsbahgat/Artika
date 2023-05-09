@@ -2,7 +2,53 @@
   padding: 10px;
   margin: 20px;
   margin-top: 80px;
-
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+}
+
+.card-container {
+  padding: 10px;
+  margin: 20px;
+  margin-top: 80px;
+  border-radius: 4px;
+}
+
+.skeleton {
+  padding: 10px;
+  margin: auto;
+  margin-top: 110px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  max-width: 900px;
+}
+
+.card-skeleton {
+  margin-top: 5px;
+  height: 100px; /* Adjust the height according to your card design */
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmerAnimation 1.5s infinite;
+}
+
+@keyframes shimmerAnimation {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 100%;
+  }
 }

@@ -23,4 +23,15 @@ export class CustomerService {
       map((customer: any) => customer.username)
     );
   }
+
+  updateCustomer(id: string, customerData: any): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, customerData);
+  }
+
+  updateCustomerProperty(id: string, property: string, value: any): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    const updatedData = { [property]: value };
+    return this.http.put(url, updatedData);
+  }
 }

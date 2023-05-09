@@ -1,3 +1,13 @@
-<div class="cart-container">
+<div class="cart-container" *ngIf="!isLoading; else skeleton">
   <app-cart [products]="products" #basketRef></app-cart>
+</div>
+
+<div class="card-container">
+  <ng-template #skeleton>
+    <div class="skeleton">
+      <div class="card-skeleton shimmer"></div>
+      <div class="card-skeleton shimmer"></div>
+      <div class="card-skeleton shimmer"></div>
+    </div>
+  </ng-template>
 </div>

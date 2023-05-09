@@ -15,6 +15,10 @@ export class Cart {
   @Input() products: any[] = [];
   @ViewChild('basketRef') basketRef!: basket;
 
+  isLoadingRemove = false;
+  isLoadingReduce = false;
+  isLoadingIncrease = false;
+
   getTotalPrice() {
     let sum = 0;
     for (let i = 0; i < this.products.length; i++) {
@@ -42,6 +46,8 @@ export class Cart {
   ) {}  
 
   removeButton(productId){
+    this.isLoadingRemove = true;
+
     const customerId = this.authService.getProperty("_id"); 
     if (!customerId) {
       console.error("Customer ID is undefined");
@@ -58,29 +64,39 @@ export class Cart {
       // Reload the cart after successful removal
       this.cartService.getCart(customerId).subscribe((cart: any) => {
         this.products = this.cartService.getProductsFromCart(cart);
+        this.isLoadingRemove = false;
       });
     });
+
   }
 
   reduceButton(productId){
+    this.isLoadingReduce = true;
+
     const customerId = this.authService.getProperty("_id");
     this.cartService.reduceProductFromCart(customerId, productId).subscribe((response: any) => {
       console.log(response);
       // Reload the cart after successful removal
       this.cartService.getCart(customerId).subscribe((cart: any) => {
         this.products = this.cartService.getProductsFromCart(cart);
+        this.isLoadingReduce = false;
       });
     });
+
   }
   increaseButton(productId) {
+    this.isLoadingIncrease = true;
+
     const customerId = this.authService.getProperty("_id");
     this.cartService.addProductToCart(customerId, productId).subscribe((response: any) => {
       console.log(response);
       // Reload the cart after successful addition
       this.cartService.getCart(customerId).subscribe((cart: any) => {
         this.products = this.cartService.getProductsFromCart(cart);
+        this.isLoadingIncrease = false;
       });
     });
+
   }
 
 }
