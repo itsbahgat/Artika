@@ -2,6 +2,7 @@ import { Component, Input , ViewChild } from '@angular/core'
 import { basket } from '../../pages/basket/basket.component';
 import { AuthService } from '../../pages/services/authuser.service';
 import { CartService } from '../../pages/services/cart.service';
+import { SellerService } from '../../pages/services/seller.service';
 import { Router } from '@angular/router';
 
 
@@ -15,6 +16,13 @@ export class Cart {
   @Input() products: any[] = [];
   @ViewChild('basketRef') basketRef!: basket;
 
+  constructor(
+    private authService: AuthService,
+    private cartService: CartService,
+    private router: Router,
+    private sellerService: SellerService // Inject the SellerService
+  ) {}
+
   getTotalPrice() {
     let sum = 0;
     for (let i = 0; i < this.products.length; i++) {
@@ -26,20 +34,39 @@ export class Cart {
 
   checkBtn() {
     const totalPrice = this.getTotalPrice();
-    const roundedTotalPrice = Math.ceil(totalPrice); // round to the nearest upper integer value
+    const roundedTotalPrice = Math.ceil(totalPrice);
+    this.updateSellerOrders(); // Call the updateSellerOrders function
     this.router.navigate(['/payment'], {
       queryParams: {
         total: roundedTotalPrice,
-      }
+      },
     });
   }
   
-  
-  constructor(
-    private authService: AuthService,
-    private cartService: CartService,
-    private router: Router // Inject the Router module
-  ) {}  
+
+  updateSellerOrders() {
+    const sellerOrders = this.products.map((product) => ({
+      sellerID: product.seller,
+      sellerOrders: [
+        {
+          customerId: this.authService.getProperty("_id"),
+          productId: product._id,
+          quantity: product.quantity,
+        },
+      ],
+    }));
+
+    this.sellerService.updateOrders(sellerOrders).subscribe(
+      (response) => {
+        console.log('Orders updated successfully:', response);
+        // Handle success response here
+      },
+      (error) => {
+        console.error('Error updating orders:', error);
+        // Handle error response here
+      }
+    );
+  }
 
   removeButton(productId){
     const customerId = this.authService.getProperty("_id"); 
