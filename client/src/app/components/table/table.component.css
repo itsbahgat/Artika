@@ -7,14 +7,14 @@
 
 table{
     border-collapse: collapse;
-    box-shadow: 0 5px 10px #e1e5ee;
     background-color: white;
     text-align: left;
     overflow: scroll;
     margin: auto;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
     width: 30%;
+/*     box-shadow: 0 5px 10px #e1e5ee;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px; */
   }
   caption{
     border-top-left-radius: 15px;
@@ -37,7 +37,7 @@ table{
     /* box-shadow: 0 1px 10px #e1e5ee,
                 0px -1px 10px #e1e5ee; */
     box-shadow: 0 1px 10px #e1e5ee;
-    background-color: #f4f6fa;
+    background-color: #e6e6e6;
   }
   
   table th {
@@ -81,8 +81,8 @@ table{
     color: #388e3c;
   }
   table .status-absent {
-    background-color: #ffcdd2;
-    color: #c62828;
+    background-color: #ffd0d0;
+    color: #7a565c;
   }
   
   .pagination{

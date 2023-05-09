@@ -21,7 +21,7 @@ export class TableComponent  {
       Address: '01115555555',
       Title: 'XHSYUW100',
       quantity: 50,
-      status: 'Absent'
+      status: 'late'
     },
     {
       customerName: 'Ranooma el Amora',
