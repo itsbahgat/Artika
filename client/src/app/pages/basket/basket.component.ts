@@ -15,12 +15,18 @@ export class basket {
 
   ngOnInit() {
     const customerId = this.authService.getProperty("_id");
-    console.log("cart customer id", customerId);
+    console.log("BASKET Customer id", customerId);
     this.cartService.getCart(customerId).subscribe((cart: any) => {
-      console.log("cart", cart);
-      this.products = this.cartService.getProductsFromCart(cart);
-      console.log("products", this.products);
+      console.log("BASKET CART", cart);
+      
+      if (cart && cart.length > 0) {
+        this.products = this.cartService.getProductsFromCart(cart);
+        console.log("BASKET Products", this.products);
+      }
+      
       this.isLoading = false; // Data loaded, set isLoading to false
     });
   }
+  
+
 }
