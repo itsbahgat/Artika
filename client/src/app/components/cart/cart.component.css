@@ -216,8 +216,11 @@
 
 .empty-cart-message {
   text-align: center;
+  margin: auto;
   margin-top: 50px; /* Adjust the margin as needed */
   margin-bottom: 10px;
+  max-width: 500px;
+
 }
 
 .empty-cart-message p {
