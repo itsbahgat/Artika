@@ -11,7 +11,19 @@ const sellerSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product',
       }]
-    }
+    },
+    Orders:[{
+      customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'customers' },
+      items: [{
+          productId: { type: mongoose.Schema.Types.ObjectId, ref: 'products' },
+          quantity: Number
+      }],
+      status: {
+        type: String,
+        enum: ["pending", "shipped", "delivered", "cancelled"],
+        default: "pending"
+      }
+    }]
   });
 
 module.exports = mongoose.model('Seller', sellerSchema);
