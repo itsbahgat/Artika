@@ -11,6 +11,7 @@ const customerRoutes = require("./route/customer.route");
 const stripeRoutes = require("./route/stripe.route");
 const ordersRoutes = require("./route/orders.route");
 const cartsRoutes = require("./route/carts.route");
+const sellerRoutes = require("./route/seller.route");
 
 console.log("SERVER IS RUNNING");
 
@@ -37,6 +38,7 @@ app.use("/api/product",productRoutes);
 app.use(stripeRoutes);
 app.use(ordersRoutes);
 app.use(cartsRoutes);
+app.use(sellerRoutes);
 
 
 
