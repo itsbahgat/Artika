@@ -12,8 +12,7 @@ export class products implements OnInit {
   products: any[] = [];
   category: string = "";
   searchText: string = "";
-
-  //raw4kgh: string = " ";
+  isLoading: boolean = true;
 
   constructor(
     private title: Title,
@@ -39,44 +38,50 @@ export class products implements OnInit {
   }
 
   loadProducts() {
+    this.isLoading = true; // Set loading state
+
     if (this.category.length > 1) {
       // load filtered products by category
       this.productService.getProductsByCategory(this.category).subscribe(
         (products) => {
           this.products = products;
           this.calculateAverageRating();
+          this.isLoading = false; // Clear loading state
         },
         (error) => {
           console.log(error);
+          this.isLoading = false; // Clear loading state in case of error
         }
       );
-    }
-    // load products from search
-    else if (this.searchText.length > 0) {
+    } else if (this.searchText.length > 0) {
+      // load products from search
       this.productService.getProductsByTitle(this.searchText).subscribe(
         (products) => {
           this.products = products;
           this.calculateAverageRating();
+          this.isLoading = false; // Clear loading state
         },
         (error) => {
           console.log(error);
+          this.isLoading = false; // Clear loading state in case of error
         }
       );
-    }
-    // load all products
-    else {
+    } else {
+      // load all products
       this.productService.getAllProducts().subscribe(
         (products) => {
           this.products = products;
           this.calculateAverageRating();
+          this.isLoading = false; // Clear loading state
         },
         (error) => {
           console.log(error);
+          this.isLoading = false; // Clear loading state in case of error
         }
       );
     }
   }
-  
+
   calculateAverageRating() {
     for (const product of this.products) {
       let totalRating = 0;
@@ -84,8 +89,7 @@ export class products implements OnInit {
         totalRating += review.rating;
       }
       const averageRating = totalRating / product.reviews.length;
-      product.averageRating = Math.ceil(averageRating) // Add averageRating property to each product
+      product.averageRating = Math.ceil(averageRating); // Add averageRating property to each product
     }
   }
-  
 }

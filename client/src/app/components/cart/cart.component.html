@@ -1,4 +1,4 @@
-<div class="cart">
+<div class="cart" *ngIf="products.length > 0 else emptyCart">
   <div class="products">
     <div *ngFor="let product of products" class="product-container">
       <a [href]="'product/' + product._id" class="product-link">
@@ -12,25 +12,60 @@
             <div class="product-details">
               <h2>{{ product.title }}</h2>
               <p>{{ product.description }}</p>
-              <p class="price">£{{ product.price}}</p>
-              <p>{{ product.quantity }}</p>
+
+              <p class="price">
+                £{{ product.price }}
+              </p>
+
+
+              <ng-container *ngIf="!isLoadingRemove && !isLoadingReduce && !isLoadingIncrease; else loadingPrice">
+                {{ product.quantity }}
+              </ng-container>
+              <ng-template #loadingPrice>
+                <span class="spinner"></span>
+              </ng-template>
             </div>
           </div>
         </div>
       </a>
+
       <div class="product-buttons">
-        <button (click)="removeButton(product._id)">Remove</button>
-        <button (click)="reduceButton(product._id)">Reduce</button>
-        <button (click)="increaseButton(product._id)">increase</button>
+        <button (click)="removeButton(product._id)" [disabled]="isLoadingRemove">
+          <span *ngIf="isLoadingRemove">Loading...</span>
+          <span *ngIf="!isLoadingRemove">Remove</span>
+        </button>
+        <button (click)="reduceButton(product._id)" [disabled]="isLoadingReduce">
+          <span *ngIf="isLoadingReduce">Loading...</span>
+          <span *ngIf="!isLoadingReduce">Reduce</span>
+        </button>
+        <button (click)="increaseButton(product._id)" [disabled]="isLoadingIncrease">
+          <span *ngIf="isLoadingIncrease">Loading...</span>
+          <span *ngIf="!isLoadingIncrease">Increase</span>
+        </button>
       </div>
+
     </div>
 
   </div>
+
   <div class="cart-footer">
     <div class="total">
-      <p>Total:</p>
-      <p class="price">£{{ getTotalPrice() }} </p>
+      <p class="price">
+        <ng-container *ngIf="!isLoadingRemove && !isLoadingReduce && !isLoadingIncrease; else loadingTotal">
+          £{{ getTotalPrice() }}
+        </ng-container>
+        <ng-template #loadingTotal>
+          <span class="spinner"></span>
+        </ng-template>
+      </p>
     </div>
     <button (click)="checkBtn()" class="checkout-btn">Checkout</button>
   </div>
+
 </div>
+
+<ng-template #emptyCart>
+  <div class="empty-cart-message">
+    <p>Cart is empty</p>
+  </div>
+</ng-template>

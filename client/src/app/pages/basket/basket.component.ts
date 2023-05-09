@@ -9,17 +9,18 @@ import { CartService } from '../services/cart.service';
 })
 export class basket {
   products: any[] = [];
+  isLoading: boolean = true;
     
   constructor(private authService: AuthService, private cartService: CartService) {}
 
   ngOnInit() {
     const customerId = this.authService.getProperty("_id");
-    console.log("cart customer id" , customerId);
+    console.log("cart customer id", customerId);
     this.cartService.getCart(customerId).subscribe((cart: any) => {
       console.log("cart", cart);
       this.products = this.cartService.getProductsFromCart(cart);
       console.log("products", this.products);
+      this.isLoading = false; // Data loaded, set isLoading to false
     });
   }
-  
 }

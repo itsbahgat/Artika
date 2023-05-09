@@ -194,3 +194,33 @@
   background-color: #efc14c;
   background-color: var(--dl-color-pallet-yellow)
 }
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-cart-message {
+  text-align: center;
+  margin-top: 50px; /* Adjust the margin as needed */
+}
+
+.empty-cart-message p {
+  font-size: 25px;
+  color: #555555;
+  /* Add any other styles you want */
+}
