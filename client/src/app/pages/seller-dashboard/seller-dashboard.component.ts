@@ -17,6 +17,7 @@ export class SellerDashboardComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   loggedSeller : any = JSON.parse(localStorage.getItem('user'));
+  avatar : any = this.authService.getProperty('avatar') || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
   constructor(private observer: BreakpointObserver, private router: Router, private authService: AuthService) {}
 
