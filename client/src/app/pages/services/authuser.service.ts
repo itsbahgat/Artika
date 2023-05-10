@@ -8,7 +8,7 @@ import { tap } from "rxjs/operators";
 })
 export class AuthService {
   private baseUrl = "http://localhost:3005";
-  private tokenKey = "token";
+  private tokenKey = "user";
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   getProperty(property: string): string | null {
-    const userString = localStorage.getItem("token");
+    const userString = localStorage.getItem("user");
     if (userString) {
       const user = JSON.parse(userString);
       return user[property] || null;

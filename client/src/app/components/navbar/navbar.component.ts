@@ -13,6 +13,7 @@ export class NavbarComponent {
 
   constructor(private userAuth: AuthService, private route: Router) {
     this.verifUser = this.userAuth.userLoggedIn();
+    console.log(userAuth);
     if (this.verifUser) {
       this.userName = this.userAuth.getProperty("username");
     }

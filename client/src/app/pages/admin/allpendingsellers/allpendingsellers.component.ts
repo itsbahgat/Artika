@@ -25,9 +25,10 @@ export class AllpendingsellersComponent implements OnInit {
       this.sellerDataArray.splice(i, 1);
     });
   }
-  approve(id: any) {
+  approve(id: any, i: number) {
     this.cutomerAdminService.sellerApprove(id).subscribe((response) => {
       console.log(response);
+      this.sellerDataArray.splice(i, 1);
     });
   }
   ngOnInit() {

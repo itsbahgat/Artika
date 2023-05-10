@@ -54,7 +54,7 @@ caption {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   color: rgb(228, 228, 228);
-  background-image: url(https://images.unsplash.com/photo-1558114965-eeb97aa84c3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=933&q=80);
+  background-image: url(https://media.istockphoto.com/id/1347283792/photo/galaxy-outer-space-starry-sky-purple-red-abstract-star-pattern-futuristic-nebula-background.jpg?s=612x612&w=0&k=20&c=uni_iyUkQtt3zDEkimiQ0zMHCd5k0f3o_x7ppZzxe6c=);
   background-size: cover;
   padding: 1rem 2rem;
   font-weight: 700;
@@ -126,13 +126,14 @@ table .status-absent {
 } */
 .del-btn {
   color: #c62828;
-  font-size: 15px;
+  font-size: 17px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: bold;
 }
 .del-btn:hover {
   box-shadow: 0px 0px 8px 2px red;

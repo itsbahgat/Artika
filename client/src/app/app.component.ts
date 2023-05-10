@@ -15,7 +15,8 @@ export class AppComponent {
     if (
       this.route.snapshot.firstChild?.routeConfig?.path ===
         "seller-dashboard" ||
-      this.route.snapshot.firstChild?.routeConfig?.path === "admin"
+      this.route.snapshot.firstChild?.routeConfig?.path === "admin" ||
+      this.route.snapshot.firstChild?.routeConfig?.path === "loginadmin"
     )
       return true;
   }

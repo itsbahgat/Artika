@@ -1,34 +1,43 @@
 <section class="home-section">
-  <h2>All Pending Sellers</h2>
+  <h2>All Orders</h2>
   <table>
     <caption>
-      A L L P E N D I N G S E L L E R S
+      A L L O R D E R S
     </caption>
     <thead>
       <tr>
-        <th>ID</th>
-        <th>firstName</th>
-        <th>lastName</th>
-        <th>Email</th>
-        <th>userName</th>
+        <th>Customer ID</th>
+        <th>Total</th>
+        <th>productId | quantity</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of sellerDataArray; index as i">
+      <tr *ngFor="let item of orderDataArray; index as i">
         <td>
           <a href="#">{{ item._id }}</a>
         </td>
-        <td>{{ item.firstName }}</td>
-        <td>{{ item.lastName }}</td>
-        <td>{{ item.email }}</td>
-        <td>{{ item.username }}</td>
+        <td>{{ item.total }}</td>
         <td>
-          <button class="app-btn" (click)="approve(item._id, i)">
-            Approve
-          </button>
-          <button class="del-btn" (click)="deleteById(item._id, i)">
-            Discard
-          </button>
+          <select>
+            <option value="" disabled selected>Product ID - Quantity</option>
+            <option
+              disabled
+              *ngFor="let orderItem of item.items"
+              [value]="orderItem.productId"
+            >
+              {{ orderItem.productId }} - {{ orderItem.quantity }}
+            </option>
+          </select>
+        </td>
+        <td
+          [ngClass]="{
+            shipped: item.status === 'shipped',
+            pending: item.status === 'pending',
+            cancelled: item.status === 'cancelled'
+          }"
+        >
+          {{ item.status }}
         </td>
       </tr>
     </tbody>

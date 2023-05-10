@@ -48,13 +48,12 @@ table {
   border-bottom-right-radius: 15px;
   width: 100%;
   padding: 20px;
-  background-color: rgb(252, 185, 196);
 }
 caption {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   color: rgb(228, 228, 228);
-  background-image: url(https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+  background-image: url(https://images.unsplash.com/photo-1558114965-eeb97aa84c3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=933&q=80);
   background-size: cover;
   padding: 1rem 2rem;
   font-weight: 700;
@@ -121,29 +120,56 @@ table .status-absent {
 /* table .amount {
   text-align: right;
 } */
-/* table tr:nth-child(even) {
-  background-color: #f4f6fb;
-} */
-button {
+
+.del-btn {
   color: #c62828;
-  font-size: 17px;
+  font-size: 15px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: bold;
 }
 .del-btn:hover {
   box-shadow: 0px 0px 8px 2px red;
 }
-.app-btn {
-  color: #27ca2f;
+
+.shipped {
+  color: green;
+  font-weight: bold;
+  background-color: rgb(216, 255, 216);
 }
-.app-btn:hover {
-  box-shadow: 0px 0px 8px 2px #27ca2f;
+
+.pending {
+  color: yellow;
+  font-weight: bold;
+  background-color: rgb(255, 255, 163);
 }
-caption {
-  color: #000;
+
+.cancelled {
+  color: red;
+  font-weight: bold;
+  background-color: rgb(252, 185, 196);
+}
+select {
+  font-size: 16px;
+  color: #333;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+}
+
+select option {
+  background-color: #f4f4f4;
+  color: #000000;
+}
+
+select:disabled {
+  opacity: 1;
+  cursor: not-allowed;
 }

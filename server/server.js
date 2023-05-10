@@ -12,6 +12,7 @@ const sellerRoutes = require("./route/seller.route");
 const stripeRoutes = require("./route/stripe.route");
 const ordersRoutes = require("./route/orders.route");
 const cartsRoutes = require("./route/carts.route");
+const adminRoutes = require("./route/admin.route");
 
 console.log("SERVER IS RUNNING");
 
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use('/admin', adminRoutes);
 app.use("/", authRoutes);
+app.use("/admin", adminRoutes);
 app.use("/customers/", customerRoutes);
 app.use("/sellers/", sellerRoutes);
 app.use("/api/product", productRoutes);

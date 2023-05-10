@@ -2,12 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 //import { RouterModule } from '@angular/router'
 import { BrowserModule } from "@angular/platform-browser";
 
-import { ComponentsModule } from './components/components.module'
-import { ErrorComponent } from './pages/error/error.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { AboutComponent } from './pages/about/about.component';
+import { ComponentsModule } from "./components/components.module";
+import { ErrorComponent } from "./pages/error/error.component";
+import { ContactComponent } from "./pages/contact/contact.component";
+import { AboutComponent } from "./pages/about/about.component";
 import { ProfileComponent } from "./components/profile/profile.component";
-import { AppComponent } from './app.component'
+import { AppComponent } from "./app.component";
 
 import { FormsModule } from "@angular/forms";
 import { TagInputModule } from "ngx-chips";
@@ -29,6 +29,8 @@ import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component"
 import { AllcustomersComponent } from "./pages/admin/allcustomers/allcustomers.component";
 import { AllsellersComponent } from "./pages/admin/allsellers/allsellers.component";
 import { AllpendingsellersComponent } from "./pages/admin/allpendingsellers/allpendingsellers.component";
+import { AllordersComponent } from "./pages/admin/allorders/allorders.component";
+import { LoginadminComponent } from "./pages/loginadmin/loginadmin.component";
 
 const routes: Routes = [
   {
@@ -86,7 +88,7 @@ const routes: Routes = [
     path: "admin",
     component: AdminLayoutComponent,
     children: [
-      // { path: "", component: AdminLayoutComponent },
+      // { path: "login", component: LoginadminComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "dashboard/allcustomers", component: AllcustomersComponent },
       { path: "dashboard/allsellers", component: AllsellersComponent },
@@ -94,14 +96,18 @@ const routes: Routes = [
         path: "dashboard/allpendingsellers",
         component: AllpendingsellersComponent,
       },
-      // {
-      //   path: "dashboard",
-      //   loadChildren: () =>
-      //     import("./pages/admin/dashboard/dashboard.module").then(
-      //       (m) => m.DashboardModule
-      //     ),
-      // },
+      {
+        path: "dashboard/allorders",
+        component: AllordersComponent,
+      },
     ],
+  },
+  {
+    path: "loginadmin",
+    loadChildren: () =>
+      import("./pages/loginadmin/loginadmin.module").then(
+        (m) => m.LoginAdminModule
+      ),
   },
   {
     path: "searchedProducts",
@@ -110,11 +116,11 @@ const routes: Routes = [
         (m) => m.ProductsModule
       ),
   },
-  { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'error', component: ErrorComponent },
-  { path: '**', redirectTo: '/error' }, // For handling any other routes
+  { path: "about", component: AboutComponent },
+  { path: "profile", component: ProfileComponent },
+  { path: "contact", component: ContactComponent },
+  { path: "error", component: ErrorComponent },
+  { path: "**", redirectTo: "/error" }, // For handling any other routes
 ];
 
 @NgModule({

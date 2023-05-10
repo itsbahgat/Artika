@@ -24,9 +24,7 @@ export class CustomerAdminService {
   getAllCarts() {
     return this.http.get(this.baseUrl + "cart");
   }
-  getAllOrderes() {
-    return this.http.get(this.baseUrl + "order");
-  }
+
   //////////////////
 
   // for seller .........
@@ -44,5 +42,13 @@ export class CustomerAdminService {
 
   sellerApprove(id: any) {
     return this.http.put(this.baseUrl + "sellers/sellerapprove/" + id, {});
+  }
+  //for orders
+  getAllOrderes() {
+    return this.http.get(this.baseUrl + "order");
+  }
+  getOrderById(id: any) {
+    console.log(id);
+    return this.http.get(this.baseUrl + "order/" + id);
   }
 }

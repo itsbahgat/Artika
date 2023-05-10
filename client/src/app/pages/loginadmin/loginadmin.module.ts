@@ -3,7 +3,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 
 import { ComponentsModule } from "../../components/components.module";
-import { loginuser } from "./loginuser.component";
+import { LoginadminComponent } from "./loginadmin.component";
 
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -17,12 +17,12 @@ import { FormsModule } from "@angular/forms";
 const routes = [
   {
     path: "",
-    component: loginuser,
+    component: LoginadminComponent,
   },
 ];
 
 @NgModule({
-  declarations: [loginuser],
+  declarations: [LoginadminComponent],
   imports: [
     CommonModule,
     ComponentsModule,
@@ -36,7 +36,7 @@ const routes = [
     MatProgressBarModule,
     FormsModule,
   ],
-  exports: [loginuser],
+  exports: [LoginadminComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class LoginUserModule {}
+export class LoginAdminModule {}

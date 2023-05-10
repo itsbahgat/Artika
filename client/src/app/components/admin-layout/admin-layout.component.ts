@@ -12,12 +12,15 @@ export class AdminLayoutComponent implements OnInit {
   userName: any = "name";
   opened = false;
   constructor(private adminAuth: AuthadminService, private route: Router) {
+    console.log("admin constructor", this.adminAuth.adminLoggedIn());
+    console.log("logged", this.adminAuth.adminLoggedIn());
     if (this.adminAuth.adminLoggedIn() == true) {
       this.verifAdmin = true;
-      this.userName = adminAuth.getUserName();
+      this.userName = this.adminAuth.getProperty("username");
     } else {
       this.verifAdmin = false;
     }
+    this.userName = this.adminAuth.getProperty("username");
   }
   ngOnInit(): void {}
   logout() {
