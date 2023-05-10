@@ -1,12 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
 })
 export class CustomerAdminService {
   baseUrl = "http://localhost:3005/";
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   //for customers ......
   gettAllCutomers() {
     return this.http.get(this.baseUrl + "customers/all");
@@ -54,8 +55,9 @@ export class CustomerAdminService {
   updateOrder(order: any, state: any) {
     console.log("order id...", order, state);
     const body = { orderId: order, status: state };
-    return this.http
-      .put(this.baseUrl + "order", body)
-      .subscribe((data) => console.log(data));
+    return this.http.put(this.baseUrl + "order", body).subscribe((data) => {
+      console.log(data);
+      location.reload();
+    });
   }
 }
