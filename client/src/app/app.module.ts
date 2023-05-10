@@ -2,12 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 //import { RouterModule } from '@angular/router'
 import { BrowserModule } from "@angular/platform-browser";
 
-import { ComponentsModule } from './components/components.module'
-import { ErrorComponent } from './pages/error/error.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { AboutComponent } from './pages/about/about.component';
+import { ComponentsModule } from "./components/components.module";
+import { ErrorComponent } from "./pages/error/error.component";
+import { ContactComponent } from "./pages/contact/contact.component";
+import { AboutComponent } from "./pages/about/about.component";
 import { ProfileComponent } from "./components/profile/profile.component";
-import { AppComponent } from './app.component'
+import { AppComponent } from "./app.component";
 
 import { FormsModule } from "@angular/forms";
 import { TagInputModule } from "ngx-chips";
@@ -24,7 +24,14 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { TableComponent } from './components/table/table.component';
+import { TableComponent } from "./components/table/table.component";
+import { AdminLayoutComponent } from "./components/admin-layout/admin-layout.component";
+import { DashboardComponent } from "./pages/admin/dashboard/dashboard.component";
+import { AllcustomersComponent } from "./pages/admin/allcustomers/allcustomers.component";
+import { AllsellersComponent } from "./pages/admin/allsellers/allsellers.component";
+import { AllpendingsellersComponent } from "./pages/admin/allpendingsellers/allpendingsellers.component";
+import { AllordersComponent } from "./pages/admin/allorders/allorders.component";
+import { LoginadminComponent } from "./pages/loginadmin/loginadmin.component";
 
 const routes: Routes = [
   {
@@ -49,11 +56,11 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/register/register.module").then((m) => m.RegisterModule),
   },
- /* {
+  {
     path: "products",
     loadChildren: () =>
       import("./pages/products/products.module").then((m) => m.ProductsModule),
-  },*/
+  },
   {
     path: "product/:id",
     loadChildren: () =>
@@ -64,9 +71,9 @@ const routes: Routes = [
     component: SellerDashboardComponent,
     children: [
       // { path: '', redirectTo: 'profile' },
-      { path: 'profile', component: ProfileComponent },
+      { path: "profile", component: ProfileComponent },
       { path: "add-product", component: AddProductComponent },
-      { path: 'table', component: TableComponent },
+      { path: "table", component: TableComponent },
     ],
   },
   {
@@ -84,19 +91,55 @@ const routes: Routes = [
   {
     path: "orders",
     loadChildren: () =>
-      import("./pages/orders/orders.module").then(
-        (m) => m.OrdersModule
+      import("./pages/orders/orders.module").then((m) => m.OrdersModule),
+  },
+
+  {
+    path: "admin",
+    component: AdminLayoutComponent,
+    children: [
+      // { path: "login", component: LoginadminComponent },
+      { path: "dashboard", component: DashboardComponent },
+      { path: "dashboard/allcustomers", component: AllcustomersComponent },
+      { path: "dashboard/allsellers", component: AllsellersComponent },
+      {
+        path: "dashboard/allpendingsellers",
+        component: AllpendingsellersComponent,
+      },
+      {
+        path: "dashboard/allorders",
+        component: AllordersComponent,
+      },
+    ],
+  },
+  {
+    path: "loginadmin",
+    loadChildren: () =>
+      import("./pages/loginadmin/loginadmin.module").then(
+        (m) => m.LoginAdminModule
       ),
   },
-  { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'error', component: ErrorComponent },
-  { path: '**', redirectTo: '/error' }, // For handling any other routes
+  {
+    path: "searchedProducts",
+    loadChildren: () =>
+      import("./pages/searchedProducts/searchedProducts.module").then(
+        (m) => m.ProductsModule
+      ),
+  },
+  { path: "about", component: AboutComponent },
+  { path: "profile", component: ProfileComponent },
+  { path: "contact", component: ContactComponent },
+  { path: "error", component: ErrorComponent },
+  { path: "**", redirectTo: "/error" }, // For handling any other routes
 ];
 
 @NgModule({
-  declarations: [AppComponent, AddProductComponent, SellerDashboardComponent, TableComponent],
+  declarations: [
+    AppComponent,
+    AddProductComponent,
+    SellerDashboardComponent,
+    TableComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
