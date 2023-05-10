@@ -43,12 +43,18 @@ getProperty(property: string): string | null {
     confirmPassword: string,
     role: string,
     address: string,
-    phone: string
+    phone: string,
+    avatar:File
   }): Observable<any> {
-    console.log("user");
+    console.log("user in service");
     console.log(user);
+    var formData = new FormData();
+    for ( var key in user ) {
+        formData.append(key, user[key]);
+    }
+
     const url = `${this.baseUrl}/register`;
-    return this.http.post(url, user);
+    return this.http.post(url, formData);
   }
 
   userLoggedIn(): boolean {

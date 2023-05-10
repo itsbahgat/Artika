@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/authuser.service';
 import { Router } from '@angular/router';
 
@@ -20,8 +20,11 @@ export class register implements OnInit {
     confirmPassword: '',
     role: 'customer',
     address: '',
-    phone: ''
+    phone: '',
+    avatar:null
   };
+
+  @ViewChild("fileInput", { static: false }) fileInput: ElementRef;
 
   constructor(private authService: AuthService,private route:Router) {}
 
@@ -36,10 +39,14 @@ export class register implements OnInit {
     confirmPassword: string,
     role: string,
     address: string,
-    phone: string
+    phone: string,
+    avatar: File
   }) {
     console.log("user")
     console.log(user)
+    const fileInput = this.fileInput.nativeElement;
+    const file: File = fileInput.files;
+    user.avatar=file;
     this.authService.register(user)
       .subscribe(
         // handle successful response here
