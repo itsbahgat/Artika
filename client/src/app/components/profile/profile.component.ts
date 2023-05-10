@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   role: string;
   address: string;
   phone: string;
+  avatar: string;
 
   isEditMode: boolean = false; // Indicates whether the user is in edit mode
 
@@ -32,6 +33,10 @@ export class ProfileComponent implements OnInit {
     this.role = this.authService.getProperty('role') || 'N/A';
     this.address = this.authService.getProperty('address') || 'N/A';
     this.phone = this.authService.getProperty('phone') || 'N/A';
+    this.avatar = this.authService.getProperty('avatar') || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+
+    console.log ("first name",this.firstName);
+    console.log("avatar",this.avatar);
   }
 
   toggleEditMode() {
