@@ -67,7 +67,7 @@ const routes: Routes = [
       // { path: '', redirectTo: 'profile' },
       { path: 'profile', component: ProfileComponent },
       { path: "add-product", component: AddProductComponent },
-      { path: 'table', component: TableComponent },
+      { path: 'orders', component: TableComponent },
       { path: 'edit-product', component: EditProductComponent },
     ],
   },
