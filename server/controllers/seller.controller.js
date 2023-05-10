@@ -1,37 +1,41 @@
-const Customer = require('../models/customer.model');
+const Sellers = require("../models/seller.model");
 
-  
-updateOrders = async (req, res) => {
-    try {
-      const sellerOrdersData = req.body;
-      sellerOrdersData.forEach(async (order) => {
-        const { sellerID, sellerOrders } = order;
+module.exports.GetAllSellers = (request, response, next) => {
+  Sellers.find({})
+    .then((data) => {
+      response.status(200).json(data);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 
-        await Customer.findOneAndUpdate(
-            { _id: sellerID },
-            {
-              $push: {
-                Orders: {
-                  customerId: sellerOrders[0].customerId,
-                  items: sellerOrders.map((order) => ({
-                    productId: order.productId,
-                    quantity: order.quantity
-                  })),
-                  status: "pending"
-                }
-              }
-            }
-          );
-        });
-  
-      return res.status(201).json({ ok: "Orders updated successfully." });
-    } catch (error) {
-      console.error(error);
-      return res.status(400).json({ error: "Failed to update orders." });
-    }
-  };
-   
-  
-module.exports = {
-    updateOrders
-}
+module.exports.GetSellerOrders = (request, response, next) => {
+  const sellerId = request.params.sellerId;
+
+  Sellers.find({ _id: sellerId })
+    .then((data) => {
+      // response.status(200).json(data);
+      response.status(200).json(data[0].Orders);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
+module.exports.GetSellerOrdersByState = (request, response, next) => {
+  const sellerId = request.params.sellerId;
+  const state = request.params.state;
+
+  Sellers.find({ _id: sellerId })
+    .then((data) => {
+      const seller = data[0];
+      const filteredOrders = seller.Orders.filter(
+        (order) => order.status === state
+      );
+      response.status(200).json(filteredOrders);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
