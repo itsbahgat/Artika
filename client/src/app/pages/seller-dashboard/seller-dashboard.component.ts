@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { AuthService } from '../services/authuser.service';
 
 @UntilDestroy()
 @Component({
@@ -17,7 +18,7 @@ export class SellerDashboardComponent implements OnInit {
   sidenav!: MatSidenav;
   loggedSeller : any = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  constructor(private observer: BreakpointObserver, private router: Router, private authService: AuthService) {}
 
   ngAfterViewInit() {
     this.observer

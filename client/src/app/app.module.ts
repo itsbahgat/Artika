@@ -25,6 +25,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { TableComponent } from './components/table/table.component';
+import { EditProductComponent } from "./components/edit-product/edit-product.component";
 
 const routes: Routes = [
   {
@@ -67,6 +68,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: "add-product", component: AddProductComponent },
       { path: 'table', component: TableComponent },
+      { path: 'edit-product', component: EditProductComponent },
     ],
   },
   {

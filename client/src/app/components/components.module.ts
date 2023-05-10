@@ -24,6 +24,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { commentComponent } from "./comment/comment.component";
 import { PaymentComponent } from "./payment/payment.component";
 import { CategoryComponent } from "./categories/categories.component";
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CategoryComponent } from "./categories/categories.component";
     commentComponent,
     PaymentComponent,
     CategoryComponent,
+    EditProductComponent,
   ],
   imports: [
     CommonModule,
