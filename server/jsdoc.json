@@ -1,0 +1,11 @@
+{
+  "source": {
+    "include": ["./controllers", "./middlewares"],
+    "exclude": ["./node_modules/"],
+    "includePattern": ".+\\.js$",
+    "recursive": true
+  },
+  "opts": {
+    "destination": "./documentation"
+  }
+}

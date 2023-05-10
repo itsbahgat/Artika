@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: models/order.model.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: models/order.model.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module order.model
+ * @description Represents the order schema for MongoDB.
+ */
+
+const mongoose = require("mongoose");
+
+/**
+ * @typedef {Object} OrderItem
+ * @property {string} productId - The ID of the product in the order item.
+ * @property {number} quantity - The quantity of the product in the order item.
+ */
+
+/**
+ * @typedef {Object} Order
+ * @property {string} _id - The unique ID of the order.
+ * @property {string} customerId - The ID of the customer associated with the order.
+ * @property {OrderItem[]} items - The array of order items.
+ * @property {string} status - The status of the order. Can be 'pending', 'shipped', 'delivered', or 'cancelled'.
+ * @property {number} total - The total value of the order.
+ */
+
+/**
+ * @classdesc Represents the order schema for MongoDB.
+ * @class
+ */
+const orderSchema = new mongoose.Schema({
+  /**
+   * @member {string} Order#customerId
+   * @description The ID of the customer associated with the order.
+   */
+  customerId: { type: mongoose.Schema.Types.ObjectId, ref: "customers" },
+
+  /**
+   * @member {OrderItem[]} Order#items
+   * @description The array of order items.
+   */
+  items: [
+    {
+      /**
+       * @member {string} OrderItem#productId
+       * @description The ID of the product in the order item.
+       */
+      productId: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
+
+      /**
+       * @member {number} OrderItem#quantity
+       * @description The quantity of the product in the order item.
+       */
+      quantity: Number,
+    },
+  ],
+
+  /**
+   * @member {string} Order#status
+   * @description The status of the order. Can be 'pending', 'shipped', 'delivered', or 'cancelled'.
+   */
+  status: {
+    type: String,
+    enum: ["pending", "shipped", "delivered", "cancelled"],
+  },
+
+  /**
+   * @member {number} Order#total
+   * @description The total value of the order.
+   */
+  total: Number,
+});
+
+/**
+ * @type {import('mongoose').Model&lt;Order>}
+ */
+module.exports = mongoose.model("orders", orderSchema);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="admin_.html#.module:model">model</a></li><li><a href="cart_.html#.module:model">model</a></li><li><a href="customer_.html#.module:model">model</a></li><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-FileUploader.html">FileUploader</a></li><li><a href="module-ValidationRules.html">ValidationRules</a></li><li><a href="order_.html#.module:model">model</a></li><li><a href="product_.html#.module:model">model</a></li><li><a href="seller_.html#.module:model">model</a></li></ul><h3>Classes</h3><ul><li><a href="admin.module_model-adminSchema.html">adminSchema</a></li><li><a href="cart.module_model-cartSchema.html">cartSchema</a></li><li><a href="customer.module_model-baseUserSchema.html">baseUserSchema</a></li><li><a href="order.module_model-orderSchema.html">orderSchema</a></li><li><a href="product.module_model-productSchema.html">productSchema</a></li><li><a href="seller.module_model-sellerSchema.html">sellerSchema</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AddItem">AddItem</a></li><li><a href="global.html#CreateCart">CreateCart</a></li><li><a href="global.html#DeleteCart">DeleteCart</a></li><li><a href="global.html#GetAllCarts">GetAllCarts</a></li><li><a href="global.html#GetAllOrders">GetAllOrders</a></li><li><a href="global.html#GetCartByCustId">GetCartByCustId</a></li><li><a href="global.html#GetOrderByCustId">GetOrderByCustId</a></li><li><a href="global.html#GetOrderByCustIdAndState">GetOrderByCustIdAndState</a></li><li><a href="global.html#GetOrderByState">GetOrderByState</a></li><li><a href="global.html#RemoveItem">RemoveItem</a></li><li><a href="global.html#UpdateOrder">UpdateOrder</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addReviewProductById">addReviewProductById</a></li><li><a href="global.html#createToken">createToken</a></li><li><a href="global.html#deleteCustomerById">deleteCustomerById</a></li><li><a href="global.html#deleteProductById">deleteProductById</a></li><li><a href="global.html#editCustomerById">editCustomerById</a></li><li><a href="global.html#expiryTimeInSeconds">expiryTimeInSeconds</a></li><li><a href="global.html#getAllCategories">getAllCategories</a></li><li><a href="global.html#getAllCustomers">getAllCustomers</a></li><li><a href="global.html#getAllProducts">getAllProducts</a></li><li><a href="global.html#getCustomerById">getCustomerById</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProductsByCategory">getProductsByCategory</a></li><li><a href="global.html#getProductsByTitle">getProductsByTitle</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#privateKey">privateKey</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#tryStripe">tryStripe</a></li><li><a href="global.html#updateProductById">updateProductById</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 10 2023 15:17:11 GMT+0300 (East Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

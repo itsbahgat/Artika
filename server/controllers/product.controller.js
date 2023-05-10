@@ -1,14 +1,26 @@
 const productModel = require("../models/product.model");
-const cloudinary  =  require("../config/cloudinary");
+const cloudinary = require("../config/cloudinary");
 
-
+/**
+ * Retrieves all products.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ */
 const getAllProducts = async (req, res, next) => {
-  const allProducts = await productModel.find().catch((error) => {
+  try {
+    const allProducts = await productModel.find();
+    res.status(200).json(allProducts);
+  } catch (error) {
     next(error);
-  });
-  res.status(200).json(allProducts);
+  }
 };
 
+/**
+ * Retrieves a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 const getProductById = async (req, res) => {
   try {
     const product = await productModel.findById(req.params.id);
@@ -21,10 +33,14 @@ const getProductById = async (req, res) => {
   }
 };
 
-//for all
-let getProductsByCategory = async (req, res) => {
+/**
+ * Retrieves products by categories.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const getProductsByCategory = async (req, res) => {
   try {
-    const categories = req.params.categories.split(","); // Split the categories string into an array
+    const categories = req.params.categories.split(",");
     const products = await productModel.find({
       categories: { $in: categories },
     });
@@ -33,7 +49,13 @@ let getProductsByCategory = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-let getProductsByTitle = async (req, res) => {
+
+/**
+ * Retrieves products by title.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const getProductsByTitle = async (req, res) => {
   try {
     const products = await productModel.find({
       title: { $regex: req.params.title, $options: "i" },
@@ -44,8 +66,12 @@ let getProductsByTitle = async (req, res) => {
   }
 };
 
-//for seller
-let addNewProduct = async (req, res) => {
+/**
+ * Adds a new product.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const addNewProduct = async (req, res) => {
   try {
     const product = new productModel({
       title: req.body.title,
@@ -53,23 +79,29 @@ let addNewProduct = async (req, res) => {
       price: req.body.price,
       categories: req.body.categories,
       seller: req.body.seller,
-      // Don't let seller add reviews
     });
 
-    // Handle file upload logic for four images
-    const uploadPromises = req.files.map((file) => cloudinary.v2.uploader.upload(file.path));
+    const uploadPromises = req.files.map((file) =>
+      cloudinary.v2.uploader.upload(file.path)
+    );
     const uploads = await Promise.all(uploadPromises);
     const imageUrls = uploads.map((upload) => upload.secure_url);
     product.images = imageUrls;
 
     const newProduct = await product.save();
-    res.status(201).json({ message: "Created Successfully", data: newProduct });
+    res
+      .status(201)
+      .json({ message: "Created Successfully", data: newProduct });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-//for seller
+/**
+ * Updates a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 const updateProductById = async (req, res) => {
   try {
     const productId = req.params.id;
@@ -88,23 +120,30 @@ const updateProductById = async (req, res) => {
   }
 };
 
-//for seller
-let deleteProductById = async (req, res) => {
-  const id = req.params.id;
-  productModel
-    .deleteOne({ _id: id })
-    .then(() => {
-      res.status(200).json({ message: "Deleted Successfully" });
-    })
-    .catch((error) => {
-      res.status(500).json({ message: error.message });
-    });
+/**
+ * Deletes a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const deleteProductById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await productModel.deleteOne({ _id: id });
+    res.status(200).json({ message: "Deleted Successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
-//for customer
-let addReviewProductById = async (req, res) => {
+
+/**
+ * Adds a review to a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const addReviewProductById = async (req, res) => {
   try {
     if (true) {
-      //add validation function here
+      // Add validation function here
       const product = await productModel.findById(req.params.id);
       if (product) {
         product.reviews.push(req.body);
@@ -113,7 +152,7 @@ let addReviewProductById = async (req, res) => {
           .status(200)
           .json({ message: "Updated Successfully", data: updatedProduct });
       } else {
-        res.status(404).json({ message: "invalid data" });
+        res.status(404).json({ message: "Invalid data" });
       }
     } else {
       res.status(400).json({ message: "Invalid Data" });

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: controllers/product.controller.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: controllers/product.controller.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const productModel = require("../models/product.model");
+const cloudinary = require("../config/cloudinary");
+
+/**
+ * Retrieves all products.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ */
+const getAllProducts = async (req, res, next) => {
+  try {
+    const allProducts = await productModel.find();
+    res.status(200).json(allProducts);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * Retrieves a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const getProductById = async (req, res) => {
+  try {
+    const product = await productModel.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+/**
+ * Retrieves products by categories.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const getProductsByCategory = async (req, res) => {
+  try {
+    const categories = req.params.categories.split(",");
+    const products = await productModel.find({
+      categories: { $in: categories },
+    });
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+/**
+ * Retrieves products by title.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const getProductsByTitle = async (req, res) => {
+  try {
+    const products = await productModel.find({
+      title: { $regex: req.params.title, $options: "i" },
+    });
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+/**
+ * Adds a new product.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const addNewProduct = async (req, res) => {
+  try {
+    const product = new productModel({
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      categories: req.body.categories,
+      seller: req.body.seller,
+    });
+
+    const uploadPromises = req.files.map((file) =>
+      cloudinary.v2.uploader.upload(file.path)
+    );
+    const uploads = await Promise.all(uploadPromises);
+    const imageUrls = uploads.map((upload) => upload.secure_url);
+    product.images = imageUrls;
+
+    const newProduct = await product.save();
+    res
+      .status(201)
+      .json({ message: "Created Successfully", data: newProduct });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+/**
+ * Updates a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const updateProductById = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const updatedData = req.body;
+    const updatedProduct = await productModel.findByIdAndUpdate(
+      productId,
+      { $set: updatedData },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "Updated Successfully" });
+  } catch (error) {
+    let isNotFound = error.name === "CastError";
+    if (isNotFound) res.status(404).json({ message: "Product is not found" });
+    else res.status(400).json({ message: error.message });
+  }
+};
+
+/**
+ * Deletes a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const deleteProductById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await productModel.deleteOne({ _id: id });
+    res.status(200).json({ message: "Deleted Successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+/**
+ * Adds a review to a product by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+const addReviewProductById = async (req, res) => {
+  try {
+    if (true) {
+      // Add validation function here
+      const product = await productModel.findById(req.params.id);
+      if (product) {
+        product.reviews.push(req.body);
+        const updatedProduct = await product.save();
+        res
+          .status(200)
+          .json({ message: "Updated Successfully", data: updatedProduct });
+      } else {
+        res.status(404).json({ message: "Invalid data" });
+      }
+    } else {
+      res.status(400).json({ message: "Invalid Data" });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  getAllProducts,
+  getProductById,
+  getProductsByCategory,
+  getProductsByTitle,
+  addNewProduct,
+  updateProductById,
+  deleteProductById,
+  addReviewProductById,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-FileUploader.html">FileUploader</a></li><li><a href="module-ValidationRules.html">ValidationRules</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AddItem">AddItem</a></li><li><a href="global.html#CreateCart">CreateCart</a></li><li><a href="global.html#DeleteCart">DeleteCart</a></li><li><a href="global.html#GetAllCarts">GetAllCarts</a></li><li><a href="global.html#GetAllOrders">GetAllOrders</a></li><li><a href="global.html#GetCartByCustId">GetCartByCustId</a></li><li><a href="global.html#GetOrderByCustId">GetOrderByCustId</a></li><li><a href="global.html#GetOrderByCustIdAndState">GetOrderByCustIdAndState</a></li><li><a href="global.html#GetOrderByState">GetOrderByState</a></li><li><a href="global.html#RemoveItem">RemoveItem</a></li><li><a href="global.html#UpdateOrder">UpdateOrder</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addReviewProductById">addReviewProductById</a></li><li><a href="global.html#createToken">createToken</a></li><li><a href="global.html#deleteCustomerById">deleteCustomerById</a></li><li><a href="global.html#deleteProductById">deleteProductById</a></li><li><a href="global.html#editCustomerById">editCustomerById</a></li><li><a href="global.html#expiryTimeInSeconds">expiryTimeInSeconds</a></li><li><a href="global.html#getAllCategories">getAllCategories</a></li><li><a href="global.html#getAllCustomers">getAllCustomers</a></li><li><a href="global.html#getAllProducts">getAllProducts</a></li><li><a href="global.html#getCustomerById">getCustomerById</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProductsByCategory">getProductsByCategory</a></li><li><a href="global.html#getProductsByTitle">getProductsByTitle</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#privateKey">privateKey</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#tryStripe">tryStripe</a></li><li><a href="global.html#updateProductById">updateProductById</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 10 2023 15:18:53 GMT+0300 (East Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

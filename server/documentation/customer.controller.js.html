@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: customer.controller.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: customer.controller.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const customerModel = require('../models/customer.model');
+
+/**
+ * Retrieves all customers (for admin).
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+let getAllCustomers = async (req, res) => {
+    try {
+        const allCustomers = await customerModel.find();
+        res.status(200).json(allCustomers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+/**
+ * Retrieves a customer by ID (for admin).
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+let getCustomerById = async (req, res) => {
+    try {
+        const customer = await customerModel.findById(req.params.id);
+        res.status(200).json(customer);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+/**
+ * Deletes a customer by ID (for admin).
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+let deleteCustomerById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await customerModel.deleteOne({ _id: id });
+        res.status(200).json({ message: "Customer Deleted Successfully" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+/**
+ * Edits a customer by ID (for admin).
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
+let editCustomerById = async (req, res) => {
+    try {
+        const customerId = req.params.id;
+        const updatedData = req.body;
+        const updatedCustomer = await customerModel.findByIdAndUpdate(
+            customerId,
+            { $set: updatedData },
+            { new: true }
+        );
+
+        res.status(200).json({ message: "Updated Successfully" });
+    } catch (error) {
+        let isNotFound = error.name === "CastError";
+        if (isNotFound) res.status(404).json({ message: "Customer is not found" });
+        else res.status(400).json({ message: error.message });
+    }
+};
+
+module.exports = {
+    getAllCustomers,
+    getCustomerById,
+    editCustomerById,
+    deleteCustomerById
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddItem">AddItem</a></li><li><a href="global.html#CreateCart">CreateCart</a></li><li><a href="global.html#DeleteCart">DeleteCart</a></li><li><a href="global.html#GetAllCarts">GetAllCarts</a></li><li><a href="global.html#GetAllOrders">GetAllOrders</a></li><li><a href="global.html#GetCartByCustId">GetCartByCustId</a></li><li><a href="global.html#GetOrderByCustId">GetOrderByCustId</a></li><li><a href="global.html#GetOrderByCustIdAndState">GetOrderByCustIdAndState</a></li><li><a href="global.html#GetOrderByState">GetOrderByState</a></li><li><a href="global.html#RemoveItem">RemoveItem</a></li><li><a href="global.html#UpdateOrder">UpdateOrder</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addReviewProductById">addReviewProductById</a></li><li><a href="global.html#createToken">createToken</a></li><li><a href="global.html#deleteCustomerById">deleteCustomerById</a></li><li><a href="global.html#deleteProductById">deleteProductById</a></li><li><a href="global.html#editCustomerById">editCustomerById</a></li><li><a href="global.html#expiryTimeInSeconds">expiryTimeInSeconds</a></li><li><a href="global.html#getAllCategories">getAllCategories</a></li><li><a href="global.html#getAllCustomers">getAllCustomers</a></li><li><a href="global.html#getAllProducts">getAllProducts</a></li><li><a href="global.html#getCustomerById">getCustomerById</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProductsByCategory">getProductsByCategory</a></li><li><a href="global.html#getProductsByTitle">getProductsByTitle</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#privateKey">privateKey</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#tryStripe">tryStripe</a></li><li><a href="global.html#updateProductById">updateProductById</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 10 2023 15:15:55 GMT+0300 (East Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>mobillio-online-store documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">mobillio-online-store documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AboutComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/about/about.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-about</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./about.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./about.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;app-about&#x27;,
+  templateUrl: &#x27;./about.component.html&#x27;,
+  styleUrls: [&#x27;./about.component.css&#x27;]
+})
+export class AboutComponent {
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;about-us&quot;&gt;
+  &lt;div class&#x3D;&quot;artika-info&quot;&gt;
+  &lt;h2&gt;About Us&lt;/h2&gt;
+  &lt;p&gt;
+    Welcome to Artika, an ecommerce website created in 2023 to support small businesses in selling their handmade products and connecting with their fans. We believe in the power of creativity and the value of supporting local artisans. Our mission is to provide a platform where artisans can showcase their unique creations and enthusiasts can discover and purchase these one-of-a-kind products. With Artika, we aim to foster a community that celebrates craftsmanship, promotes sustainable practices, and empowers talented individuals to thrive in the world of handmade goods.
+  &lt;/p&gt;
+  &lt;p&gt;
+    At Artika, we understand the passion and dedication that goes into creating handmade products. Each item available on our platform is carefully crafted with love and attention to detail. We curate a diverse range of categories, including jewelry, home decor, fashion accessories, and more, to cater to different tastes and preferences. By offering a wide selection of high-quality handmade products, we aim to connect artisans with a global audience and help them build sustainable businesses.
+  &lt;/p&gt;
+  &lt;p&gt;
+    We value the relationships we build with our artisans and customers. We strive to provide excellent customer service and ensure a seamless shopping experience for our users. Our dedicated team is always available to address any inquiries or concerns, ensuring that every interaction with Artika is met with professionalism and care.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+
+  &lt;h3&gt;Our Team&lt;/h3&gt;
+  &lt;div class&#x3D;&quot;team-members&quot;&gt;
+    &lt;div class&#x3D;&quot;team-member&quot;&gt;
+      &lt;img src&#x3D;&quot;https://via.placeholder.com/150&quot; alt&#x3D;&quot;Team Member 1&quot; /&gt;
+      &lt;h4&gt;John Doe&lt;/h4&gt;
+      &lt;h5&gt;Lead Designer&lt;/h5&gt;
+      &lt;p&gt;
+        John is a talented designer with a passion for creating visually stunning experiences. With years of experience in the industry, he ensures that every aspect of Artika reflects the dedication and craftsmanship of our artisans.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;team-member&quot;&gt;
+      &lt;img src&#x3D;&quot;https://via.placeholder.com/150&quot; alt&#x3D;&quot;Team Member 2&quot; /&gt;
+      &lt;h4&gt;Jane Smith&lt;/h4&gt;
+      &lt;h5&gt;Marketing Specialist&lt;/h5&gt;
+      &lt;p&gt;
+        Jane is an expert in connecting businesses with their target audience. Her innovative marketing strategies help us spread the word about Artika and bring more attention to the incredible handmade products offered on our platform.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;team-member&quot;&gt;
+      &lt;img src&#x3D;&quot;https://via.placeholder.com/150&quot; alt&#x3D;&quot;Team Member 3&quot; /&gt;
+      &lt;h4&gt;Mike Johnson&lt;/h4&gt;
+      &lt;h5&gt;Developer&lt;/h5&gt;
+      &lt;p&gt;
+        Mike is a skilled developer who brings our ideas to life through elegant and efficient code. With his expertise, Artika&#x27;s website provides a seamless user experience and ensures smooth functionality for our customers.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;team-member&quot;&gt;
+      &lt;img src&#x3D;&quot;https://via.placeholder.com/150&quot; alt&#x3D;&quot;Team Member 4&quot; /&gt;
+      &lt;h4&gt;Sarah Williams&lt;/h4&gt;
+      &lt;h5&gt;Customer Support&lt;/h5&gt;
+      &lt;p&gt;
+        Sarah is dedicated to providing exceptional customer support to ensure a positive experience for Artika&#x27;s users. She goes above and beyond to address any concerns or inquiries and ensure customer satisfaction.
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;team-member&quot;&gt;
+      &lt;img src&#x3D;&quot;https://via.placeholder.com/150&quot; alt&#x3D;&quot;Team Member 5&quot; /&gt;
+      &lt;h4&gt;Ahmed Kamal&lt;/h4&gt;
+      &lt;h5&gt;Customer Support&lt;/h5&gt;
+      &lt;p&gt;
+        Sarah is dedicated to providing exceptional customer support to ensure a positive experience for Artika&#x27;s users. She goes above and beyond to address any concerns or inquiries and ensure customer satisfaction.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./about.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.about-us {
+  margin-top: 190px;
+  background-color: #f3f0e6;
+  padding: 20px;
+  position: relative;
+}
+
+.about-us::before,
+.about-us::after {
+  content: &#x27;&#x27;;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index: -1;
+}
+
+.about-us::before {
+  top: -100px;
+  background: linear-gradient(to bottom, #dfe7ddff, #f3f0e6);
+}
+
+.about-us::after {
+  bottom: -100px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), #f3f0e6);
+}
+
+.artika-info {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.about-us h2 {
+  color: rgba(239, 193, 76, 1);
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.about-us p {
+  color: #333;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  margin-top: 10%;
+}
+
+.about-us h3 {
+  color: rgba(239, 193, 76, 1);
+  font-size: 34px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.team-members {
+  display: grid;
+  grid-gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.team-member {
+  padding: 10px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.team-member h4 {
+  color: rgba(239, 193, 76, 1);
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.team-member h5 {
+  color: #666;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.team-member p {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* Media queries */
+@media (min-width: 768px) {
+  .team-members {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="about-us">  <div class="artika-info">  <h2>About Us</h2>  <p>    Welcome to Artika, an ecommerce website created in 2023 to support small businesses in selling their handmade products and connecting with their fans. We believe in the power of creativity and the value of supporting local artisans. Our mission is to provide a platform where artisans can showcase their unique creations and enthusiasts can discover and purchase these one-of-a-kind products. With Artika, we aim to foster a community that celebrates craftsmanship, promotes sustainable practices, and empowers talented individuals to thrive in the world of handmade goods.  </p>  <p>    At Artika, we understand the passion and dedication that goes into creating handmade products. Each item available on our platform is carefully crafted with love and attention to detail. We curate a diverse range of categories, including jewelry, home decor, fashion accessories, and more, to cater to different tastes and preferences. By offering a wide selection of high-quality handmade products, we aim to connect artisans with a global audience and help them build sustainable businesses.  </p>  <p>    We value the relationships we build with our artisans and customers. We strive to provide excellent customer service and ensure a seamless shopping experience for our users. Our dedicated team is always available to address any inquiries or concerns, ensuring that every interaction with Artika is met with professionalism and care.  </p></div>  <h3>Our Team</h3>  <div class="team-members">    <div class="team-member">      <img src="https://via.placeholder.com/150" alt="Team Member 1" />      <h4>John Doe</h4>      <h5>Lead Designer</h5>      <p>        John is a talented designer with a passion for creating visually stunning experiences. With years of experience in the industry, he ensures that every aspect of Artika reflects the dedication and craftsmanship of our artisans.      </p>    </div>    <div class="team-member">      <img src="https://via.placeholder.com/150" alt="Team Member 2" />      <h4>Jane Smith</h4>      <h5>Marketing Specialist</h5>      <p>        Jane is an expert in connecting businesses with their target audience. Her innovative marketing strategies help us spread the word about Artika and bring more attention to the incredible handmade products offered on our platform.      </p>    </div>    <div class="team-member">      <img src="https://via.placeholder.com/150" alt="Team Member 3" />      <h4>Mike Johnson</h4>      <h5>Developer</h5>      <p>        Mike is a skilled developer who brings our ideas to life through elegant and efficient code. With his expertise, Artika\'s website provides a seamless user experience and ensures smooth functionality for our customers.      </p>    </div>    <div class="team-member">      <img src="https://via.placeholder.com/150" alt="Team Member 4" />      <h4>Sarah Williams</h4>      <h5>Customer Support</h5>      <p>        Sarah is dedicated to providing exceptional customer support to ensure a positive experience for Artika\'s users. She goes above and beyond to address any concerns or inquiries and ensure customer satisfaction.      </p>    </div>    <div class="team-member">      <img src="https://via.placeholder.com/150" alt="Team Member 5" />      <h4>Ahmed Kamal</h4>      <h5>Customer Support</h5>      <p>        Sarah is dedicated to providing exceptional customer support to ensure a positive experience for Artika\'s users. She goes above and beyond to address any concerns or inquiries and ensure customer satisfaction.      </p>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AddProductComponent', 'selector': 'app-add-product'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'basket', 'selector': 'app-basket'},{'name': 'BlogPostCard', 'selector': 'blog-post-card'},{'name': 'Cart', 'selector': 'app-cart'},{'name': 'CategoryCard', 'selector': 'category-card'},{'name': 'CategoryComponent', 'selector': 'app-categories'},{'name': 'commentComponent', 'selector': 'app-comment'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'Home', 'selector': 'app-home'},{'name': 'ItemCard', 'selector': 'item-card'},{'name': 'ItemComponent', 'selector': 'app-item'},{'name': 'loginuser', 'selector': 'app-loginuser'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-sidenav'},{'name': 'Orders', 'selector': 'app-orders'},{'name': 'pay', 'selector': 'app-pay'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'product', 'selector': 'app-product'},{'name': 'products', 'selector': 'app-mergedProducts'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'register', 'selector': 'app-register'},{'name': 'SectionHeading', 'selector': 'section-heading'},{'name': 'SellerDashboardComponent', 'selector': 'app-seller-dashboard'},{'name': 'TableComponent', 'selector': 'app-table'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AboutComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AboutComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

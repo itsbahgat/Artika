@@ -1,5 +1,15 @@
+/**
+ * @file Manages validation rules for request body and parameters using express-validator.
+ * @module ValidationRules
+ */
+
 const { body, param, validationResult } = require("express-validator");
 const Customer = require("../models/customer.model");
+
+/**
+ * Defines the validation rules for user registration.
+ * @returns {Array} An array of validation rules.
+ */
 
 const userValidationRules = () => {
   return [
@@ -54,6 +64,10 @@ const userValidationRules = () => {
   ];
 };
 
+/**
+ * Defines the validation rules for Stripe payment.
+ * @returns {Array} An array of validation rules.
+ */
 const stripeValidationRules = () => {
   const possibleCurrencies =
     /^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BIF|BMD|BND|BOB|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHF|CLP|CNY|COP|CRC|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|ISK|JMD|JPY|KES|KGS|KHR|KMF|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRO|MUR|MWK|MXN|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STD|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|UYU|UZS|VES|VND|VUV|WST|XAF|XCD|XOF|XPF|YER|ZAR|ZMW)$/;
@@ -67,6 +81,10 @@ const stripeValidationRules = () => {
   ];
 };
 
+/**
+ * Defines the validation rules for updating an order.
+ * @returns {Array} An array of validation rules.
+ */
 const updateOrderValidationRules = () => {
   const stateRegex =
     /^(pending|shipped|delivered|cancelled|accepted|rejected)$/;
@@ -80,10 +98,18 @@ const updateOrderValidationRules = () => {
   ];
 };
 
+/**
+ * Defines the validation rules for searching an order.
+ * @returns {Array} An array of validation rules.
+ */
 const searchOrderValidationRules = () => {
   return [param("id").isMongoId().withMessage("customer id should be mongoID")];
 };
 
+/**
+ * Defines the validation rules for updating a cart.
+ * @returns {Array} An array of validation rules.
+ */
 const updateCartValidationRules = () => {
   return [
     body("customerId").isMongoId().withMessage("customer id should be mongoID"),
@@ -92,6 +118,10 @@ const updateCartValidationRules = () => {
   ];
 };
 
+/**
+ * Defines the validation rules for deleting a cart.
+ * @returns {Array} An array of validation rules.
+ */
 const deleteCartValidationRules = () => {
   return [
     body("customerId").isString().withMessage("customer id should be mongoID"),
@@ -99,6 +129,10 @@ const deleteCartValidationRules = () => {
   ];
 };
 
+/**
+ * Defines the validation rules for searching a cart.
+ * @returns {Array} An array of validation rules.
+ */
 const searchCartValidationRules = () => {
   return [
     //param('id').isMongoId().withMessage('customer id should be mongoID')
@@ -106,6 +140,13 @@ const searchCartValidationRules = () => {
   ];
 };
 
+/**
+ * Validates the request and sends appropriate response if there are errors.
+ * @param {Object} req - The HTTP request object.
+ * @param {Object} res - The HTTP response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Object} The response object with error information if there are errors.
+ */
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   const extractedErrors = [];

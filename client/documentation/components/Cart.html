@@ -1,0 +1,1224 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>mobillio-online-store documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">mobillio-online-store documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  Cart</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/cart/cart.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-cart</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>cart.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>cart.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#basketRef" >basketRef</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingIncrease" >isLoadingIncrease</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingReduce" >isLoadingReduce</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingRemove" >isLoadingRemove</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkBtn" >checkBtn</a>
+                            </li>
+                            <li>
+                                <a href="#getTotalPrice" >getTotalPrice</a>
+                            </li>
+                            <li>
+                                <a href="#increaseButton" >increaseButton</a>
+                            </li>
+                            <li>
+                                <a href="#reduceButton" >reduceButton</a>
+                            </li>
+                            <li>
+                                <a href="#removeButton" >removeButton</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#products" >products</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, cartService: <a href="../injectables/CartService.html" target="_self">CartService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/cart/cart.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cartService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CartService.html" target="_self" >CartService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="products"></a>
+                        <b>products</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/cart/cart.component.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkBtn"></a>
+                    <span class="name">
+                        <span ><b>checkBtn</b></span>
+                        <a href="#checkBtn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkBtn()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/components/cart/cart.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTotalPrice"></a>
+                    <span class="name">
+                        <span ><b>getTotalPrice</b></span>
+                        <a href="#getTotalPrice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTotalPrice()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/components/cart/cart.component.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseButton"></a>
+                    <span class="name">
+                        <span ><b>increaseButton</b></span>
+                        <a href="#increaseButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>increaseButton(productId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/components/cart/cart.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>productId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reduceButton"></a>
+                    <span class="name">
+                        <span ><b>reduceButton</b></span>
+                        <a href="#reduceButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reduceButton(productId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/components/cart/cart.component.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>productId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeButton"></a>
+                    <span class="name">
+                        <span ><b>removeButton</b></span>
+                        <a href="#removeButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeButton(productId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/components/cart/cart.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>productId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="basketRef"></a>
+                    <span class="name">
+                        <span ><b>basketRef</b></span>
+                        <a href="#basketRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/basket.html" target="_self" >basket</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;basketRef&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/cart/cart.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingIncrease"></a>
+                    <span class="name">
+                        <span ><b>isLoadingIncrease</b></span>
+                        <a href="#isLoadingIncrease"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/cart/cart.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingReduce"></a>
+                    <span class="name">
+                        <span ><b>isLoadingReduce</b></span>
+                        <a href="#isLoadingReduce"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/cart/cart.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingRemove"></a>
+                    <span class="name">
+                        <span ><b>isLoadingRemove</b></span>
+                        <a href="#isLoadingRemove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/cart/cart.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input , ViewChild } from &#x27;@angular/core&#x27;
+import { basket } from &#x27;../../pages/basket/basket.component&#x27;;
+import { AuthService } from &#x27;../../pages/services/authuser.service&#x27;;
+import { CartService } from &#x27;../../pages/services/cart.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+
+
+@Component({
+  selector: &#x27;app-cart&#x27;,
+  templateUrl: &#x27;cart.component.html&#x27;,
+  styleUrls: [&#x27;cart.component.css&#x27;],
+})
+export class Cart {
+  @Input() products: any[] &#x3D; [];
+  @ViewChild(&#x27;basketRef&#x27;) basketRef!: basket;
+
+  isLoadingRemove &#x3D; false;
+  isLoadingReduce &#x3D; false;
+  isLoadingIncrease &#x3D; false;
+
+  getTotalPrice() {
+    let sum &#x3D; 0;
+    for (let i &#x3D; 0; i &lt; this.products.length; i++) {
+      sum +&#x3D; this.products[i].price * this.products[i].quantity;
+    }
+    return Math.ceil(sum);
+  }
+  
+
+  checkBtn() {
+    const totalPrice &#x3D; this.getTotalPrice();
+    const roundedTotalPrice &#x3D; Math.ceil(totalPrice); // round to the nearest upper integer value
+    this.router.navigate([&#x27;/payment&#x27;], {
+      queryParams: {
+        total: roundedTotalPrice,
+      }
+    });
+  }
+  
+  
+  constructor(
+    private authService: AuthService,
+    private cartService: CartService,
+    private router: Router // Inject the Router module
+  ) {}  
+
+  removeButton(productId){
+    this.isLoadingRemove &#x3D; true;
+
+    const customerId &#x3D; this.authService.getProperty(&quot;_id&quot;); 
+    if (!customerId) {
+      console.error(&quot;Customer ID is undefined&quot;);
+      return;
+    }
+  
+    if (!this.cartService) {
+      console.error(&quot;Cart service is undefined&quot;);
+      return;
+    }
+  
+    this.cartService.removeProductFromCart(customerId, productId).subscribe((response: any) &#x3D;&gt; {
+      console.log(response);
+      // Reload the cart after successful removal
+      this.cartService.getCart(customerId).subscribe((cart: any) &#x3D;&gt; {
+        this.products &#x3D; this.cartService.getProductsFromCart(cart);
+        this.isLoadingRemove &#x3D; false;
+      });
+    });
+
+  }
+
+  reduceButton(productId){
+    this.isLoadingReduce &#x3D; true;
+
+    const customerId &#x3D; this.authService.getProperty(&quot;_id&quot;);
+    this.cartService.reduceProductFromCart(customerId, productId).subscribe((response: any) &#x3D;&gt; {
+      console.log(response);
+      // Reload the cart after successful removal
+      this.cartService.getCart(customerId).subscribe((cart: any) &#x3D;&gt; {
+        this.products &#x3D; this.cartService.getProductsFromCart(cart);
+        this.isLoadingReduce &#x3D; false;
+      });
+    });
+
+  }
+  increaseButton(productId) {
+    this.isLoadingIncrease &#x3D; true;
+
+    const customerId &#x3D; this.authService.getProperty(&quot;_id&quot;);
+    this.cartService.addProductToCart(customerId, productId).subscribe((response: any) &#x3D;&gt; {
+      console.log(response);
+      // Reload the cart after successful addition
+      this.cartService.getCart(customerId).subscribe((cart: any) &#x3D;&gt; {
+        this.products &#x3D; this.cartService.getProductsFromCart(cart);
+        this.isLoadingIncrease &#x3D; false;
+      });
+    });
+
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;cart&quot; *ngIf&#x3D;&quot;products.length &gt; 0 else emptyCart&quot;&gt;
+  &lt;div class&#x3D;&quot;products&quot;&gt;
+    &lt;div *ngFor&#x3D;&quot;let product of products&quot; class&#x3D;&quot;product-container&quot;&gt;
+      &lt;a [href]&#x3D;&quot;&#x27;product/&#x27; + product._id&quot; class&#x3D;&quot;product-link&quot;&gt;
+        &lt;div class&#x3D;&quot;product&quot;&gt;
+          &lt;div class&#x3D;&quot;left-column&quot;&gt;
+            &lt;div class&#x3D;&quot;product-image&quot;&gt;
+              &lt;img src&#x3D;&quot;{{ product.images[0] }}&quot; alt&#x3D;&quot;{{ product.title }}&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;right-column&quot;&gt;
+            &lt;div class&#x3D;&quot;product-details&quot;&gt;
+              &lt;h2&gt;{{ product.title }}&lt;/h2&gt;
+              &lt;p&gt;{{ product.description }}&lt;/p&gt;
+
+              &lt;p class&#x3D;&quot;price&quot;&gt;
+                £{{ product.price }}
+              &lt;/p&gt;
+
+
+              &lt;ng-container *ngIf&#x3D;&quot;!isLoadingRemove &amp;&amp; !isLoadingReduce &amp;&amp; !isLoadingIncrease; else loadingPrice&quot;&gt;
+                {{ product.quantity }}
+              &lt;/ng-container&gt;
+              &lt;ng-template #loadingPrice&gt;
+                &lt;span class&#x3D;&quot;spinner&quot;&gt;&lt;/span&gt;
+              &lt;/ng-template&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+
+      &lt;div class&#x3D;&quot;product-buttons&quot;&gt;
+        &lt;button (click)&#x3D;&quot;removeButton(product._id)&quot; [disabled]&#x3D;&quot;isLoadingRemove&quot;&gt;
+          &lt;span *ngIf&#x3D;&quot;isLoadingRemove&quot;&gt;Loading...&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;!isLoadingRemove&quot;&gt;Remove&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button (click)&#x3D;&quot;reduceButton(product._id)&quot; [disabled]&#x3D;&quot;isLoadingReduce&quot;&gt;
+          &lt;span *ngIf&#x3D;&quot;isLoadingReduce&quot;&gt;Loading...&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;!isLoadingReduce&quot;&gt;Reduce&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button (click)&#x3D;&quot;increaseButton(product._id)&quot; [disabled]&#x3D;&quot;isLoadingIncrease&quot;&gt;
+          &lt;span *ngIf&#x3D;&quot;isLoadingIncrease&quot;&gt;Loading...&lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;!isLoadingIncrease&quot;&gt;Increase&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;cart-footer&quot;&gt;
+    &lt;div class&#x3D;&quot;total&quot;&gt;
+      &lt;p class&#x3D;&quot;price&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;!isLoadingRemove &amp;&amp; !isLoadingReduce &amp;&amp; !isLoadingIncrease; else loadingTotal&quot;&gt;
+          £{{ getTotalPrice() }}
+        &lt;/ng-container&gt;
+        &lt;ng-template #loadingTotal&gt;
+          &lt;span class&#x3D;&quot;spinner&quot;&gt;&lt;/span&gt;
+        &lt;/ng-template&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button (click)&#x3D;&quot;checkBtn()&quot; class&#x3D;&quot;checkout-btn&quot;&gt;Checkout&lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;ng-template #emptyCart&gt;
+  &lt;div class&#x3D;&quot;empty-cart-message&quot;&gt;
+    &lt;p&gt;Your cart is currently empty. Start adding some amazing products now! 🛍️&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>cart.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.cart {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: &#x27;Poppins&#x27;, sans-serif;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.product {
+  display: flex;
+  background-color: #f3f0e6;
+  overflow: hidden;
+  max-height: 200px;
+  user-select: none;
+  transition: 0.3s;
+}
+
+.product:hover {
+  background-color: #dfe7ddff;
+}
+
+.product:active {
+  transform: scale(0.95);
+}
+
+
+.left-column {
+  flex-basis: 25%;
+}
+
+.left-column .product-image {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.left-column .product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.product:hover .left-column .product-image img {
+  transform: scale(1.1);
+}
+
+.right-column {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.product-details {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.product-details h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.total p {
+  margin-right: 10px;
+}
+
+.checkout-btn {
+  cursor: pointer;
+  display: flex;
+  padding: 16px 24px;
+  position: relative;
+  box-sizing: border-box;
+  transition: 0.3s;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 1px;
+  background-color: rgba(239, 193, 76, 1);
+}
+
+.checkout-btn:hover {
+  background-color: var(--dl-color-gray-white);
+}
+
+@media screen and (max-width: 768px) {
+  .products {
+    flex-direction: column;
+  }
+
+  .left-column {
+    flex-basis: 100%;
+  }
+
+  .left-column .product-image {
+    height: 200px;
+  }
+
+  .right-column {
+    flex-basis: 100%;
+  }
+
+  .product-details {
+    padding: 20px;
+  }
+
+  .cart-footer {
+    flex-direction: column;
+  }
+}
+
+.product-button {
+  width: 120px;
+  /* set the desired width */
+  height: 40px;
+  /* set the desired height */
+  /* add any other styles as needed */
+}
+
+.product-buttons button {
+  color: #000c;
+  color: var(--dl-color-gray-black80);
+  cursor: pointer;
+  display: flex;
+  padding: .5rem 1rem;
+  position: relative;
+  box-sizing: border-box;
+  font-style: normal;
+  transition: .3s;
+  align-items: flex-start;
+  flex-shrink: 1;
+  font-weight: 500;
+  line-height: 14px;
+  border-color: #f3f0e6;
+  border-style: solid;
+  border-width: 1px;
+  padding: 12px 24px;
+  border-radius: 0;
+  text-decoration: none
+}
+
+.product-buttons button {
+  /* other styles */
+  display: inline-flex;
+  width: 33.333%;
+  /* set the width to 100% */
+  height: 10%;
+  /* set the height to 100% */
+
+}
+
+
+.product-buttons button:hover {
+  color: #fff;
+  color: var(--dl-color-gray-white);
+  border-color: #efc14c;
+  border-color: var(--dl-color-pallet-yellow);
+  background-color: #efc14c;
+  background-color: var(--dl-color-pallet-yellow)
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-cart-message {
+  text-align: center;
+  margin: auto;
+  margin-top: 50px; /* Adjust the margin as needed */
+  margin-bottom: 10px;
+  max-width: 500px;
+
+}
+
+.empty-cart-message p {
+  font-size: 24px;
+  color: #555;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  line-height: 1.4;
+  user-select: none;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="cart" *ngIf="products.length > 0 else emptyCart">  <div class="products">    <div *ngFor="let product of products" class="product-container">      <a [href]="\'product/\' + product._id" class="product-link">        <div class="product">          <div class="left-column">            <div class="product-image">              <img src="{{ product.images[0] }}" alt="{{ product.title }}">            </div>          </div>          <div class="right-column">            <div class="product-details">              <h2>{{ product.title }}</h2>              <p>{{ product.description }}</p>              <p class="price">                £{{ product.price }}              </p>              <ng-container *ngIf="!isLoadingRemove && !isLoadingReduce && !isLoadingIncrease; else loadingPrice">                {{ product.quantity }}              </ng-container>              <ng-template #loadingPrice>                <span class="spinner"></span>              </ng-template>            </div>          </div>        </div>      </a>      <div class="product-buttons">        <button (click)="removeButton(product._id)" [disabled]="isLoadingRemove">          <span *ngIf="isLoadingRemove">Loading...</span>          <span *ngIf="!isLoadingRemove">Remove</span>        </button>        <button (click)="reduceButton(product._id)" [disabled]="isLoadingReduce">          <span *ngIf="isLoadingReduce">Loading...</span>          <span *ngIf="!isLoadingReduce">Reduce</span>        </button>        <button (click)="increaseButton(product._id)" [disabled]="isLoadingIncrease">          <span *ngIf="isLoadingIncrease">Loading...</span>          <span *ngIf="!isLoadingIncrease">Increase</span>        </button>      </div>    </div>  </div>  <div class="cart-footer">    <div class="total">      <p class="price">        <ng-container *ngIf="!isLoadingRemove && !isLoadingReduce && !isLoadingIncrease; else loadingTotal">          £{{ getTotalPrice() }}        </ng-container>        <ng-template #loadingTotal>          <span class="spinner"></span>        </ng-template>      </p>    </div>    <button (click)="checkBtn()" class="checkout-btn">Checkout</button>  </div></div><ng-template #emptyCart>  <div class="empty-cart-message">    <p>Your cart is currently empty. Start adding some amazing products now! 🛍️</p>  </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AddProductComponent', 'selector': 'app-add-product'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'basket', 'selector': 'app-basket'},{'name': 'BlogPostCard', 'selector': 'blog-post-card'},{'name': 'Cart', 'selector': 'app-cart'},{'name': 'CategoryCard', 'selector': 'category-card'},{'name': 'CategoryComponent', 'selector': 'app-categories'},{'name': 'commentComponent', 'selector': 'app-comment'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'Home', 'selector': 'app-home'},{'name': 'ItemCard', 'selector': 'item-card'},{'name': 'ItemComponent', 'selector': 'app-item'},{'name': 'loginuser', 'selector': 'app-loginuser'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-sidenav'},{'name': 'Orders', 'selector': 'app-orders'},{'name': 'pay', 'selector': 'app-pay'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'product', 'selector': 'app-product'},{'name': 'products', 'selector': 'app-mergedProducts'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'register', 'selector': 'app-register'},{'name': 'SectionHeading', 'selector': 'section-heading'},{'name': 'SellerDashboardComponent', 'selector': 'app-seller-dashboard'},{'name': 'TableComponent', 'selector': 'app-table'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Cart'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Cart.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

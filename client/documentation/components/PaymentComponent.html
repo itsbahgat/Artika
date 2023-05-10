@@ -1,0 +1,747 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>mobillio-online-store documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">mobillio-online-store documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  PaymentComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/payment/payment.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-payment</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./payment.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./payment.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#paymentData" >paymentData</a>
+                            </li>
+                            <li>
+                                <a href="#payRef" >payRef</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#customerID" >customerID</a>
+                            </li>
+                            <li>
+                                <a href="#total" >total</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/payment/payment.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="customerID"></a>
+                        <b>customerID</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/components/payment/payment.component.ts:12</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="total"></a>
+                        <b>total</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/payment/payment.component.ts:13</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paymentData"></a>
+                    <span class="name">
+                        <span ><b>paymentData</b></span>
+                        <a href="#paymentData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    amount : 0 ,
+    currency: &#x27;USD&#x27;,
+    source: {
+      object: &#x27;Visa&#x27;,
+      number: &#x27;&#x27;,
+      exp_month: 0,
+      exp_year: 0,
+      cvc: &#x27;&#x27;
+    },
+    description: &#x27;description&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/payment/payment.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="payRef"></a>
+                    <span class="name">
+                        <span ><b>payRef</b></span>
+                        <a href="#payRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/pay.html" target="_self" >pay</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;payRef&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/payment/payment.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, ViewChild } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders  } from &#x27;@angular/common/http&#x27;;
+import { pay } from &#x27;../../pages/pay/pay.component&#x27;;
+
+@Component({
+  selector: &#x27;app-payment&#x27;,
+  templateUrl: &#x27;./payment.component.html&#x27;,
+  styleUrls: [&#x27;./payment.component.css&#x27;]
+})
+export class PaymentComponent{
+
+  @Input() customerID: string &#x3D; &#x27;&#x27;;
+  @Input() total: any ;
+  @ViewChild(&#x27;payRef&#x27;) payRef!: pay;
+  
+  paymentData &#x3D; {
+    amount : 0 ,
+    currency: &#x27;USD&#x27;,
+    source: {
+      object: &#x27;Visa&#x27;,
+      number: &#x27;&#x27;,
+      exp_month: 0,
+      exp_year: 0,
+      cvc: &#x27;&#x27;
+    },
+    description: &#x27;description&#x27;
+  };
+  
+  //possibleCurrencies &#x3D; [&quot;AED&quot;, &quot;AFN&quot;, &quot;ALL&quot;, &quot;AMD&quot;, &quot;ANG&quot;, &quot;AOA&quot;, &quot;ARS&quot;, &quot;AUD&quot;, &quot;AWG&quot;, &quot;AZN&quot;, &quot;BAM&quot;, &quot;BBD&quot;, &quot;BDT&quot;, &quot;BGN&quot;, &quot;BIF&quot;, &quot;BMD&quot;, &quot;BND&quot;, &quot;BOB&quot;, &quot;BRL&quot;, &quot;BSD&quot;, &quot;BTN&quot;, &quot;BWP&quot;, &quot;BYN&quot;, &quot;BZD&quot;, &quot;CAD&quot;, &quot;CDF&quot;, &quot;CHF&quot;, &quot;CLP&quot;, &quot;CNY&quot;, &quot;COP&quot;, &quot;CRC&quot;, &quot;CVE&quot;, &quot;CZK&quot;, &quot;DJF&quot;, &quot;DKK&quot;, &quot;DOP&quot;, &quot;DZD&quot;, &quot;EGP&quot;, &quot;ERN&quot;, &quot;ETB&quot;, &quot;EUR&quot;, &quot;FJD&quot;, &quot;FKP&quot;, &quot;GBP&quot;, &quot;GEL&quot;, &quot;GHS&quot;, &quot;GIP&quot;, &quot;GMD&quot;, &quot;GNF&quot;, &quot;GTQ&quot;, &quot;GYD&quot;, &quot;HKD&quot;, &quot;HNL&quot;, &quot;HRK&quot;, &quot;HTG&quot;, &quot;HUF&quot;, &quot;IDR&quot;, &quot;ILS&quot;, &quot;INR&quot;, &quot;ISK&quot;, &quot;JMD&quot;, &quot;JPY&quot;, &quot;KES&quot;, &quot;KGS&quot;, &quot;KHR&quot;, &quot;KMF&quot;, &quot;KYD&quot;, &quot;KZT&quot;, &quot;LAK&quot;, &quot;LBP&quot;, &quot;LKR&quot;, &quot;LRD&quot;, &quot;LSL&quot;, &quot;LYD&quot;, &quot;MAD&quot;, &quot;MDL&quot;, &quot;MGA&quot;, &quot;MKD&quot;, &quot;MMK&quot;, &quot;MNT&quot;, &quot;MOP&quot;, &quot;MRO&quot;, &quot;MUR&quot;, &quot;MWK&quot;, &quot;MXN&quot;, &quot;MYR&quot;, &quot;MZN&quot;, &quot;NAD&quot;, &quot;NGN&quot;, &quot;NIO&quot;, &quot;NOK&quot;, &quot;NPR&quot;, &quot;NZD&quot;, &quot;OMR&quot;, &quot;PAB&quot;, &quot;PEN&quot;, &quot;PGK&quot;, &quot;PHP&quot;, &quot;PKR&quot;, &quot;PLN&quot;, &quot;PYG&quot;, &quot;QAR&quot;, &quot;RON&quot;, &quot;RSD&quot;, &quot;RUB&quot;, &quot;RWF&quot;, &quot;SAR&quot;, &quot;SBD&quot;, &quot;SCR&quot;, &quot;SDG&quot;, &quot;SEK&quot;, &quot;SGD&quot;, &quot;SHP&quot;, &quot;SLL&quot;, &quot;SOS&quot;, &quot;SRD&quot;, &quot;SSP&quot;, &quot;STD&quot;, &quot;STN&quot;, &quot;SVC&quot;, &quot;SYP&quot;, &quot;SZL&quot;, &quot;THB&quot;, &quot;TJS&quot;, &quot;TMT&quot;, &quot;TND&quot;, &quot;TOP&quot;, &quot;TRY&quot;, &quot;TTD&quot;, &quot;TWD&quot;, &quot;TZS&quot;, &quot;UAH&quot;, &quot;UGX&quot;, &quot;USD&quot;, &quot;UYU&quot;, &quot;UZS&quot;, &quot;VES&quot;, &quot;VND&quot;, &quot;VUV&quot;, &quot;WST&quot;, &quot;XAF&quot;, &quot;XCD&quot;, &quot;XOF&quot;, &quot;XPF&quot;, &quot;YER&quot;, &quot;ZAR&quot;, &quot;ZMW&quot;];
+
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+  }
+
+  
+  onSubmit(): void {
+    this.paymentData.amount &#x3D; Math.ceil(+this.total);
+    this.paymentData.source.exp_month &#x3D; Number(this.paymentData.source.exp_month);
+    this.paymentData.source.exp_year &#x3D; Number(this.paymentData.source.exp_year);
+
+    this.http.post(&#x27;http://localhost:3005/stripe&#x27;, this.paymentData)
+      .subscribe((response) &#x3D;&gt; {
+        console.log(&quot;payment :&quot;,this.paymentData);
+        let checkoutData &#x3D; {
+          customerId: this.customerID, 
+          checkout:true
+        };
+        const headers &#x3D; new HttpHeaders().set(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+        this.http.delete(&#x27;http://localhost:3005/cart&#x27;, { headers, body: checkoutData })
+        .subscribe((res) &#x3D;&gt; {
+          console.log(res);
+          alert(&#x27;Your order was submitted&#x27;);
+          },
+          (err) &#x3D;&gt; {
+            console.error(&#x27;Error:&#x27;, err);
+            alert(&#x27;Error: Please check over order again&#x27;);
+          });
+      },
+      (error) &#x3D;&gt; {
+        if (error.status !&#x3D;&#x3D; 200) {
+          console.error(&#x27;Error:&#x27;, error);
+          alert(&#x27;Error: Please check over your data again&#x27;);
+        }
+      }
+      );
+  }
+
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div&gt;
+    &lt;h2&gt;Make a Payment&lt;/h2&gt;
+    &lt;form class&#x3D;&quot;payment-form-container&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+      &lt;!--
+      &lt;div&gt;
+        &lt;label for&#x3D;&quot;currency&quot;&gt;Currency:&lt;/label&gt;
+        &lt;select name&#x3D;&quot;currency&quot; [(ngModel)]&#x3D;&quot;paymentData.currency&quot; required&gt;
+          &lt;option value&#x3D;&quot;&quot; disabled&gt;Select a currency&lt;/option&gt;
+          &lt;option *ngFor&#x3D;&quot;let currency of possibleCurrencies&quot; [value]&#x3D;&quot;currency&quot;&gt;{{currency}}&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      --&gt;
+      &lt;div&gt;
+        &lt;label for&#x3D;&quot;card-number&quot;&gt;Card Number:&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;card-number&quot; [(ngModel)]&#x3D;&quot;paymentData.source.number&quot; required&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label for&#x3D;&quot;expiration-date&quot;&gt;Expiration Date:&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;expiration-date&quot; [(ngModel)]&#x3D;&quot;paymentData.source.exp_month&quot; placeholder&#x3D;&quot;Month&quot; required&gt;
+        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;expiration-year&quot; [(ngModel)]&#x3D;&quot;paymentData.source.exp_year&quot; placeholder&#x3D;&quot;Year&quot; required&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label for&#x3D;&quot;cvc&quot;&gt;CVC:&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;cvc&quot; [(ngModel)]&#x3D;&quot;paymentData.source.cvc&quot; required&gt;
+      &lt;/div&gt;
+      &lt;!-- &lt;div&gt;
+        &lt;label for&#x3D;&quot;description&quot;&gt;Description:&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;description&quot; [(ngModel)]&#x3D;&quot;paymentData.description&quot; required&gt;
+      &lt;/div&gt; --&gt;
+      &lt;button type&#x3D;&quot;submit&quot;&gt;Submit Payment&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./payment.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.payment-form-container {
+    background-color: #f3f0e6;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .payment-form-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .payment-form-container label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .payment-form-container input,
+  .payment-form-container select {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: transparent;
+  }
+  
+  .payment-form-container input[name&#x3D;&quot;card-number&quot;] {
+    background-image: url(&#x27;credit-card-icon.png&#x27;);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    background-size: 30px;
+  }
+  
+  .payment-form-container input[name&#x3D;&quot;expiration-date&quot;],
+  .payment-form-container input[name&#x3D;&quot;expiration-year&quot;] {
+    background-image: url(&#x27;calendarIcon.png&#x27;);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    background-size: 30px;
+  }
+  
+  .payment-form-container button[type&#x3D;&quot;submit&quot;] {
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px;
+    position: relative;
+    box-sizing: border-box;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    flex-shrink: 1;
+    border-color: rgba(0, 0, 0, 1);
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(239, 193, 76, 1);
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  
+  .payment-form-container button[type&#x3D;&quot;submit&quot;]:hover {
+    background-color: var(--dl-color-gray-white);
+  }
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div>    <h2>Make a Payment</h2>    <form class="payment-form-container" (ngSubmit)="onSubmit()">      <!--      <div>        <label for="currency">Currency:</label>        <select name="currency" [(ngModel)]="paymentData.currency" required>          <option value="" disabled>Select a currency</option>          <option *ngFor="let currency of possibleCurrencies" [value]="currency">{{currency}}</option>        </select>      </div>      -->      <div>        <label for="card-number">Card Number:</label>        <input type="text" name="card-number" [(ngModel)]="paymentData.source.number" required>      </div>      <div>        <label for="expiration-date">Expiration Date:</label>        <input type="text" name="expiration-date" [(ngModel)]="paymentData.source.exp_month" placeholder="Month" required>        <input type="text" name="expiration-year" [(ngModel)]="paymentData.source.exp_year" placeholder="Year" required>      </div>      <div>        <label for="cvc">CVC:</label>        <input type="text" name="cvc" [(ngModel)]="paymentData.source.cvc" required>      </div>      <!-- <div>        <label for="description">Description:</label>        <input type="text" name="description" [(ngModel)]="paymentData.description" required>      </div> -->      <button type="submit">Submit Payment</button>    </form>  </div>  </div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AddProductComponent', 'selector': 'app-add-product'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'basket', 'selector': 'app-basket'},{'name': 'BlogPostCard', 'selector': 'blog-post-card'},{'name': 'Cart', 'selector': 'app-cart'},{'name': 'CategoryCard', 'selector': 'category-card'},{'name': 'CategoryComponent', 'selector': 'app-categories'},{'name': 'commentComponent', 'selector': 'app-comment'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'Home', 'selector': 'app-home'},{'name': 'ItemCard', 'selector': 'item-card'},{'name': 'ItemComponent', 'selector': 'app-item'},{'name': 'loginuser', 'selector': 'app-loginuser'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarComponent', 'selector': 'app-sidenav'},{'name': 'Orders', 'selector': 'app-orders'},{'name': 'pay', 'selector': 'app-pay'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'product', 'selector': 'app-product'},{'name': 'products', 'selector': 'app-mergedProducts'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'register', 'selector': 'app-register'},{'name': 'SectionHeading', 'selector': 'section-heading'},{'name': 'SellerDashboardComponent', 'selector': 'app-seller-dashboard'},{'name': 'TableComponent', 'selector': 'app-table'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PaymentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PaymentComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

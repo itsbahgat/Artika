@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: middlewares/validation.mw.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: middlewares/validation.mw.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Manages validation rules for request body and parameters using express-validator.
+ * @module ValidationRules
+ */
+
+const { body, param, validationResult } = require("express-validator");
+const Customer = require("../models/customer.model");
+
+/**
+ * Defines the validation rules for user registration.
+ * @returns {Array} An array of validation rules.
+ */
+
+const userValidationRules = () => {
+  return [
+    body("firstName")
+      .notEmpty()
+      .withMessage("First Name is required")
+      .isAlpha()
+      .withMessage("Name should contain only letters!"),
+
+    body("lastName")
+      .notEmpty()
+      .withMessage("Second Name is required")
+      .isAlpha()
+      .withMessage("Name should contain only letters!"),
+
+    body("username")
+      .notEmpty()
+      .withMessage("Username is required")
+      .isLength({ min: 4 })
+      .withMessage("Username should be at least 4 charachters!")
+      .isAlphanumeric()
+      .withMessage("Username should contain only letters and numbers!"),
+
+    body("password")
+      .isLength({ min: 6 })
+      .withMessage("Password must be at least 6 characters long")
+      .custom((value, { req }) => {
+        if (value != req.body.confirmPassword)
+          throw new Error("Passwords do not match");
+        return true;
+      }),
+
+    body("confirmPassword")
+      .notEmpty()
+      .withMessage("Password confirmation is required"),
+
+    body("email")
+      .isEmail()
+      .withMessage("Invalid email address")
+      .custom(async (val) => {
+        const exists = await Customer.exists({ email: val });
+        if (exists) throw new Error("Email exists");
+      }),
+
+    body("address").notEmpty().withMessage("Address is required"),
+
+    body("phone")
+      .notEmpty()
+      .withMessage("Phone number is required")
+      .isMobilePhone(["ar-EG", "ar-SA"])
+      .withMessage("Invalid phone number"),
+  ];
+};
+
+/**
+ * Defines the validation rules for Stripe payment.
+ * @returns {Array} An array of validation rules.
+ */
+const stripeValidationRules = () => {
+  const possibleCurrencies =
+    /^(AED|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BIF|BMD|BND|BOB|BRL|BSD|BTN|BWP|BYN|BZD|CAD|CDF|CHF|CLP|CNY|COP|CRC|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|ISK|JMD|JPY|KES|KGS|KHR|KMF|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRO|MUR|MWK|MXN|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|SSP|STD|STN|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TRY|TTD|TWD|TZS|UAH|UGX|USD|UYU|UZS|VES|VND|VUV|WST|XAF|XCD|XOF|XPF|YER|ZAR|ZMW)$/;
+  return [
+    body("amount").isNumeric().withMessage("amount id should be number"),
+    body("currency")
+      .isAlpha()
+      .matches(possibleCurrencies)
+      .withMessage("please check the currency"),
+    body("description").isAlpha().withMessage("please check the description"),
+  ];
+};
+
+/**
+ * Defines the validation rules for updating an order.
+ * @returns {Array} An array of validation rules.
+ */
+const updateOrderValidationRules = () => {
+  const stateRegex =
+    /^(pending|shipped|delivered|cancelled|accepted|rejected)$/;
+  return [
+    // body('customerId').isMongoId().withMessage('customer id should be mongoID'),
+    body("orderId").isMongoId().withMessage("order id should be mongoID"),
+    body("status")
+      .isAlpha()
+      .matches(stateRegex)
+      .withMessage("please check the status"),
+  ];
+};
+
+/**
+ * Defines the validation rules for searching an order.
+ * @returns {Array} An array of validation rules.
+ */
+const searchOrderValidationRules = () => {
+  return [param("id").isMongoId().withMessage("customer id should be mongoID")];
+};
+
+/**
+ * Defines the validation rules for updating a cart.
+ * @returns {Array} An array of validation rules.
+ */
+const updateCartValidationRules = () => {
+  return [
+    body("customerId").isMongoId().withMessage("customer id should be mongoID"),
+    body("productId").isMongoId().withMessage("product id should be mongoID"),
+    body("deleteItem").isBoolean().withMessage("deleteItem should be an bool"),
+  ];
+};
+
+/**
+ * Defines the validation rules for deleting a cart.
+ * @returns {Array} An array of validation rules.
+ */
+const deleteCartValidationRules = () => {
+  return [
+    body("customerId").isString().withMessage("customer id should be mongoID"),
+    body("checkout").isBoolean().withMessage("checkout should be an bool"),
+  ];
+};
+
+/**
+ * Defines the validation rules for searching a cart.
+ * @returns {Array} An array of validation rules.
+ */
+const searchCartValidationRules = () => {
+  return [
+    //param('id').isMongoId().withMessage('customer id should be mongoID')
+    param("id").isString().withMessage("customer id should be mongoID"),
+  ];
+};
+
+/**
+ * Validates the request and sends appropriate response if there are errors.
+ * @param {Object} req - The HTTP request object.
+ * @param {Object} res - The HTTP response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Object} The response object with error information if there are errors.
+ */
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  const extractedErrors = [];
+  if (errors.isEmpty()) return next();
+
+  errors.array().map((err) => extractedErrors.push({ [err.path]: err.msg }));
+
+  return res.status(422).json({
+    errors: extractedErrors,
+  });
+};
+
+module.exports = {
+  userValidationRules,
+  stripeValidationRules,
+
+  updateOrderValidationRules,
+  searchOrderValidationRules,
+
+  updateCartValidationRules,
+  deleteCartValidationRules,
+  searchCartValidationRules,
+  validate,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Authentication.html">Authentication</a></li><li><a href="module-FileUploader.html">FileUploader</a></li><li><a href="module-ValidationRules.html">ValidationRules</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AddItem">AddItem</a></li><li><a href="global.html#CreateCart">CreateCart</a></li><li><a href="global.html#DeleteCart">DeleteCart</a></li><li><a href="global.html#GetAllCarts">GetAllCarts</a></li><li><a href="global.html#GetAllOrders">GetAllOrders</a></li><li><a href="global.html#GetCartByCustId">GetCartByCustId</a></li><li><a href="global.html#GetOrderByCustId">GetOrderByCustId</a></li><li><a href="global.html#GetOrderByCustIdAndState">GetOrderByCustIdAndState</a></li><li><a href="global.html#GetOrderByState">GetOrderByState</a></li><li><a href="global.html#RemoveItem">RemoveItem</a></li><li><a href="global.html#UpdateOrder">UpdateOrder</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addReviewProductById">addReviewProductById</a></li><li><a href="global.html#createToken">createToken</a></li><li><a href="global.html#deleteCustomerById">deleteCustomerById</a></li><li><a href="global.html#deleteProductById">deleteProductById</a></li><li><a href="global.html#editCustomerById">editCustomerById</a></li><li><a href="global.html#expiryTimeInSeconds">expiryTimeInSeconds</a></li><li><a href="global.html#getAllCategories">getAllCategories</a></li><li><a href="global.html#getAllCustomers">getAllCustomers</a></li><li><a href="global.html#getAllProducts">getAllProducts</a></li><li><a href="global.html#getCustomerById">getCustomerById</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProductsByCategory">getProductsByCategory</a></li><li><a href="global.html#getProductsByTitle">getProductsByTitle</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#privateKey">privateKey</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#tryStripe">tryStripe</a></li><li><a href="global.html#updateProductById">updateProductById</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 10 2023 15:18:53 GMT+0300 (East Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
