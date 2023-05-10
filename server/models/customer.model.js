@@ -50,7 +50,8 @@ const baseUserSchema = new mongoose.Schema({
 //encrypt password
 baseUserSchema.pre('save', async function (next){
   let salt = await bcrypt.genSalt(); 
-  this.password = await bcrypt.hash(this.password, salt);
+  if (this.isNew)
+    this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
@@ -59,6 +60,7 @@ baseUserSchema.statics.login = async function (emailOrUsername, password) {
   if (!user) throw new Error("Incorrect login or password");
   
   const isPasswordValid  = await bcrypt.compare(password, user.password);
+
   if (!isPasswordValid) throw new Error("Incorrect login or password");
   
   return user;

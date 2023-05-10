@@ -22,8 +22,8 @@ const register = async (req, res) => {
     if (req.file) {
       const upload = await cloudinary.v2.uploader.upload(req.file.path);
       newCustomer.avatar = upload.secure_url;
+      await newCustomer.save();
     }
-    newCustomer.save();
 
     const token = createToken(newCustomer.id);
     res.cookie('jwt', token, { httpOnly: true, expiryTime: expiryTimeInSeconds });
