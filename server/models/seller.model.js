@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const user = require('./customer.model');
+const bcrypt = require('bcrypt');
+
 
 const sellerSchema = new mongoose.Schema({
     ...user.schema.obj,
@@ -14,4 +16,13 @@ const sellerSchema = new mongoose.Schema({
     }
   });
 
+sellerSchema.pre('save', async function (next){
+  if (!this.isModified('password')) 
+  return next();
+
+  let salt = await bcrypt.genSalt(); 
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+  });
+  
 module.exports = mongoose.model('Seller', sellerSchema);
