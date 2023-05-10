@@ -2,9 +2,11 @@ const productModel = require("../models/product.model");
 const cloudinary = require("../config/cloudinary");
 
 const getAllProducts = async (req, res, next) => {
-  const allProducts = await productModel.find().catch((error) => {
-    next(error);
-  });
+  const allProducts = await productModel
+    .find({ isAvailable: true })
+    .catch((error) => {
+      next(error);
+    });
   res.status(200).json(allProducts);
 };
 
@@ -26,6 +28,7 @@ let getProductsByCategory = async (req, res) => {
     const categories = req.params.categories.split(","); // Split the categories string into an array
     const products = await productModel.find({
       categories: { $in: categories },
+      isAvailable: true,
     });
     res.status(200).json(products);
   } catch (error) {
@@ -36,6 +39,7 @@ let getProductsByTitle = async (req, res) => {
   try {
     const products = await productModel.find({
       title: { $regex: req.params.title, $options: "i" },
+      isAvailable: true,
     });
     res.status(200).json(products);
   } catch (error) {
