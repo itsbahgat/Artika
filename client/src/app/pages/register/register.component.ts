@@ -45,7 +45,7 @@ export class register implements OnInit {
     console.log("user")
     console.log(user)
     const fileInput = this.fileInput.nativeElement;
-    const file: File = fileInput.files;
+    const file: File = fileInput.files[0];
     user.avatar=file;
     this.authService.register(user)
       .subscribe(

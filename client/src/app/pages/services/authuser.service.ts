@@ -52,7 +52,7 @@ getProperty(property: string): string | null {
     for ( var key in user ) {
         formData.append(key, user[key]);
     }
-
+    
     const url = `${this.baseUrl}/register`;
     return this.http.post(url, formData);
   }
