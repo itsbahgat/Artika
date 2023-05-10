@@ -1,4 +1,6 @@
+
 const jwt = require('jsonwebtoken');
+const cloudinary  =  require("../config/cloudinary");
 const Users = require('../models/customer.model');
 const Seller = require('../models/seller.model');
 
@@ -8,21 +10,29 @@ const expiryTimeInSeconds = process.env.JWT_EXPIRATION_TIME;
 
 const register = async (req, res) => {
   try {       
-    const {role} = req.body;
+    const { role } = req.body;
     let newCustomer;
+
     if (role === "seller") {
       newCustomer = await Seller.create({ ...req.body });
     } else {
       newCustomer = await Users.create({ ...req.body });
     }
 
+    if (req.file) {
+      const upload = await cloudinary.v2.uploader.upload(req.file.path);
+      newCustomer.avatar = upload.secure_url;
+    }
+    newCustomer.save();
+
     const token = createToken(newCustomer.id);
-    res.cookie('jwt',token, {httpOnly: true, expiryTime: expiryTimeInSeconds});
+    res.cookie('jwt', token, { httpOnly: true, expiryTime: expiryTimeInSeconds });
     res.status(201).json({ message: 'Created Successfully', data: newCustomer });    
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
+
 
 const login = async (req, res) => {
   try {
