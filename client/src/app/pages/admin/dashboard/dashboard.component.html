@@ -5,33 +5,37 @@
     <h2>dashboard!</h2>
 
     <div class="container">
-      <div class="card">
-        <div class="card-header">Customers</div>
+      <div class="twoCard" id="c1">
+        <div class="card">
+          <div class="card-header">Customers</div>
 
-        <div class="card-body">
-          <mat-icon class="icon">people</mat-icon>
-          {{ customerCounter }}
+          <div class="card-body">
+            <mat-icon class="icon">people</mat-icon>
+            {{ customerCounter }}
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Products</div>
+          <div class="card-body">
+            <mat-icon class="icon">card_giftcard</mat-icon>
+            {{ productCounter }}
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">Products</div>
-        <div class="card-body">
-          <mat-icon class="icon">card_giftcard</mat-icon>
-          {{ productCounter }}
+      <div class="twoCard" id="c2">
+        <div class="card">
+          <div class="card-header">Carts</div>
+          <div class="card-body">
+            <mat-icon class="icon">shopping_cart_checkout</mat-icon>
+            {{ cartCounter }}
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-header">Carts</div>
-        <div class="card-body">
-          <mat-icon class="icon">shopping_cart_checkout</mat-icon>
-          {{ cartCounter }}
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">Total Order Quantity</div>
-        <div class="card-body">
-          <mat-icon class="icon">currency_exchange</mat-icon>
-          ${{ orderCost }}
+        <div class="card">
+          <div class="card-header">Total Order Quantity</div>
+          <div class="card-body">
+            <mat-icon class="icon">currency_exchange</mat-icon>
+            ${{ orderCost }}
+          </div>
         </div>
       </div>
     </div>

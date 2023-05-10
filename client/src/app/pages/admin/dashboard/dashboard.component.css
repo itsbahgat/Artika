@@ -3,14 +3,21 @@ h2 {
 }
 .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
   padding: 20px;
+  width: 100%;
 }
-
+.twoCard {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
 .card {
-  width: calc(25% - 20px);
-
+  padding: 5px;
+  width: 100%;
+  margin: 0px 10px;
   box-shadow: 0px 0px 5px 1px #ccc;
   margin-bottom: 20px;
   display: flex;
@@ -44,13 +51,13 @@ h2 {
   background-image: linear-gradient(to right, #f1f6f8, #dfdfdf);
   border-bottom-left-radius: 20px;
 }
-.card:nth-child(2) .card-header {
+#c1 .card:nth-child(2) .card-header {
   background-image: linear-gradient(to right, #b993d6, #8ca6db);
 }
-.card:nth-child(3) .card-header {
+#c2 .card:nth-child(1) .card-header {
   background-image: linear-gradient(to right, #00d2ff, #3a7bd5);
 }
-.card:nth-child(4) .card-header {
+#c2 .card:nth-child(2) .card-header {
   background-image: linear-gradient(to right, #d3959b, #de6262);
 }
 .icon {
@@ -60,4 +67,20 @@ h2 {
   margin: auto;
   align-items: center;
   margin-bottom: 20px;
+}
+@media only screen and (max-width: 1000px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .container .twoCard {
+    display: flex;
+    flex-direction: column;
+  }
 }

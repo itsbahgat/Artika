@@ -42,7 +42,21 @@ mat-toolbar-row {
   padding: 0px 10px;
   cursor: pointer;
 }
-
+mat-toolbar {
+  background-color: var(--dl-color-gray-900);
+}
+.mat-drawer,
+.mat-sidenav,
+.ng-tns-c51-0,
+.ng-trigger,
+.ng-trigger-transform,
+.mat-drawer-side,
+.ng-star-inserted,
+.mat-drawer-opened,
+.mat-drawer-inner-container,
+.ng-tns-c51-0 {
+  background-color: var(--dl-color-gray-900);
+}
 /* .customer,svg{
   width: 25px;
   padding:10px;

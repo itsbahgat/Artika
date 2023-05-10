@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit {
       for (const order of ordersArray) {
         this.orderCost += order.total;
       }
+      this.orderCost = Number(this.orderCost.toFixed(2));
+      this.orderCost.toString();
     });
   }
 
