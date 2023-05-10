@@ -51,4 +51,11 @@ export class CustomerAdminService {
     console.log(id);
     return this.http.get(this.baseUrl + "order/" + id);
   }
+  updateOrder(order: any, state: any) {
+    console.log("order id...", order, state);
+    const body = { orderId: order, status: state };
+    return this.http
+      .put(this.baseUrl + "order", body)
+      .subscribe((data) => console.log(data));
+  }
 }

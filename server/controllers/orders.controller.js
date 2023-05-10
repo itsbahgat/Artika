@@ -12,6 +12,10 @@ module.exports.GetAllOrders = (request, response, next) => {
 
 module.exports.GetOrderByCustId = (request, response, next) => {
   Orders.find({ customerId: request.params.id })
+    .populate({
+      path: "items.productId",
+      model: "Product",
+    })
     .then((data) => {
       response.status(200).json(data);
     })
@@ -22,8 +26,9 @@ module.exports.GetOrderByCustId = (request, response, next) => {
 
 module.exports.UpdateOrder = async (request, response, next) => {
   const { orderId, status } = request.body;
-  const updatedOrder = await Orders.findOne({ _id: orderId });
 
+  console.log(request.body);
+  const updatedOrder = await Orders.findOne({ _id: orderId });
   if (!updatedOrder) {
     return response
       .status(404)

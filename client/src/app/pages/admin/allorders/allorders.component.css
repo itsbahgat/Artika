@@ -140,6 +140,11 @@ table .status-absent {
   font-weight: bold;
   background-color: rgb(216, 255, 216);
 }
+.accepted {
+  color: green;
+  font-weight: bold;
+  background-color: rgb(216, 255, 216);
+}
 
 .pending {
   color: yellow;
@@ -148,6 +153,11 @@ table .status-absent {
 }
 
 .cancelled {
+  color: red;
+  font-weight: bold;
+  background-color: rgb(252, 185, 196);
+}
+.rejected {
   color: red;
   font-weight: bold;
   background-color: rgb(252, 185, 196);

@@ -11,6 +11,7 @@ export class AllordersComponent implements OnInit {
   // displayedColumns: string[] = ['username', 'email', 'gender', 'dateOfBirth'];
   // dataSource: MatTableDataSource<User>;
   orderDataArray: any;
+  selectedStatus: any;
   constructor(private cutomerAdminService: CustomerAdminService) {
     this.cutomerAdminService.getAllOrderes().subscribe((data) => {
       this.orderDataArray = data;
@@ -32,6 +33,9 @@ export class AllordersComponent implements OnInit {
     });
   }
 
+  updateStatus(id: any, status: any) {
+    this.cutomerAdminService.updateOrder(id, status);
+  }
   ngOnInit() {
     // this.cutomerAdminService.gettAllCutomers().subscribe(data => {
     //   this.dataSource = new MatTableDataSource<User>(data);

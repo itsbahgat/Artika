@@ -6,16 +6,21 @@
     </caption>
     <thead>
       <tr>
+        <th>Order ID</th>
         <th>Customer ID</th>
         <th>Total</th>
         <th>productId | quantity</th>
         <th>Status</th>
+        <th>Change Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of orderDataArray; index as i">
         <td>
           <a href="#">{{ item._id }}</a>
+        </td>
+        <td>
+          <a href="#">{{ item.customerId }}</a>
         </td>
         <td>{{ item.total }}</td>
         <td>
@@ -34,10 +39,37 @@
           [ngClass]="{
             shipped: item.status === 'shipped',
             pending: item.status === 'pending',
-            cancelled: item.status === 'cancelled'
+            cancelled: item.status === 'cancelled',
+            rejected: item.status === 'rejected',
+            accepted: item.status === 'accepted'
           }"
         >
           {{ item.status }}
+        </td>
+        <td>
+          <select
+            #statusSelect
+            (change)="updateStatus(item._id, statusSelect.value)"
+          >
+            <option [value]="'shipped'" [selected]="item.status === 'shipped'">
+              Shipped
+            </option>
+            <option [value]="'pending'" [selected]="item.status === 'pending'">
+              Pending
+            </option>
+            <option
+              [value]="'rejected'"
+              [selected]="item.status === 'rejected'"
+            >
+              Rejected
+            </option>
+            <option
+              [value]="'accepted'"
+              [selected]="item.status === 'accepted'"
+            >
+              Accepted
+            </option>
+          </select>
         </td>
       </tr>
     </tbody>
