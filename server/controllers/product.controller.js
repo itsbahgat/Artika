@@ -1,6 +1,5 @@
 const productModel = require("../models/product.model");
-const cloudinary  =  require("../config/cloudinary");
-
+const cloudinary = require("../config/cloudinary");
 
 const getAllProducts = async (req, res, next) => {
   const allProducts = await productModel.find().catch((error) => {
@@ -57,7 +56,9 @@ let addNewProduct = async (req, res) => {
     });
 
     // Handle file upload logic for four images
-    const uploadPromises = req.files.map((file) => cloudinary.v2.uploader.upload(file.path));
+    const uploadPromises = req.files.map((file) =>
+      cloudinary.v2.uploader.upload(file.path)
+    );
     const uploads = await Promise.all(uploadPromises);
     const imageUrls = uploads.map((upload) => upload.secure_url);
     product.images = imageUrls;
