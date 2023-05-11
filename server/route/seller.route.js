@@ -5,8 +5,12 @@ const controller = require("../controllers/seller.controller");
 
 // route.post("/seller/update-orders", controller.updateOrders);
 router.route("/seller").get(controller.GetAllSellers);
-router.route("/seller/update-order-status").put(controller.updateSellerOrderStatus);
+router
+  .route("/seller/update-order-status")
+  .put(controller.updateSellerOrderStatus);
 // get all carts for all sellers
+
+router.route("/seller/details/:sellerId").get(controller.GetSellerById);
 
 router
   .route("/seller/:sellerId")

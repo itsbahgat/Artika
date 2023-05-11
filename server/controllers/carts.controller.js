@@ -176,6 +176,7 @@ module.exports.DeleteCart = async (request, response, next) => {
     let productsBySeller = {};
 
     productsBySeller = saveSellersAndProd(cart);
+
     // productsBySeller will now contain the products classified according to the seller
     // console.log(
     //   "productsBySeller\n\n",
@@ -192,9 +193,22 @@ module.exports.DeleteCart = async (request, response, next) => {
         return total;
       }
     }, 0);
+
+    const orderItems = cart.items.map((item) => {
+      return {
+        productId: item.productId._id, // Assuming the productId is already populated
+        quantity: item.quantity,
+        sellerId: item.productId.seller ? item.productId.seller._id : null,
+        sellerStatus: "pending",
+      };
+    });
+
+    console.log(orderItems);
+
     const order = new Orders({
       customerId,
-      items: cartWithoutLoading.items,
+      items: orderItems,
+      // items: cartWithoutLoading.items,
       status: "pending",
       total: totPrice,
     });

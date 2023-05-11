@@ -14,6 +14,20 @@ module.exports.GetAllSellers = (request, response, next) => {
     });
 };
 
+module.exports.GetSellerById = (request, response, next) => {
+  const sellerId = request.params.sellerId;
+
+  console.log("sellerId", sellerId);
+  Sellers.find({ _id: sellerId })
+    .then((data) => {
+      console.log(data);
+      response.status(200).json(data);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
 module.exports.GetSellerOrders = (request, response, next) => {
   const sellerId = request.params.sellerId;
 
@@ -122,16 +136,18 @@ module.exports.updateSellerOrderStatus = async (req, res) => {
     const order = await Order.findOne({
       _id: orderId,
       "items.sellerId": sellerId,
-      customerId: customerId
+      customerId: customerId,
     });
 
-    console.log(order)
+    console.log(order);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
 
     // Find the specific item within the order associated with the seller
-    const orderItem = order.items.find((item) => item.sellerId.equals(sellerId));
+    const orderItem = order.items.find((item) =>
+      item.sellerId.equals(sellerId)
+    );
 
     if (!orderItem) {
       return res.status(404).json({ message: "Item not found" });
@@ -146,5 +162,3 @@ module.exports.updateSellerOrderStatus = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-
