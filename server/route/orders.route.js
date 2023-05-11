@@ -16,7 +16,7 @@ router
   .route("/order/:id")
   .get(searchOrderValidationRules(), validate, controller.GetOrderByCustId);
 
-router.route("/orderState/:state").get(controller.GetOrderByState);
-router.route("/orderState/:id/:state").get(controller.GetOrderByCustIdAndState);
+//router.route("/orderState/:state").get(controller.GetOrderByState);
+//router.route("/orderState/:id/:state").get(controller.GetOrderByCustIdAndState);
 
 module.exports = router;
