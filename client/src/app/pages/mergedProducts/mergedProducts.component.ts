@@ -79,7 +79,7 @@ export class products implements OnInit {
 
     productsRequest.subscribe(
       (products) => {
-        this.products = products;
+        this.products = products.reverse();
         this.calculateAverageRating();
         this.isLoading = false; // Clear loading state
         this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
@@ -93,7 +93,7 @@ export class products implements OnInit {
   }
 
   getPagesAroundCurrent(): number[] {
-    const maxVisiblePages = 4;
+    const maxVisiblePages = 5;
     const maxPagesBeforeCurrent = Math.floor((maxVisiblePages - 1) / 2);
     const maxPagesAfterCurrent = Math.ceil((maxVisiblePages - 1) / 2);
 
@@ -112,7 +112,8 @@ export class products implements OnInit {
 
     return Array(endPage - startPage + 1)
       .fill(0)
-      .map((_, index) => startPage + index);
+      .map((_, index) => startPage + index)
+      .filter((page) => page > 0);
   }
 
   calculateAverageRating() {
