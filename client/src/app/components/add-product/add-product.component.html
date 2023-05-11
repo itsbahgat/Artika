@@ -7,32 +7,35 @@
     </div>
     <form enctype='multipart/form-data' #addProduct="ngForm" (ngSubmit)="submit(addProduct)" class="card-form">
         <div class="input">
-            <input type="text" class="input-field" required name="title" ngModel/>
+            <input type="text" class="input-field" required name="title" ngModel />
             <label class="input-label">Product title</label>
         </div>
         <div class="input">
-            <textarea type="text" class="input-field" required name="description" ngModel style="resize: none;"></textarea>
+            <textarea type="text" class="input-field" required name="description" ngModel
+                style="resize: none;"></textarea>
             <label class="input-label">Product description</label>
         </div>
         <div class="input">
-            <input type="number" class="input-field" required name="price" ngModel/>
+            <input type="number" class="input-field" required name="price" ngModel />
             <label class="input-label">Product price</label>
         </div>
-        <tag-input #tagInput [ngModelOptions]="{standalone: true}" [ngModel]="selectedCategories" secondaryPlaceholder="product category" placeholder="add category" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)">
-            <tag-input-dropdown
-            [autocompleteItems]="categories"
-            [appendToBody]="true"
-            >
-            </tag-input-dropdown>
+        <tag-input #tagInput [ngModelOptions]="{standalone: true}" [ngModel]="selectedCategories"
+            secondaryPlaceholder="product category" placeholder="add category" [onlyFromAutocomplete]="true"
+            (onAdd)="onItemAdded($event)">
+            <tag-input-dropdown [autocompleteItems]="categories" [appendToBody]="true"></tag-input-dropdown>
         </tag-input>
         <div class="input">
             <label class="file">
-                <input #fileInput type="file" required multiple name="images" ngModel aria-label="File browser example" accept="image/*">
+                <input #fileInput type="file" required multiple name="images" ngModel aria-label="File browser example"
+                    accept="image/*">
                 <span class="file-custom"></span>
             </label>
         </div>
         <div class="action">
-            <button class="action-button">Add product</button>
+            <button class="action-button" [disabled]="isLoading">
+                <span class="spinner" *ngIf="isLoading"></span>
+                <span *ngIf="!isLoading">Add product</span>
+            </button>
         </div>
     </form>
 </div>
