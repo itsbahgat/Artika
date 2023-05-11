@@ -15,7 +15,6 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const productID = params['id'];
-      console.log(productID);
       this.productService.getProductById(productID).subscribe((data)=>{
         this.product = data;
       })
@@ -24,6 +23,14 @@ export class EditProductComponent implements OnInit {
   }
 
   submit(data:any){
-
+    if(this.product){
+      data._id = this.product._id
+    }
+    this.productService.updateProduct(data).subscribe((result)=>{
+      console.log(result);
+      if (result){
+        alert('Product Updated Successfully');
+      }
+    })
   }
 }
