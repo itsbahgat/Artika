@@ -15,11 +15,6 @@
                   <p [ngClass]="key === 'status' ? getStatusClass(item[key]) : ''">{{ item[key] || '' }}</p>
                 </td>
               </ng-container>
-              <td>
-                <a routerLink="../edit-product">
-                  <mat-icon>edit</mat-icon>
-                </a>
-              </td>
             </tr>
           </tbody>
         </table>
