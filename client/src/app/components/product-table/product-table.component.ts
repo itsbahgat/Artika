@@ -30,7 +30,14 @@ export class ProductTableComponent implements OnInit {
   }
 
   deleteProduct(_id:string){
-    console.log(_id);
+    const Delete = confirm("Are you sure you want to delete this product?");
+    if (Delete){
+      this.productService.deleteProduct(_id).subscribe((result)=>{
+        if(result){
+          alert("Deleted successfully")
+        }
+      })
+    }
   }  
 
   getStatusClass(status: string): string {

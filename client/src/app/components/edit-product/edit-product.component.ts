@@ -11,20 +11,48 @@ import { ProductService } from 'src/app/pages/services/product.service';
 export class EditProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService:ProductService) { }
+
   product : any;
+  productCategories :any;
+  public categories = [
+    "Men",
+    "Women",
+    "Jewelry",
+    "Accessories",
+    "Clothing",
+    "Shoes",
+    "Home",
+    "Toys",
+    "Entertainment",
+    "Art",
+    "Collectibles",
+    "Craft Supplies",
+    "Tools",
+    "Beauty",
+    "Ceramics",
+    "Handwoven",
+    "Home Decor",
+    "Kitchen",
+    "Leather",
+    "Skincare",
+    "Stationery",
+    "Woodwork",
+  ];
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       const productID = params['id'];
       this.productService.getProductById(productID).subscribe((data)=>{
         this.product = data;
+        this.productCategories = this.product.categories;
       })
     });
-
   }
 
   submit(data:any){
     if(this.product){
       data._id = this.product._id
+      data.categories = this.productCategories;
     }
     this.productService.updateProduct(data).subscribe((result)=>{
       console.log(result);
@@ -32,5 +60,9 @@ export class EditProductComponent implements OnInit {
         alert('Product Updated Successfully');
       }
     })
+  }
+
+  onItemAdded(addedCat: any) {
+    this.productCategories.push(addedCat.value);
   }
 }

@@ -113,12 +113,15 @@ let deleteProductById = async (req, res) => {
   //   });
   try {
     const productId = req.params.id;
+    const product = await productModel.findById(productId);
+    console.log(product)
+    product.isAvailable = false;
+    console.log('after',product)
     const updatedProduct = await productModel.findByIdAndUpdate(
       productId,
-      { $set: { isAvailable: false } },
+      { $set: product },
       { new: true }
     );
-  
     res.status(200).json({ message: "Updated Successfully" });
   } catch (error) {
     let isNotFound = error.name === "CastError";
