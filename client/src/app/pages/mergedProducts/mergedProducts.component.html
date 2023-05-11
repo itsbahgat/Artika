@@ -1,18 +1,35 @@
 <app-categories></app-categories>
 
+<!-- Pagination -->
+<div class="pagination">
+  <button class="page-link first" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    < </button>
+
+      <button class="page-link" *ngFor="let page of getPagesAroundCurrent()" [class.active]="page === currentPage"
+        (click)="changePage(page)">
+        {{ page }}
+      </button>
+
+      <button class="page-link last" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+        >
+      </button>
+</div>
+
+
 <div class="cart-container" *ngIf="!isLoading">
   <div class="row">
-    <div class="col-md-3" *ngFor="let product of products">
-      <item-card
-        [name]="product.title"
+    <div class="col-md-3" *ngFor="let product of displayedProducts">
+      <item-card [name]="product.title"
         [image_src]="product.images && product.images.length > 0 ? product.images[0] : ''"
-        [rating]="product.averageRating"
-        [value]="product.price"
-        [itemLink]="'product/' + product._id"
-      ></item-card>
+        [rating]="product.averageRating" [value]="product.price" [itemLink]="'product/' + product._id"></item-card>
     </div>
   </div>
+
 </div>
+
+
+
+
 
 <div *ngIf="isLoading">
   <div class="skeleton-container" *ngFor="let _ of [1, 2, 3, 4, 5]">
