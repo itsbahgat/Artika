@@ -37,7 +37,6 @@ export class ItemCard {
 
   // Method to retrieve the dynamic router link value
   getRouterLink(): string {
-    console.log("this.itemLink", this.itemLink);
     return "/" + this.itemLink;
   }
 }
