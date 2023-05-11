@@ -30,7 +30,7 @@ export class ProductTableComponent implements OnInit {
   }
 
   deleteProduct(_id:string){
-
+    console.log(_id);
   }  
 
   getStatusClass(status: string): string {

@@ -102,15 +102,29 @@ const updateProductById = async (req, res) => {
 
 //for seller
 let deleteProductById = async (req, res) => {
-  const id = req.params.id;
-  productModel
-    .deleteOne({ _id: id })
-    .then(() => {
-      res.status(200).json({ message: "Deleted Successfully" });
-    })
-    .catch((error) => {
-      res.status(500).json({ message: error.message });
-    });
+  // const id = req.params.id;
+  // productModel
+  //   .deleteOne({ _id: id })
+  //   .then(() => {
+  //     res.status(200).json({ message: "Deleted Successfully" });
+  //   })
+  //   .catch((error) => {
+  //     res.status(500).json({ message: error.message });
+  //   });
+  try {
+    const productId = req.params.id;
+    const updatedProduct = await productModel.findByIdAndUpdate(
+      productId,
+      { $set: { isAvailable: false } },
+      { new: true }
+    );
+  
+    res.status(200).json({ message: "Updated Successfully" });
+  } catch (error) {
+    let isNotFound = error.name === "CastError";
+    if (isNotFound) res.status(404).json({ message: "Product is not found" });
+    else res.status(400).json({ message: error.message });
+  }
 };
 //for customer
 let addReviewProductById = async (req, res) => {
