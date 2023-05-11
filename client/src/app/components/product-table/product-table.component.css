@@ -1,0 +1,105 @@
+*{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: auto;
+}
+
+table{
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px #e1e5ee;
+    background-color: white;
+    text-align: left;
+    overflow: scroll;
+    margin: auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 30%;
+  }
+  caption{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color:rgb(228, 228, 228);
+    background-image: url(https://images.unsplash.com/photo-1580820267682-426da823b514?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80); 
+    padding: 1rem 2rem;
+    font-weight: 700;
+    /* border-bottom: #506cb3; */
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  caption div{
+    display: block;
+    text-align: right;
+  }
+
+  table thead {
+    /* box-shadow: 0 1px 10px #e1e5ee,
+                0px -1px 10px #e1e5ee; */
+    box-shadow: 0 1px 10px #e1e5ee;
+    background-color: #f4f6fa;
+  }
+  
+  table th {
+    padding: 1rem 5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+  table td {
+    padding: 1rem 2rem;
+  }
+  table a {
+    text-decoration: none;
+    color: #2962ff;
+  }
+  table .status {
+    border-radius: 50px;
+    background-color: red;
+    /* padding: 0.2rem 1rem; */
+    padding: 6px 12px;
+    text-align: center;
+    line-height: 1;
+  }
+  
+  table .status-late {
+    background-color: #fff0c2;
+    color: #a68b00;
+  }
+  /* table .status-late::before {
+    content:" ";
+    border-radius: 50px;
+    background-color:red;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+  } */
+  
+  table .status-present {
+    background-color: #c8e6c9;
+    color: #388e3c;
+  }
+  table .status-absent {
+    background-color: #ffcdd2;
+    color: #c62828;
+  }
+  
+  .pagination{
+    text-align: left;
+    margin: 20px auto;
+    width: auto;
+  }
+  
+  
+  /* table .amount {
+    text-align: right;
+  } */
+
+/*   table tr:nth-child(even) {
+    background-color: #f4f6fb;
+  } */
