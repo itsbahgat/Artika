@@ -26,6 +26,7 @@ import { Routes, RouterModule, Router, ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { TableComponent } from './components/table/table.component';
 import { EditProductComponent } from "./components/edit-product/edit-product.component";
+import { ProductTableComponent } from "./components/product-table/product-table.component";
 
 const routes: Routes = [
   {
@@ -69,6 +70,7 @@ const routes: Routes = [
       { path: "add-product", component: AddProductComponent },
       { path: 'orders', component: TableComponent },
       { path: 'edit-product', component: EditProductComponent },
+      { path: 'products', component: ProductTableComponent },
     ],
   },
   {

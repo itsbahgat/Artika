@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import { Observable, map, throwError } from "rxjs";
 import { Title } from "@angular/platform-browser";
 
 @Injectable({
@@ -13,6 +13,20 @@ export class ProductService {
 
   getAllProducts(): Observable<any> {
     return this.http.get<any>(`${this.BASE_URL}/`);
+  }
+
+  getAllProductsForDashboard(): Observable<any> {
+    return this.http.get<any[]>(`${this.BASE_URL}/`).pipe(
+      map(products => {
+        // Modify each product object to include only chosen properties
+        return products.map(product => ({
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          categories: product.categories
+        }));
+      })
+    );
   }
 
   getProductById(id: string): Observable<any> {

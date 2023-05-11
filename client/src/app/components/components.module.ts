@@ -25,6 +25,7 @@ import { commentComponent } from "./comment/comment.component";
 import { PaymentComponent } from "./payment/payment.component";
 import { CategoryComponent } from "./categories/categories.component";
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { ProductTableComponent } from './product-table/product-table.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     PaymentComponent,
     CategoryComponent,
     EditProductComponent,
+    ProductTableComponent,
   ],
   imports: [
     CommonModule,
