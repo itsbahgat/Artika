@@ -1,35 +1,42 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'item-card',
-  templateUrl: 'item-card.component.html',
-  styleUrls: ['item-card.component.css'],
+  selector: "item-card",
+  templateUrl: "item-card.component.html",
+  styleUrls: ["item-card.component.css"],
 })
 export class ItemCard {
   @Input()
-  name: string = 'Artika';
+  name: string = "Artika";
 
   @Input()
   image_src: string =
-    'https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&ixlib=rb-1.2.1&w=1500';
+    "https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&ixlib=rb-1.2.1&w=1500";
 
   @Input()
-  image_alt: string = 'image';
+  image_alt: string = "image";
 
   @Input()
-  currency: string = '£';
+  currency: string = "£";
 
   @Input()
-  value: string = '0';
+  value: string = "0";
 
   @Input()
-  rootClassName: string = '';
+  rootClassName: string = "";
 
   @Input()
-  itemLink: string = 'https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&ixlib=rb-1.2.1&w=1500';
+  itemLink: string =
+    "https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&ixlib=rb-1.2.1&w=1500";
 
   @Input()
   rating: number = 5;
 
+  // routerLinkValue: string;
   constructor() {}
+
+  // Method to retrieve the dynamic router link value
+  getRouterLink(): string {
+    return "/" + this.itemLink;
+  }
 }
