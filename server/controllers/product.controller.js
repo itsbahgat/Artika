@@ -128,6 +128,18 @@ let addReviewProductById = async (req, res) => {
   }
 };
 
+const getProductsBySellerId = async (req, res) => {
+  try {
+    const prods = await productModel.find({ seller: req.params.seller });
+    if (!prods) {
+      return res.status(404).json({ message: "Seller not found" });
+    }
+    res.status(200).json(prods);
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
@@ -137,4 +149,5 @@ module.exports = {
   updateProductById,
   deleteProductById,
   addReviewProductById,
+  getProductsBySellerId,
 };
