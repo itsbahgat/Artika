@@ -35,7 +35,9 @@
       </a>
       <div class="home-middle">
         <div class="home-left">
-          <a routerLink="/seller-dashboard" class="navbar-link">STORE</a>
+          <ng-container *ngIf="isSeller">
+            <a routerLink="/seller-dashboard" class="navbar-link">STORE</a>
+          </ng-container>
           <a routerLink="/mergedProducts" class="navbar-link">PRODUCTS</a>
           <a routerLink="/orders" class="navbar-link">Orders</a>
           <a routerLink="/about" class="navbar-link">About</a>
