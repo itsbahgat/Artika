@@ -12,31 +12,10 @@ module.exports.GetAllOrders = (request, response, next) => {
 
 module.exports.GetOrderByCustId = (request, response, next) => {
   Orders.find({ customerId: request.params.id })
-    .then((data) => {
-      response.status(200).json(data);
+    .populate({
+      path: "items.productId",
+      model: "Product",
     })
-    .catch((error) => {
-      next(error);
-    });
-};
-
-module.exports.GetOrderByCustIdAndState = (request, response, next) => {
-  const state = request.params.state;
-  const customerID = request.params.id;
-  //   console.log(state);
-  Orders.find({ customerId: customerID, status: state })
-    .then((data) => {
-      response.status(200).json(data);
-    })
-    .catch((error) => {
-      next(error);
-    });
-};
-
-module.exports.GetOrderByState = (request, response, next) => {
-  const state = request.params.state;
-  //   console.log(state);
-  Orders.find({ status: state })
     .then((data) => {
       response.status(200).json(data);
     })
@@ -56,10 +35,6 @@ module.exports.UpdateOrder = async (request, response, next) => {
   }
 
   const oldState = updatedOrder.status;
-  //"pending", "accepted", "rejected", "shipped", "delivered" or "cancelled."
-  if (oldState != "pending" && status == "cancelled")
-    return response.status(400).json({ message: "You can't change it now!!" });
-
   updatedOrder.status = status;
 
   if (oldState != status) {
