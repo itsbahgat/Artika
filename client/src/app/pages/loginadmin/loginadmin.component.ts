@@ -1,18 +1,17 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../services/authuser.service";
+import { AuthadminService } from "../services/authadmin.service";
 import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: "app-loginuser",
-  templateUrl: "loginuser.component.html",
-  styleUrls: ["loginuser.component.css"],
-  // ...
+  selector: "app-loginadmin",
+  templateUrl: "./loginadmin.component.html",
+  styleUrls: ["./loginadmin.component.css"],
 })
-export class loginuser implements OnInit {
+export class LoginadminComponent implements OnInit {
   messageError: string;
   err: HttpErrorResponse;
-  constructor(private authService: AuthService, private route: Router) {}
+  constructor(private authService: AuthadminService, private route: Router) {}
 
   ngOnInit(): void {}
 
@@ -21,14 +20,13 @@ export class loginuser implements OnInit {
       // handle successful response here
       (response) => {
         console.log(response);
-        this.route.navigate(["/"]).then(() => {
+        this.route.navigate(["/admin"]).then(() => {
           location.replace(location.href);
         });
       },
       // handle error response here
       (error) => {
-        console.log(error.error.message);
-        this.messageError = error.error.message; // set the messageError property with the error message
+        this.messageError = error.message; // set the messageError property with the error message
         console.error(this.messageError);
       }
     );

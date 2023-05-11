@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["register.component.css"],
 })
 export class register implements OnInit {
-  messageError: string;
+  messageErrors: any;
   user = {
     firstName: "",
     lastName: "",
@@ -54,7 +54,8 @@ export class register implements OnInit {
         });
       },
       (error) => {
-        this.messageError = error.error.message;
+        console.log("error", error.error.errors);
+        this.messageErrors = error.error.errors;
         this.isSubmitting = false; // Reset the submitting flag on error
       }
     );

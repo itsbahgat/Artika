@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* align items to the beginning and end of the container */
+  align-items: center; /* align items to the center of the container */
+  width: 60%;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 5px;
+}
+
+.container .child-element {
+  margin-right: 20px; /* add a 20-pixel margin to the right of each child element */
+  padding: 10px; /* add a 10-pixel padding to all sides of each child element */
+  flex-grow: 1; /* each child element takes up equal space */
+  flex-shrink: 0; /* child elements don't shrink */
+  flex-basis: 0; /* child elements start at 0 width */
+}
+
+/* .left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(rgba(239, 193, 76, 1), #dfe7ddff, 0.5);
+  border-radius: 5px;
+} */
+.hand-made {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.form-card {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.checkout-btn {
+  cursor: pointer;
+  display: flex;
+  padding: 16px 24px;
+  position: relative;
+  box-sizing: border-box;
+  transition: 0.3s;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 1px;
+  background-color: rgba(239, 193, 76, 1);
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  .container .child-element {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .form-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  form {
+    width: 100%;
+    margin: 0;
+  }
+}

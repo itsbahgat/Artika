@@ -1,5 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { ROUTES, Router, RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
@@ -12,6 +12,7 @@ import { CategoryCard } from "./category-card/category-card.component";
 import { BlogPostCard } from "./blog-post-card/blog-post-card.component";
 import { Cart } from "./cart/cart.component";
 import { AddProductComponent } from "./add-product/add-product.component";
+import { AdminLayoutComponent } from "./admin-layout/admin-layout.component";
 
 import { TagInputModule } from "ngx-chips";
 
@@ -24,9 +25,15 @@ import { MatDividerModule } from "@angular/material/divider";
 import { commentComponent } from "./comment/comment.component";
 import { PaymentComponent } from "./payment/payment.component";
 import { CategoryComponent } from "./categories/categories.component";
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { ProductTableComponent } from './product-table/product-table.component';
 
+import { BrowserModule } from "@angular/platform-browser";
+import { MatListModule } from "@angular/material/list";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCardModule } from "@angular/material/card";
+import { EditProductComponent } from "./edit-product/edit-product.component";
+import { ProductTableComponent } from "./product-table/product-table.component";
 @NgModule({
   declarations: [
     ItemCard,
@@ -40,6 +47,7 @@ import { ProductTableComponent } from './product-table/product-table.component';
     commentComponent,
     PaymentComponent,
     CategoryComponent,
+    AdminLayoutComponent,
     EditProductComponent,
     ProductTableComponent,
   ],
@@ -48,11 +56,17 @@ import { ProductTableComponent } from './product-table/product-table.component';
     RouterModule,
     FormsModule,
     TagInputModule,
-    //MatToolbarModule,
+    BrowserModule,
+    MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatProgressBarModule,
+    MatCardModule,
   ],
   exports: [
     ItemCard,
@@ -70,3 +84,4 @@ import { ProductTableComponent } from './product-table/product-table.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}
+

@@ -1,0 +1,107 @@
+<section class="home-section">
+  <h2>All Orders</h2>
+  <table>
+    <caption>
+      A L L O R D E R S
+    </caption>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer ID</th>
+        <th>Total</th>
+        <th>productId | quantity</th>
+        <th>Status</th>
+        <th>Change Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderDataArray; index as i">
+        <td>
+          <a href="#">{{ item._id }}</a>
+        </td>
+        <td>
+          <a href="#">{{ item.customerId }}</a>
+        </td>
+        <td>{{ item.total }}</td>
+        <td>
+          <select>
+            <option value="" disabled selected>Product ID - Quantity</option>
+            <option
+              disabled
+              *ngFor="let orderItem of item.items"
+              [value]="orderItem.productId"
+            >
+              {{ orderItem.productId }} - {{ orderItem.quantity }}
+            </option>
+          </select>
+        </td>
+        <td
+          [ngClass]="{
+            shipped: item.status === 'shipped',
+            pending: item.status === 'pending',
+            cancelled: item.status === 'cancelled',
+            rejected: item.status === 'rejected',
+            accepted: item.status === 'accepted'
+          }"
+        >
+          {{ item.status }}
+        </td>
+        <td>
+          <select
+            #statusSelect
+            (change)="updateStatus(item._id, statusSelect.value)"
+          >
+            <option [value]="'shipped'" [selected]="item.status === 'shipped'">
+              Shipped
+            </option>
+            <option [value]="'pending'" [selected]="item.status === 'pending'">
+              Pending
+            </option>
+            <option
+              [value]="'rejected'"
+              [selected]="item.status === 'rejected'"
+            >
+              Rejected
+            </option>
+            <option
+              [value]="'accepted'"
+              [selected]="item.status === 'accepted'"
+            >
+              Accepted
+            </option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- <table mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef>Username</th>
+    <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="gender">
+    <th mat-header-cell *matHeaderCellDef>Gender</th>
+    <td mat-cell *matCellDef="let user">{{ user.gender }}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="dateOfBirth">
+    <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+    <td mat-cell *matCellDef="let user">{{ user.dateOfBirth }}</td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
