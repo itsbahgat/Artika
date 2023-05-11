@@ -15,8 +15,8 @@ export class ProductService {
     return this.http.get<any>(`${this.BASE_URL}/`);
   }
 
-  getAllProductsForDashboard(): Observable<any> {
-    return this.http.get<any[]>(`${this.BASE_URL}/`).pipe(
+  getAllProductsForDashboard(sellerID: string): Observable<any> {
+    return this.http.get<any[]>(`${this.BASE_URL}/seller/${sellerID}`).pipe(
       map(products => {
         // Modify each product object to include only chosen properties
         return products.map(product => ({

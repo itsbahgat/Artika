@@ -3,22 +3,34 @@
         <thead>
         <tr>
             <th>No.</th>
-            <th *ngFor="let key of getObjectKeys(tableData[0])">{{ key }}</th>
+            <ng-container *ngFor="let key of getObjectKeys(tableData[0])">
+                <ng-container *ngIf="key !== '_id'">
+                    <th>{{ key }}</th>
+                </ng-container>
+            </ng-container>
             <th><mat-icon>edit</mat-icon></th>
-            <!-- <th></th> -->
+            <th><mat-icon>delete</mat-icon></th>
+
         </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of paginatedTableData; let i = index;">
               <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
               <ng-container *ngFor="let key of getObjectKeys(tableData[0])">
-                <td>
-                  <p [ngClass]="key === 'status' ? getStatusClass(item[key]) : ''">{{ item[key] || '' }}</p>
-                </td>
+                <ng-container *ngIf="key !== '_id'">
+                    <td>
+                      <p [ngClass]="key === 'status' ? getStatusClass(item[key]) : ''">{{ item[key] || '' }}</p>
+                    </td>
+                </ng-container>
               </ng-container>
               <td>
-                <a [routerLink]="['../edit-product', item._id]" (click)="logItemId(item)">
+                <a [routerLink]="['../edit-product', item._id]">
                   <mat-icon>edit</mat-icon>
+                </a>
+              </td>
+              <td>
+                <a (click)="deleteProduct(item._id)">
+                    <mat-icon>delete</mat-icon>
                 </a>
               </td>
             </tr>

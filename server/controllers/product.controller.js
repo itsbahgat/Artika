@@ -47,6 +47,18 @@ let getProductsByTitle = async (req, res) => {
   }
 };
 
+const getProductsBySellerId = async (req, res) => {
+  try {
+    const prods = await productModel.find({ seller: req.params.seller });
+    if (!prods) {
+      return res.status(404).json({ message: "Seller not found" });
+    }
+    res.status(200).json(prods);
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 //for seller
 let addNewProduct = async (req, res) => {
   try {
@@ -95,15 +107,32 @@ const updateProductById = async (req, res) => {
 
 //for seller
 let deleteProductById = async (req, res) => {
-  const id = req.params.id;
-  productModel
-    .deleteOne({ _id: id })
-    .then(() => {
-      res.status(200).json({ message: "Deleted Successfully" });
-    })
-    .catch((error) => {
-      res.status(500).json({ message: error.message });
-    });
+  // const id = req.params.id;
+  // productModel
+  //   .deleteOne({ _id: id })
+  //   .then(() => {
+  //     res.status(200).json({ message: "Deleted Successfully" });
+  //   })
+  //   .catch((error) => {
+  //     res.status(500).json({ message: error.message });
+  //   });
+  try {
+    const productId = req.params.id;
+    const product = await productModel.findById(productId);
+    console.log(product)
+    product.isAvailable = false;
+    console.log('after',product)
+    const updatedProduct = await productModel.findByIdAndUpdate(
+      productId,
+      { $set: product },
+      { new: true }
+    );
+    res.status(200).json({ message: "Updated Successfully" });
+  } catch (error) {
+    let isNotFound = error.name === "CastError";
+    if (isNotFound) res.status(404).json({ message: "Product is not found" });
+    else res.status(400).json({ message: error.message });
+  }
 };
 //for customer
 let addReviewProductById = async (req, res) => {
@@ -137,4 +166,5 @@ module.exports = {
   updateProductById,
   deleteProductById,
   addReviewProductById,
+  getProductsBySellerId
 };
