@@ -14,13 +14,28 @@ module.exports.GetAllSellers = (request, response, next) => {
     });
 };
 
+module.exports.editSellerById = async (req, res) => {
+  try {
+    const sellerId = req.params.sellerId;
+    const updatedData = req.body;
+    const updatedSeller = await Sellers.findByIdAndUpdate(
+      sellerId,
+      { $set: updatedData },
+      { new: true }
+    );
+    res.status(200).json({ message: "Updated Successfully" });
+  } catch (error) {
+    let isNotFound = error.name === "CastError";
+    if (isNotFound) res.status(404).json({ message: "Seller is not found" });
+    else res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports.GetSellerById = (request, response, next) => {
   const sellerId = request.params.sellerId;
 
-  console.log("sellerId", sellerId);
   Sellers.find({ _id: sellerId })
     .then((data) => {
-      console.log(data);
       response.status(200).json(data);
     })
     .catch((error) => {

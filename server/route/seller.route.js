@@ -10,7 +10,10 @@ router
   .put(controller.updateSellerOrderStatus);
 // get all carts for all sellers
 
-router.route("/seller/details/:sellerId").get(controller.GetSellerById);
+router
+  .route("/seller/details/:sellerId")
+  .get(controller.GetSellerById)
+  .put(controller.editSellerById);
 
 router
   .route("/seller/:sellerId")
