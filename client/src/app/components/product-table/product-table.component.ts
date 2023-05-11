@@ -29,6 +29,10 @@ export class ProductTableComponent implements OnInit {
     })
   }
 
+  deleteProduct(){
+    
+  }  
+
   getStatusClass(status: string): string {
     console.log(status);
     const statusClasses = {
