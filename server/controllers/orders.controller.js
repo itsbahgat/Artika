@@ -2,6 +2,14 @@ const Orders = require("../models/order.model");
 
 module.exports.GetAllOrders = (request, response, next) => {
   Orders.find({})
+    .populate({
+      path: "items.productId",
+      model: Product,
+    })
+    .populate({
+      path: "items.sellerId",
+      model: Seller,
+    })
     .then((data) => {
       response.status(200).json(data);
     })
