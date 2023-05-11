@@ -1,4 +1,5 @@
 const customerModel = require('../models/customer.model');
+const sellerModel = require('../models/seller.model');
 
 //all customers(for admin)
 let getAllCustomers = async (req, res) => {
@@ -36,11 +37,18 @@ let editCustomerById = async (req, res) => {
     try{
         const customerId = req.params.id;
         const updatedData = req.body;
-        const updatedCustomer = await customerModel.findByIdAndUpdate(
+       const updatedCustomer = await customerModel.findByIdAndUpdate(
           customerId,
           { $set: updatedData },
           { new: true }
-        );
+        ); 
+        if (!updatedCustomer){
+             updatedCustomer = await sellerModel.findByIdAndUpdate(
+                customerId,
+                { $set: updatedData },
+                { new: true }
+              ); 
+        }
 
          res.status(200).json({ message: "Updated Successfully" });
       } catch (error) {
