@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = 'teleport-project-template-angular';
+  title = "teleport-project-template-angular";
 
   constructor(private route: ActivatedRoute) {}
 
   isSellerDashboard(): boolean {
-    return this.route.snapshot.firstChild?.routeConfig?.path === 'seller-dashboard';
+    if (
+      this.route.snapshot.firstChild?.routeConfig?.path ===
+        "seller-dashboard" ||
+      this.route.snapshot.firstChild?.routeConfig?.path === "admin" ||
+      this.route.snapshot.firstChild?.routeConfig?.path === "loginadmin"
+    )
+      return true;
   }
 }
