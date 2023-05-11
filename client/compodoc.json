@@ -1,0 +1,8 @@
+{
+  "title": "Artika E-store",
+  "includes": "./src",
+  "coverageTest": "./coverage/coverage-final.json",
+  "disableCoverage": true,
+  "hideGenerator": true,
+  "theme": "default"
+}
