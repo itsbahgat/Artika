@@ -5,7 +5,9 @@ const controller = require("../controllers/seller.controller");
 
 // route.post("/seller/update-orders", controller.updateOrders);
 router.route("/seller").get(controller.GetAllSellers);
-//router.route("/seller/update-order-status").put(controller.updateSellerOrderStatus);
+router
+  .route("/seller/update-order-status")
+  .put(controller.updateSellerOrderStatus);
 // get all carts for all sellers
 
 router
@@ -19,4 +21,7 @@ router
   .delete(controller.DeleteSellerById);
 
 router.route("/seller/:sellerId/:state").get(controller.GetSellerOrdersByState);
+
+router.get("/allpending", controller.getAllPendingSellers);
+router.put("/sellerapprove/:id", controller.sellerApprove);
 module.exports = router;
