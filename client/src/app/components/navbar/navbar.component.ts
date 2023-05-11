@@ -8,15 +8,19 @@ import { AuthService } from "src/app/pages/services/authuser.service";
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent {
-  verifUser: any; //to verify user logged in or not
+  verifUser: any; // to verify if the user is logged in or not
   userName: any = "name";
+  isSeller: boolean = false; // property to check if the user is a seller
 
   constructor(private userAuth: AuthService, private route: Router) {
     this.verifUser = this.userAuth.userLoggedIn();
     if (this.verifUser) {
       this.userName = this.userAuth.getProperty("username");
+      const role = this.userAuth.getProperty("role");
+      this.isSeller = role === "seller";
     }
   }
+
   searchText: string;
 
   onSearch(): void {

@@ -12,6 +12,7 @@ const stripeRoutes = require("./route/stripe.route");
 const ordersRoutes = require("./route/orders.route");
 const cartsRoutes = require("./route/carts.route");
 const categoriesRoutes = require("./route/category.route");
+const sellerRoutes = require("./route/seller.route");
 
 console.log("SERVER IS RUNNING");
 
@@ -38,6 +39,7 @@ app.use(stripeRoutes);
 app.use(ordersRoutes);
 app.use(cartsRoutes);
 app.use(categoriesRoutes);
+app.use(sellerRoutes);
 
 app.use((request, response) => {
   response.status(404).json({ message: "Not Found" });
