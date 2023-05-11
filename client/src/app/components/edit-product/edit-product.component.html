@@ -7,15 +7,15 @@
     </div>
     <form enctype='multipart/form-data' #addProduct="ngForm" (ngSubmit)="submit(addProduct)" class="card-form">
         <div class="input">
-            <input type="text" class="input-field" required name="title" ngModel/>
+            <input type="text" class="input-field" required name="title" ngModel="{{product.title}}"/>
             <label class="input-label">Product title</label>
         </div>
         <div class="input">
-            <textarea type="text" class="input-field" required name="description" ngModel style="resize: none;"></textarea>
+            <textarea type="text" class="input-field" required name="description" ngModel="{{product.description}}" style="resize: none;"></textarea>
             <label class="input-label">Product description</label>
         </div>
         <div class="input">
-            <input type="number" class="input-field" required name="price" ngModel/>
+            <input type="number" class="input-field" required name="price" ngModel="{{product.price}}"/>
             <label class="input-label">Product price</label>
         </div>
         <!-- <tag-input #tagInput [ngModelOptions]="{standalone: true}" [ngModel]="selectedCategories" secondaryPlaceholder="product category" placeholder="add category" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)">
@@ -27,7 +27,7 @@
         </tag-input> -->
         <div class="input">
             <label class="file">
-                <input #fileInput type="file" required multiple name="images" ngModel aria-label="File browser example" accept="image/*">
+                <input #fileInput type="file" required multiple name="images" ngModel="{{product.images}}" aria-label="File browser example" accept="image/*">
                 <span class="file-custom"></span>
             </label>
         </div>
