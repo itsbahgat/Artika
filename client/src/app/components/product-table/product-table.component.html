@@ -29,9 +29,9 @@
                 </a>
               </td>
               <td>
-                <a [routerLink]="['../delete-product', item._id]">
+                <a (click)="deleteProduct(item._id)">
                     <mat-icon>delete</mat-icon>
-                  </a>
+                </a>
               </td>
             </tr>
         </tbody>

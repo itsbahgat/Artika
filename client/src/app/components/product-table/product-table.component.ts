@@ -29,8 +29,8 @@ export class ProductTableComponent implements OnInit {
     })
   }
 
-  deleteProduct(){
-    
+  deleteProduct(_id:string){
+
   }  
 
   getStatusClass(status: string): string {
