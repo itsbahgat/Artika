@@ -79,7 +79,7 @@ export class products implements OnInit {
 
     productsRequest.subscribe(
       (products) => {
-        this.products = products;
+        this.products = products.reverse();
         this.calculateAverageRating();
         this.isLoading = false; // Clear loading state
         this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
