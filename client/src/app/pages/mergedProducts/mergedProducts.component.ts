@@ -112,7 +112,8 @@ export class products implements OnInit {
 
     return Array(endPage - startPage + 1)
       .fill(0)
-      .map((_, index) => startPage + index);
+      .map((_, index) => startPage + index)
+      .filter((page) => page > 0);
   }
 
   calculateAverageRating() {
