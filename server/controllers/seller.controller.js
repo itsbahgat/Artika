@@ -1,6 +1,7 @@
 const Sellers = require("../models/seller.model");
 const Products = require("../models/product.model");
 const Carts = require("../models/cart.model");
+const Order = require("../models/order.model");
 const prodController = require("../controllers/product.controller");
 
 module.exports.GetAllSellers = (request, response, next) => {
@@ -112,3 +113,38 @@ async function RemoveDeletedProdsFromCarts(sellerProds) {
     console.error(err);
   }
 }
+
+// PUT endpoint to update the status of a seller's order
+module.exports.updateSellerOrderStatus = async (req, res) => {
+  const { orderId, sellerId, customerId, sellerStatus } = req.body;
+
+  try {
+    const order = await Order.findOne({
+      _id: orderId,
+      "items.sellerId": sellerId,
+      customerId: customerId
+    });
+
+    console.log(order)
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    // Find the specific item within the order associated with the seller
+    const orderItem = order.items.find((item) => item.sellerId.equals(sellerId));
+
+    if (!orderItem) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    orderItem.sellerStatus = sellerStatus;
+    await order.save();
+
+    res.json({ message: "Order status updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
