@@ -46,10 +46,30 @@ module.exports.GetSellerById = (request, response, next) => {
 module.exports.GetSellerOrders = (request, response, next) => {
   const sellerId = request.params.sellerId;
 
-  Sellers.find({ _id: sellerId })
-    .then((data) => {
-      // response.status(200).json(data);
-      response.status(200).json(data[0].Orders);
+  Sellers.findById(sellerId)
+    .populate({
+      path: "Orders",
+      populate: {
+        path: "items.productId",
+        model: "Product",
+        select: "title",
+      },
+    })
+    .then((seller) => {
+      if (seller) {
+        const orders = seller.Orders.map((order) => {
+          const productNames = order.items.map((item) => item.productId.title);
+          return {
+            orderId: order._id,
+            customerName: order.customerId, // Assuming you want the customer's name, replace with appropriate field from the Customer model
+            productNames: productNames.join(", "),
+            status: order.status,
+          };
+        });
+        response.status(200).json(orders);
+      } else {
+        response.status(200).json([]); // No seller found with the given ID
+      }
     })
     .catch((error) => {
       next(error);
