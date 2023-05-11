@@ -145,23 +145,28 @@ async function RemoveDeletedProdsFromCarts(sellerProds) {
 
 // PUT endpoint to update the status of a seller's order
 module.exports.updateSellerOrderStatus = async (req, res) => {
-  const { orderId, sellerId, customerId, sellerStatus } = req.body;
+  const { orderId, sellerId, sellerStatus } = req.body;
+  console.log(
+    "orderId\n",
+    orderId,
+    "\nsellerId\n",
+    sellerId,
+    "\nsellerStatus\n",
+    sellerStatus
+  );
 
   try {
     const order = await Order.findOne({
       _id: orderId,
-      "items.sellerId": sellerId,
-      customerId: customerId,
     });
 
-    console.log(order);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
 
     // Find the specific item within the order associated with the seller
-    const orderItem = order.items.find((item) =>
-      item.sellerId.equals(sellerId)
+    const orderItem = order.items.find(
+      (item) => item.sellerId.toString() == sellerId.toString()
     );
 
     if (!orderItem) {
