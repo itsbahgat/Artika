@@ -9,14 +9,21 @@ const orderSchema = new mongoose.Schema({
     {
       productId: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
       quantity: Number,
+      sellerId: { type: mongoose.Schema.Types.ObjectId, ref: "sellers" },
+      sellerStatus: {
+        type: String,
+        enum: ["pending", "accepted", "rejected", "shipped", "delivered", "cancelled"],
+        default: "pending",
+      },
     },
   ],
+  total: Number,
   status: {
     type: String,
     enum: ["pending", "shipped", "delivered", "cancelled"],
+    default: "pending",
   },
-
-  total: Number,
 });
+
 
 module.exports = mongoose.model("orders", orderSchema);
