@@ -63,7 +63,7 @@ table{
     line-height: 1;
   }
   
-  table .status-late {
+  table .status-pending {
     background-color: #fff0c2;
     color: #a68b00;
   }
@@ -76,7 +76,7 @@ table{
     display: inline-block;
   } */
   
-  table .status-present {
+  table .status-delivered {
     background-color: #c8e6c9;
     color: #388e3c;
   }
