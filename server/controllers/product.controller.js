@@ -118,16 +118,13 @@ let deleteProductById = async (req, res) => {
   //   });
   try {
     const productId = req.params.id;
-    const product = await productModel.findById(productId);
-    console.log(product)
-    product.isAvailable = false;
-    console.log('after',product)
     const updatedProduct = await productModel.findByIdAndUpdate(
       productId,
-      { $set: product },
+      { $set: { isAvailable: false } },
       { new: true }
     );
-    res.status(200).json({ message: "Updated Successfully" });
+
+    res.status(200).json({ message: "Deleted Successfully" });
   } catch (error) {
     let isNotFound = error.name === "CastError";
     if (isNotFound) res.status(404).json({ message: "Product is not found" });
@@ -166,5 +163,5 @@ module.exports = {
   updateProductById,
   deleteProductById,
   addReviewProductById,
-  getProductsBySellerId
+  getProductsBySellerId,
 };
