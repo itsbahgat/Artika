@@ -187,12 +187,3 @@ tag-input {
 .file input:focus ~ .file-custom {
   box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem rgba(239, 193, 76, 1);;
 }
-
-/* rgba(239, 193, 76, 1); */
-
-/* :host ::ng-deep .tag-input .ng2-tag-
-input-field {
-border: none;
-border-bottom: 1px solid #e40000;
-font-size: 16px;
-} */
