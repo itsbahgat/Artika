@@ -22,7 +22,7 @@ export class ProductTableComponent implements OnInit {
       this.sellerID = this.authService.getProperty("_id");
     }
     this.productService.getAllProductsForDashboard(this.sellerID).subscribe((data)=>{
-      this.tableData = data;
+      this.tableData = data || {} ;
       this.currentPage = 1;
       this.itemsPerPage = 10;
       this.totalPages = Math.ceil(this.tableData.length/this.itemsPerPage);
