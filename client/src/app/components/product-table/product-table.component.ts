@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/pages/services/authuser.service';
 import { ProductService } from 'src/app/pages/services/product.service';
 
 @Component({
@@ -14,9 +15,13 @@ export class ProductTableComponent implements OnInit {
   currentPage : any ;
   itemsPerPage : any ;
   totalPages  : any ;
-
-  constructor( private productService : ProductService){
-    this.productService.getAllProductsForDashboard().subscribe((data)=>{
+  sellerID : any;
+  constructor( private productService : ProductService,private authService : AuthService){
+    const verifUser = this.authService.userLoggedIn();
+    if (verifUser) {
+      this.sellerID = this.authService.getProperty("_id");
+    }
+    this.productService.getAllProductsForDashboard(this.sellerID).subscribe((data)=>{
       this.tableData = data;
       this.currentPage = 1;
       this.itemsPerPage = 10;
