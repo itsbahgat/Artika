@@ -91,6 +91,7 @@ async function MarkSellerProdsAsUnavailable(sellerId) {
     // Get all products of the seller
     const sellerProds = await Products.find({ seller: sellerId });
 
+    console.log("sellerProds\n", sellerProds);
     // Update each product and mark it as unavailable
     const updatedProds = await Promise.all(
       sellerProds.map(async (product) => {
@@ -145,23 +146,20 @@ async function RemoveDeletedProdsFromCarts(sellerProds) {
 
 // PUT endpoint to update the status of a seller's order
 module.exports.updateSellerOrderStatus = async (req, res) => {
-  const { orderId, sellerId, customerId, sellerStatus } = req.body;
+  const { orderId, sellerId, sellerStatus } = req.body;
 
   try {
     const order = await Order.findOne({
       _id: orderId,
-      "items.sellerId": sellerId,
-      customerId: customerId,
     });
 
-    console.log(order);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
 
     // Find the specific item within the order associated with the seller
-    const orderItem = order.items.find((item) =>
-      item.sellerId.equals(sellerId)
+    const orderItem = order.items.find(
+      (item) => item.sellerId.toString() == sellerId.toString()
     );
 
     if (!orderItem) {
@@ -175,5 +173,38 @@ module.exports.updateSellerOrderStatus = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+module.exports.getAllPendingSellers = async (req, res) => {
+  //to get all pending sellers
+  try {
+    const allSellers = await Sellers.find({
+      role: "seller",
+      approved: false,
+    });
+    res.status(200).json(allSellers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports.sellerApprove = async (req, res) => {
+  //to update the update of seller from false to true
+  console.log("approved request", req);
+  try {
+    const id = req.params.id;
+
+    // Update the user in the database to set "approved" to true
+    const updatedUser = await Sellers.findByIdAndUpdate(
+      id,
+      { approved: true },
+      { new: true }
+    );
+    console.log(updatedUser);
+
+    res.status(200).json({ message: "seller approved", data: updatedUser });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };

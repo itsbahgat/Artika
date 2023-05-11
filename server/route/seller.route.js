@@ -21,4 +21,7 @@ router
   .delete(controller.DeleteSellerById);
 
 router.route("/seller/:sellerId/:state").get(controller.GetSellerOrdersByState);
+
+router.get("/allpending", controller.getAllPendingSellers);
+router.put("/sellerapprove/:id", controller.sellerApprove);
 module.exports = router;
