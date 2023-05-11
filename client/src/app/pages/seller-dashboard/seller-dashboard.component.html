@@ -10,65 +10,64 @@
 </mat-toolbar> -->
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav">
-      <img
-        class="avatar mat-elevation-z8"
-        [src]="avatar"
-      />
-      <h4 class="name">{{loggedSeller.firstName +' '+loggedSeller.firstName}}</h4>
-      <!-- <p class="designation">Software Engineer</p> -->
-  
-      <mat-divider></mat-divider>
-  
+  <mat-sidenav #sidenav="matSidenav">
+    <div class="avatar">
+      <img [src]="avatar" />
+    </div>
+    <h4 class="name">{{loggedSeller.firstName +' '+loggedSeller.lastName}}</h4>
+    <!-- <p class="designation">Software Engineer</p> -->
+
+    <mat-divider></mat-divider>
+
+    <!--
       <button mat-button class="menu-button" routerLink="">
         <mat-icon>dashboard</mat-icon>
         <span>Dashboard</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="products">
-        <mat-icon>inventory</mat-icon>
-        <span>products</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="add-product">
-        <mat-icon>add_box</mat-icon>
-        <span>New product</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="orders">
-        <mat-icon>shopping_cart</mat-icon>
-        <span>Orders</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="profile">
-        <mat-icon>person</mat-icon>
-        <span>Profile</span>
-      </button>
+      </button>-->
+    <button mat-button class="menu-button" routerLink="products">
+      <mat-icon>inventory</mat-icon>
+      <span>products</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="add-product">
+      <mat-icon>add_box</mat-icon>
+      <span>New product</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="orders">
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Orders</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="profile">
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button>
 
-  
-      <mat-divider></mat-divider>
-  
-      <button mat-button class="menu-button" routerLink="/contact">
-        <mat-icon>help</mat-icon>
-        <span>Contact Us</span>
-      </button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="arrow-container">
-        <a class='animated-arrow' routerLink="/">
-          <span class='the-arrow -left'>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/contact">
+      <mat-icon>help</mat-icon>
+      <span>Contact Us</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="arrow-container">
+      <a class='animated-arrow' routerLink="/">
+        <span class='the-arrow -left'>
+          <span class='shaft'></span>
+        </span>
+        <span class='main'>
+          <span class='text'>
+            Home
+          </span>
+          <span class='the-arrow -right'>
             <span class='shaft'></span>
           </span>
-          <span class='main'>
-            <span class='text'>
-              Home
-            </span>
-            <span class='the-arrow -right'>
-              <span class='shaft'></span>
-            </span>
-          </span>
-        </a>
-      </div>
-      
-      <div>
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
+        </span>
+      </a>
+    </div>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
-  
