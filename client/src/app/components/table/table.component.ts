@@ -1,64 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/pages/services/orders.service';
+import { AuthService } from 'src/app/pages/services/authuser.service';
+import { Observable } from 'rxjs'; // Import the Observable class from RxJS
+
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent  {
 
-  tableData: any[] = [
-    {
-      customerName: 'Saeed Baik Chicken',
-      Address: '01115555555',
-      Title: 'XHSYUW100',
-      quantity: 50,
-      date:'12-6-2001',
-      status: 'Absent'
-    },
-    {
-      customerName: 'kmakel',
-      Address: '01115555555',
-      Title: 'XHSYUW100',
-      quantity: 50,
-      status: 'Absent'
-    },
-    {
-      customerName: 'Ranooma el Amora',
-      Address: '01115555555',
-      Title: 'XHSYUW100',
-      quantity: 50,
-      date:'12-6-2001',
-      status: 'present'
-    },
-    {
-      customerName: 'noura noura',
-      Address: '01115555555',
-      Title: 'XHSYUW100',
-      quantity: 50,
-      date:'12-6-2001',
-      status: 'Absent'
-    },
-    {
-      customerName: 'Ranooma el Amora',
-      Address: '01115555555',
-      Title: 'XHSYUW100',
-      quantity: 50,
-      date:'12-6-2001',
-      status: 'present'
-    },
-  ];
+export class TableComponent implements OnInit{
+
+  tableData: any[] = null;
 
   currentPage = 1;
   itemsPerPage = 10;
-  totalPages = Math.ceil(this.tableData.length/this.itemsPerPage);
+  totalPages :number;
+  sellerID : string;
+
+  constructor(private orderService: OrdersService, private authService:  AuthService){
+  }
+
+  ngOnInit() {
+    const verifUser = this.authService.userLoggedIn();
+    if (verifUser) {
+      this.sellerID = this.authService.getProperty("_id");
+    }
+    this.loadOrderDetails();
+  }
+
+  loadOrderDetails() {
+    
+    // Call the getOrderDetailsForSellers function and subscribe to the returned Observable
+    this.orderService.getOrderDetailsForSellers(this.sellerID).subscribe(
+      (data: any) => {
+        this.tableData = data; // Assign the received data to the tableData property'
+        this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
+      },
+      (error: any) => {
+        console.error(error); // Handle the error appropriately
+      }
+    );
+  }
+ 
 
   getStatusClass(status: string): string {
-    console.log(status);
     const statusClasses = {
       absent: 'status status-absent',
-      present: 'status status-present',
-      late: 'status status-late'
+      delivered: 'status status-delivered',
+      pending: 'status status-pending'
     };
   
     status = status.toLowerCase();

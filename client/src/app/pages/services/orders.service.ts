@@ -15,6 +15,11 @@ export class OrdersService {
     return this.http.get<any>(url);
   }
 
+  getOrderDetailsForSellers(sellerID: string): Observable<any> {
+    const url = `${this.baseUrl}/seller/${sellerID}`;
+    return this.http.get<any>(url);
+  }
+
   updateOrderStatus(orderId: string, status: string): Observable<any> {
     const url = `${this.baseUrl}/order`;
     const body = {
