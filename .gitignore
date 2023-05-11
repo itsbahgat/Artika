@@ -190,4 +190,7 @@ dist
 
 #environment variables
 .env
+
+##DOCUMENTATION
+/client/documentation
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,angular,node
