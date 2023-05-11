@@ -142,7 +142,7 @@
   display: inline-block;
   padding: 8px 12px;
   margin: 0 5px;
-  border-radius: 50%;
+  border-radius: 5px;
   background-color: #fff;
   color: #333;
   cursor: pointer;
@@ -168,6 +168,7 @@
 .page-link:hover {
   background-color: #efc14c;
   color: #fff;
+  border-radius: 50%;
 }
 
 .page-link:disabled {
