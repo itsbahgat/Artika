@@ -216,10 +216,11 @@ const sellerApprove = async (req, res) => {
   }
 }; */
 
-module.exports = {
+/* module.exports = {
   getAllSellers,
   getSellerById,
   deleteSellerById,
   getAllPendingSellers,
   sellerApprove,
 };
+ */
