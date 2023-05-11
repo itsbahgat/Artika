@@ -251,7 +251,7 @@ function saveSellersAndProd(cart) {
   // Iterate over each item in the cart
   cart.items.forEach((item) => {
     const product = item.productId;
-    const seller = product.seller._id; // Assuming the seller field is populated in the product
+    const seller = product.seller && product.seller._id;
     const quantity = item.quantity;
 
     // Create an entry for the seller if it doesn't exist

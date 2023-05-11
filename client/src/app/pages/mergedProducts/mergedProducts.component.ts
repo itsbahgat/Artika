@@ -83,6 +83,12 @@ export class products implements OnInit {
         this.calculateAverageRating();
         this.isLoading = false; // Clear loading state
         this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+
+        // Reset currentPage if it exceeds totalPages
+        if (this.currentPage > this.totalPages) {
+          this.currentPage = 1;
+        }
+
         this.updateDisplayedProducts();
       },
       (error) => {
