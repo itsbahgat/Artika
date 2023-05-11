@@ -18,5 +18,6 @@ router
 router.get("/category/:categories", controller.getProductsByCategory);
 router.get("/title/:title", controller.getProductsByTitle);
 router.put("/review/:id", controller.addReviewProductById);
+router.get("/seller/:seller", controller.getProductsBySellerId);
 
 module.exports = router;
