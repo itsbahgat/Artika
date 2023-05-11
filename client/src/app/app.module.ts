@@ -69,8 +69,8 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: "add-product", component: AddProductComponent },
       { path: 'orders', component: TableComponent },
-      { path: 'edit-product', component: EditProductComponent },
       { path: 'products', component: ProductTableComponent },
+      { path: 'edit-product/:id', component: EditProductComponent },
     ],
   },
   {
@@ -95,8 +95,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'error', component: ErrorComponent },
-  { path: '**', redirectTo: '/error' }, // For handling any other routes
+  // { path: 'error', component: ErrorComponent },
+  // { path: '**', redirectTo: '/error' }, // For handling any other routes
 ];
 
 @NgModule({

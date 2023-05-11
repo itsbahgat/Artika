@@ -17,7 +17,7 @@
                 </td>
               </ng-container>
               <td>
-                <a routerLink="../edit-product" (click)="editProduct(item._id)">
+                <a [routerLink]="['../edit-product', item._id]" (click)="logItemId(item)">
                   <mat-icon>edit</mat-icon>
                 </a>
               </td>

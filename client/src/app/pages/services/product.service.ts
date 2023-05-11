@@ -20,6 +20,7 @@ export class ProductService {
       map(products => {
         // Modify each product object to include only chosen properties
         return products.map(product => ({
+          _id: product._id,
           title: product.title,
           description: product.description,
           price: product.price,

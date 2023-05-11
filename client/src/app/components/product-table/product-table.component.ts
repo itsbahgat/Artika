@@ -24,6 +24,11 @@ export class ProductTableComponent implements OnInit {
     })
   }
 
+  logItemId(item: any) {
+    console.log(item._id);
+    console.log(item);
+  }
+
   getStatusClass(status: string): string {
     console.log(status);
     const statusClasses = {
