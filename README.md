@@ -24,4 +24,4 @@ To set up the Artika project, follow the steps below:
 
 2. Open the src/environments/environment.prod.ts file.
 
-3. Locate the baseUrl variable and update its value to the appropriate URL where the server is running. For example, if the server is running locally on port 3000, the baseUrl should be set to http://localhost:3000.
+3. Locate the baseUrl variable and update its value to the appropriate URL where the server is running. For example, if the server is running locally on port 3000, the baseUrl should be set to http://localhost:3005.
